@@ -3,7 +3,9 @@ import Grid from '@material-ui/core/Grid';
 
 import Navbar from './components/Navbar';
 import Tabs from './components/Tabs';
-import KeyPerformanceIndexComponent from './components/Table';
+import KeyPerformanceIndexComponent from './components/KeyPerformanceIndicators';
+import ModelDetails from './components/ModelDetails';
+import DataDetails from './components/DataDetails';
 
 const App = () => {
   return (
@@ -11,13 +13,9 @@ const App = () => {
       <Navbar />
       <Tabs />
       <Grid container>
-        <Grid item xs={4}>
-          hey
-        </Grid>
+        <ModelDetails />
         <KeyPerformanceIndexComponent />
-        <Grid item xs={4}>
-          hey
-        </Grid>
+        <DataDetails />
       </Grid>
     </>
   );

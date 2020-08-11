@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -33,11 +34,10 @@ const GreenCheckbox = withStyles({
     },
   },
   checked: {},
-  // eslint-disable-next-line react/jsx-props-no-spreading
 })((props) => <Checkbox color="default" {...props} />);
 
 export default function ListTable(props) {
-  const { title, list } = props;
+  const { title, rows } = props;
   const classes = useStyles();
 
   return (
@@ -51,7 +51,7 @@ export default function ListTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {list.map((row) => (
+            {rows.map((row) => (
               <TableRow key={uuidv4()}>
                 <TableCell component="th" scope="row">
                   {row}
@@ -73,5 +73,5 @@ export default function ListTable(props) {
 
 ListTable.propTypes = {
   title: PropTypes.string.isRequired,
-  list: PropTypes.arrayOf(PropTypes.string).isRequired,
+  rows: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

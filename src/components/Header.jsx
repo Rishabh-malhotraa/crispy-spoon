@@ -12,13 +12,15 @@ const useStyles = makeStyles({
     borderRadius: '12px',
     backgroundColor: '#edf6f9',
     width: '100%',
+    color: '#011627',
+    fontWeight: '500',
   },
 });
 
 const Header = ({ heading }) => {
   const classes = useStyles();
   return (
-    <Typography variant="h5" className={classes.heading}>
+    <Typography variant="h6" className={classes.heading}>
       {heading}
     </Typography>
   );
