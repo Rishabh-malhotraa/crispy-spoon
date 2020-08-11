@@ -4,6 +4,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
 const useStyles = makeStyles((theme) => ({
   FormControl: {
@@ -12,42 +14,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ActivityClassification = () => {
+const Dropdown = (props) => {
   const [value, setValue] = React.useState('');
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-
   const classes = useStyles();
-
+  const { title, options } = props;
   return (
     <>
-      <FormControl
-        className={classes.FormControl}
-        variant="outlined"
-        size="small"
-      >
-        <InputLabel id="activity-classification">
-          Activity Classification
-        </InputLabel>
+      <FormControl className={classes.FormControl} size="small">
+        <InputLabel id={`${title}-id`}>{title}</InputLabel>
         <Select
-          id="activity-classification"
-          label="activity-classification"
+          label={`${title}-id-label`}
           value={value}
           onChange={handleChange}
           inputProps={{
             name: 'value',
-            id: 'activity-classification',
+            id: `${title}-id-label`,
           }}
         >
-          <MenuItem value={10}>Activity Classification - I</MenuItem>
-          <MenuItem value={20}>Activity Classification - II</MenuItem>
-          <MenuItem value={30}>Activity Classification - III</MenuItem>
+          {options.map((option) => {
+            return (
+              <MenuItem key={uuidv4()} value={option}>
+                {option}
+              </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
     </>
   );
 };
 
-export default ActivityClassification;
+export default Dropdown;
+
+Dropdown.propTypes = {
+  title: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+};

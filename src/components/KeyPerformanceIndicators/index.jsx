@@ -8,7 +8,7 @@ import Header from '../Header';
 
 const KeyPerformanceIndexComponent = () => {
   return (
-    <Grid item xs={4}>
+    <Grid item xs={3}>
       <Header heading="KEY PERFORMANCE INDICATORS" />
       {KPI.map((element) => {
         return (

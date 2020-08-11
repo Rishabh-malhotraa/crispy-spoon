@@ -14,7 +14,6 @@ const DatePicker = () => {
           autoOk
           size="small"
           variant="inline"
-          inputVariant="outlined"
           label="Month of Development"
           openTo="month"
           format="MM/yyyy"
