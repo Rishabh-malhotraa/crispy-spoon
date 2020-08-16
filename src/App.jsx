@@ -6,6 +6,7 @@ import Tabs from './components/Tabs';
 import KeyPerformanceIndexComponent from './components/KeyPerformanceIndicators';
 import ModelDetails from './components/ModelDetails';
 import DataDetails from './components/DataDetails';
+import FetchButton from './components/FetchButton';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <KeyPerformanceIndexComponent />
         <DataDetails />
       </Grid>
+      <FetchButton />
     </>
   );
 };

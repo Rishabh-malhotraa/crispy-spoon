@@ -27,7 +27,6 @@ const ValidationDate = ({ text }) => {
     <div className={classes.root}>
       <form noValidate>
         <TextField
-          id="date"
           label={text}
           type="date"
           size="small"

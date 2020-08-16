@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const ModelDetails = () => {
   const classes = useStyles();
   return (
-    <Grid item xs={3}>
+    <Grid item lg={3}>
       <Container>
         <Header heading="Model Related Information" />
         <Box className={classes.root}>

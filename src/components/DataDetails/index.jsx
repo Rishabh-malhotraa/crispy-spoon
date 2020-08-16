@@ -5,7 +5,7 @@ import Header from '../Header';
 
 const DataDetails = () => {
   return (
-    <Grid item xs={6}>
+    <Grid item lg={6}>
       <Container>
         <Header heading="DATA DETAILS" />
       </Container>
