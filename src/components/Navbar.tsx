@@ -4,7 +4,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
 import GenpactLogo from '../assets/logos/genpact-logo.png';
 
 const useStyles = makeStyles({
@@ -23,12 +22,17 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Navbar() {
+const Navbar = (): JSX.Element => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="transparent" className={classes.appBar}>
+      <AppBar
+        position="static"
+        color="transparent"
+        className={classes.appBar}
+        elevation={0}
+      >
         <Toolbar variant="regular">
           <IconButton>
             <img
@@ -44,4 +48,6 @@ export default function Navbar() {
       </AppBar>
     </div>
   );
-}
+};
+
+export default Navbar;

@@ -10,7 +10,7 @@ const dropdownData = [
     title: 'Monitoring  Frequency',
     options: ['Monthly', 'Quaterly', 'Yearly'],
   },
-  { title: 'Type of Model', options: ['1', '2', '3'] },
+  { title: 'Type of Model', options: ['abs', '2', '3', '4', '5'] },
   { title: 'Composition', options: ['1', '2', '3'] },
   { title: 'Entity', options: ['1', '2', '3'] },
   { title: 'Buisness Unit', options: ['1', '2', '3'] },

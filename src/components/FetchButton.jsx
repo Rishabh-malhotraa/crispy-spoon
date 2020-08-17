@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
+
 let x;
 const fetchData = async () => {
   const response = await fetch('http://127.0.0.1:5000/api2');
