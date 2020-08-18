@@ -1,14 +1,13 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { Redirect, useRouteMatch } from 'react-router-dom';
+import KeyPerformanceIndicatorsPage from '../KeyPerformanceIndicators';
 
 function GetPage(pageNumber: number): JSX.Element | string {
-  const { url } = useRouteMatch();
   switch (pageNumber) {
     case 0:
-      return <Redirect to={`${url}/keyperformanceindicator`} />;
+      return <KeyPerformanceIndicatorsPage />;
     case 1:
-      return <Redirect to="/model-setup/page2" />;
+      return <>Hey</>;
     case 2:
       return <>Data Details</>;
     default:

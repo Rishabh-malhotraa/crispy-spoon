@@ -2,15 +2,13 @@ import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
 import { v4 as uuid } from 'uuid';
-import { Route } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import { ModelType } from '../../Data/KPI';
 
+import { useSelector, useDispatch } from 'react-redux';
 import { onSelect, selectOption } from '../../redux/reducers/form/formSlice';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -22,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     form: {
       width: '30%',
+      margin: '24px',
       [theme.breakpoints.down('sm')]: {
         width: '100%',
         marginLeft: '24px',
@@ -46,7 +45,6 @@ const SimpleSelect = (): JSX.Element => {
   const option = useSelector(selectOption); // value of state from reducer
   const dispatch = useDispatch(); // dispatch function
 
-  console.log(option);
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     dispatch(onSelect(event.target.value as string));
   };

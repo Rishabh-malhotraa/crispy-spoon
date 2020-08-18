@@ -1,0 +1,12 @@
+.root {
+  margin: 1rem;
+  background: transparent;
+}
+.root > * {
+  margin: 0.5rem;
+}
+
+.grid-container {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}

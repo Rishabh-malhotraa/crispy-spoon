@@ -18,7 +18,7 @@ const App = (): JSX.Element => {
         <Switch>
           <Route path="/model-setup" component={ModelSetup} />
         </Switch>
-        <Redirect to="/model-setup/keyperformanceindicator" />
+        <Redirect to="/model-setup" />
       </Router>
     </>
   );

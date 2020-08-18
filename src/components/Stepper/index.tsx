@@ -7,23 +7,21 @@ import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Box from '@material-ui/core/Box';
-import { Route, useRouteMatch } from 'react-router-dom';
 
-import labels from './data.js';
-import StepperPages from './StepperPages/StepperPages';
-import KeyPerformanceIndicatorPage from '../KeyPerformanceIndicators';
+import labels from '../../Data/stepperLabels';
+import StepperPages from './StepperPages';
 
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
       width: '100%',
+      background: 'tranparent',
     },
   })
 );
 
 export default function FormStepper(): JSX.Element {
   const classes = useStyles();
-  const { path } = useRouteMatch();
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -54,17 +52,18 @@ export default function FormStepper(): JSX.Element {
           <ArrowForwardIcon />
         </IconButton>
       </Box>
-      <Stepper activeStep={activeStep} alternativeLabel>
+      <Stepper
+        activeStep={activeStep}
+        alternativeLabel
+        style={{ background: 'transparent' }}
+      >
         {labels.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>
-      <Route
-        path={`${path}/keyperformanceindicator`}
-        component={KeyPerformanceIndicatorPage}
-      />
+
       <StepperPages pageNumber={activeStep} />
     </div>
   );

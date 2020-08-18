@@ -8,9 +8,7 @@ const useStyles = makeStyles({
   root: {
     flexGrow: 1,
     position: 'sticky',
-    background: 'rgba(255,255,255,.3)',
-    'backdrop-filter': 'saturate(180%) blur(20px)',
-    blur: '8px',
+    background: 'transparent',
   },
 });
 
@@ -23,7 +21,7 @@ export default function CenteredTabs() {
   };
 
   return (
-    <AppBar className={classes.root} elevation={1}>
+    <AppBar className={classes.root} elevation={3}>
       <Tabs
         value={value}
         positon="fixed"

@@ -1,10 +1,10 @@
 import React from 'react';
-import FormStepper from '../components/Stepper/FormStepper';
+import StepperPages from '../components/Stepper';
 
 const ModelSetup = (): JSX.Element => {
   return (
     <>
-      <FormStepper />
+      <StepperPages />
     </>
   );
 };

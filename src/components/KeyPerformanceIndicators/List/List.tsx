@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,19 +7,28 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
 import { green } from '@material-ui/core/colors';
-import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
+import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
 
-const useStyles = makeStyles({
-  root: {
-    marginBottom: '2rem',
-    marginTop: '2rem',
-  },
-  table: {},
-});
+import {
+  makeStyles,
+  Theme,
+  createStyles,
+  withStyles,
+} from '@material-ui/core/styles';
+import { v4 as uuid } from 'uuid';
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    table: {
+      border: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+      // overflowY: 'scroll',
+      maxHeight: '50vh',
+    },
+  })
+);
 const GreenCheckbox = withStyles({
   root: {
     padding: '0px',
@@ -34,15 +42,16 @@ const GreenCheckbox = withStyles({
     },
   },
   checked: {},
-})((props) => <Checkbox color="default" {...props} />);
+})((props: CheckboxProps) => <Checkbox color="default" {...props} />);
 
-export default function ListTable(props) {
-  const { title, rows } = props;
+const List: React.FC<{ title: string; tests: string[] }> = ({
+  title,
+  tests,
+}) => {
   const classes = useStyles();
-
   return (
     <>
-      <TableContainer component={Paper} className={classes.root}>
+      <TableContainer component={Paper} className={classes.table}>
         <Table className={classes.table} aria-label="simple table" size="small">
           <TableHead>
             <TableRow>
@@ -51,12 +60,12 @@ export default function ListTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={uuidv4()}>
-                <TableCell component="th" scope="row">
-                  {row}
+            {tests.map((test) => (
+              <TableRow key={uuid()}>
+                <TableCell component="th" scope="test">
+                  {test}
                 </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell component="th" scope="test">
                   <GreenCheckbox
                     disableRipple
                     inputProps={{ 'aria-label': 'primary checkbox' }}
@@ -69,9 +78,6 @@ export default function ListTable(props) {
       </TableContainer>
     </>
   );
-}
-
-ListTable.propTypes = {
-  title: PropTypes.string.isRequired,
-  rows: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
+
+export default List;

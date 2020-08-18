@@ -1,20 +1,24 @@
-interface Model {
+export interface Model {
   modelName: string;
   data: {
     title: string;
-    test: string[];
+    tests: string[];
   }[];
 }
 
-const ModelType: string[] = ['PD Model', 'LGD Model', 'Stress Testing Model'];
+export const ModelType: string[] = [
+  'PD Model',
+  'LGD Model',
+  'Stress Testing Model',
+];
 
-const KPIData: Array<Model> = [
+export const KPIData: Array<Model> = [
   {
     modelName: 'PD Model',
     data: [
       {
         title: 'Model Level Test',
-        test: [
+        tests: [
           'Model Accuracy',
           'Gini Coefficient',
           'Accuracy Ratio | F-Measure',
@@ -35,7 +39,11 @@ const KPIData: Array<Model> = [
       },
       {
         title: 'Factor Level Test',
-        test: ['Characteristic Analysis', 'Information Value'],
+        tests: ['Characteristic Analysis', 'Information Value'],
+      },
+      {
+        title: 'Statistical Tests | Assumptions',
+        tests: ['Test 1', 'Test 2', 'Test 3'],
       },
     ],
   },
@@ -44,7 +52,7 @@ const KPIData: Array<Model> = [
     data: [
       {
         title: 'Model Level Test',
-        test: [
+        tests: [
           'Population Stability Index',
           'Lift/Gains Chart',
           'Gini Coefficient',
@@ -59,7 +67,11 @@ const KPIData: Array<Model> = [
       },
       {
         title: 'Factor Level Test',
-        test: ['Characteristic Analysis'],
+        tests: ['Characteristic Analysis'],
+      },
+      {
+        title: 'Statistical Tests | Assumptions',
+        tests: ['Test 1', 'Test 2', 'Test 3'],
       },
     ],
   },
@@ -68,7 +80,7 @@ const KPIData: Array<Model> = [
     data: [
       {
         title: 'Model Level Test',
-        test: [
+        tests: [
           'Augmented Dickey-Fuller (ADF) Test',
           'Auto Correlation Function(ACF)',
           'Partial Auto Correlation Funciton (PACF)',
@@ -83,7 +95,7 @@ const KPIData: Array<Model> = [
       },
       {
         title: 'Factor Level Test',
-        test: [
+        tests: [
           'Varaince Inflation Factor(VIF)',
           'Augmented Dickey-Fuller (ADF) Test',
           'Auto Correlation Function(ACF)',
@@ -91,8 +103,10 @@ const KPIData: Array<Model> = [
           "Pearson's Linear Correlation Test",
         ],
       },
+      {
+        title: 'Statistical Tests | Assumptions',
+        tests: ['Test 1', 'Test 2', 'Test 3'],
+      },
     ],
   },
 ];
-
-export { KPIData, ModelType };
