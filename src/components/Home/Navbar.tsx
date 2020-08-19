@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import GenpactLogo from '../assets/logos/genpact-logo.png';
+import GenpactLogo from '../../assets/logos/genpact-logo.png';
 
 const useStyles = makeStyles({
   root: {

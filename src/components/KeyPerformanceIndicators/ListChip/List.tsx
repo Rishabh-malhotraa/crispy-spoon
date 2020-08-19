@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Chip from '@material-ui/core/Chip';
 
@@ -6,7 +5,9 @@ import { v4 as uuid } from 'uuid';
 import styles from './styles.module.css';
 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { orange, lightGreen } from '@material-ui/core/colors';
+import { lightGreen, red } from '@material-ui/core/colors';
+import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
+import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
 
 const colorTheme = createMuiTheme({
   palette: {
@@ -14,25 +15,26 @@ const colorTheme = createMuiTheme({
       main: lightGreen[300],
     },
     secondary: {
-      main: orange[200],
+      main: red[200],
     },
   },
 });
 
+interface Data {
+  testName: string;
+  selected: boolean;
+}
+
 const List: React.FC<{ tests: string[] }> = ({ tests }) => {
-  const data: Array<'primary' | 'secondary' | 'default' | undefined> = [];
-  for (let i = 0; i < tests.length; i += 1) {
-    data.push('primary');
-  }
-  const [checked, setChecked] = React.useState<
-    Array<'primary' | 'secondary' | 'default' | undefined>
-  >(data);
+  const data: Array<Data> = tests.map((element) => {
+    return { testName: element, selected: true };
+  });
+  const [checked, setChecked] = React.useState<Array<Data>>(data);
 
   const handleDelete = (index: number): void => {
-    const value = checked[index] === 'primary' ? 'secondary' : 'primary';
-    console.log(value);
+    const value = !checked[index].selected;
     const newArray = checked.slice();
-    newArray[index] = value;
+    newArray[index].selected = value;
     setChecked(newArray);
   };
 
@@ -43,8 +45,15 @@ const List: React.FC<{ tests: string[] }> = ({ tests }) => {
           <Chip
             key={uuid()}
             label={test}
+            deleteIcon={
+              checked[index].selected ? (
+                <CheckCircleRoundedIcon />
+              ) : (
+                <CancelRoundedIcon />
+              )
+            }
             className={styles.chip}
-            color={checked[index]}
+            color={checked[index].selected ? 'primary' : 'secondary'}
             style={{ margin: '4px' }}
             onDelete={() => {
               handleDelete(index);
@@ -55,5 +64,4 @@ const List: React.FC<{ tests: string[] }> = ({ tests }) => {
     </ThemeProvider>
   );
 };
-
 export default List;

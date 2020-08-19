@@ -1,13 +1,14 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import KeyPerformanceIndicatorsPage from '../KeyPerformanceIndicators';
+import ModelDetails from '../ModelDetails';
 
 function GetPage(pageNumber: number): JSX.Element | string {
   switch (pageNumber) {
     case 0:
       return <KeyPerformanceIndicatorsPage />;
     case 1:
-      return <>Hey</>;
+      return <ModelDetails />;
     case 2:
       return <>Data Details</>;
     default:

@@ -11,16 +11,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexFlow: 'row',
     alignItems: 'flex-end',
+    minWidth: '47%',
+    margin: theme.spacing(1),
     justifyContent: 'space-between',
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(2),
-    width: 200,
   },
 }));
 
-const ValidationDate = ({ text }) => {
+const ValidationDate: React.FC<{ text: string }> = ({ text }) => {
   const classes = useStyles();
 
   return (

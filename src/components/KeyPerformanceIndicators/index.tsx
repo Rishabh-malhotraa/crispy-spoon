@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
-import ListTable from './List';
 import ListChip from './ListChip';
 import KPIDropDown from './KPIDropdown';
 

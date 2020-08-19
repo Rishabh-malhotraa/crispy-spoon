@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
-  root: {},
   heading: {
     marginTop: '1rem',
     marginBottom: '1rem',
@@ -12,12 +11,14 @@ const useStyles = makeStyles({
     borderRadius: '12px',
     backgroundColor: '#edf6f9',
     width: '100%',
-    color: '#011627',
-    fontWeight: '500',
+    // color: '#011627',
+    color: '#263238',
+    fontWeight: 500,
+    letterSpacing: '3px',
   },
 });
 
-const Header = ({ heading }) => {
+const Header: React.FC<{ heading: string }> = ({ heading }) => {
   const classes = useStyles();
   return (
     <Typography variant="h6" className={classes.heading}>

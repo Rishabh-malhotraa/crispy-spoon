@@ -6,8 +6,8 @@ import {
   Redirect,
 } from 'react-router-dom';
 import ModelSetup from './pages/ModelSetup';
-import Navbar from './components/Navbar';
-import Tabs from './components/Tabs';
+import Navbar from './components/Home/Navbar';
+import Tabs from './components/Home/Tabs';
 
 const App = (): JSX.Element => {
   return (
