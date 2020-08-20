@@ -1,0 +1,20 @@
+* {
+  font-family: 'Helvetica', sans-serif;
+}
+.csv__input__root {
+  margin: 1rem;
+}
+
+.csv-input {
+  cursor: pointer;
+  padding: 10px;
+  outline: none;
+  /* display: block; */
+  /* margin: 15px; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.inputCSV__text {
+  padding-right: 1rem;
+}

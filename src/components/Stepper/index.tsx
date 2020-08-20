@@ -36,7 +36,7 @@ export default function FormStepper(): JSX.Element {
     <div className={classes.root}>
       <Box style={{ position: 'absolute', zIndex: 1 }}>
         <IconButton
-          style={{ padding: '24px' }}
+          style={{ padding: '16px', margin: '8px' }}
           disabled={activeStep === 0}
           onClick={handleBack}
         >
@@ -45,7 +45,7 @@ export default function FormStepper(): JSX.Element {
       </Box>
       <Box style={{ position: 'absolute', zIndex: 1, right: '0px' }}>
         <IconButton
-          style={{ padding: '24px' }}
+          style={{ padding: '16px', margin: '8px' }}
           onClick={handleNext}
           disabled={activeStep === labels.length - 1}
         >
