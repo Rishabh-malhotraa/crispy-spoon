@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 const useStyles = makeStyles((theme) => ({
   FormControl: {
     margin: theme.spacing(1),
-    width: '45%',
+    minWidth: '45%',
   },
 }));
 interface AppProps {

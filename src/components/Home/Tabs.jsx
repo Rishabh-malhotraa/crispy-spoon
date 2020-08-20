@@ -23,7 +23,7 @@ export default function CenteredTabs() {
   };
 
   return (
-    <AppBar className={classes.root} elevation={1}>
+    <AppBar className={classes.root} elevation={3}>
       <Tabs
         value={value}
         positon="fixed"
