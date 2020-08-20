@@ -6,7 +6,7 @@ const fetchData = async () => {
   const response = await fetch('http://127.0.0.1:5000/api2');
   const data = await response.json();
   x = data;
-  console.log(x);
+  // console.log(x);
   return data;
 };
 

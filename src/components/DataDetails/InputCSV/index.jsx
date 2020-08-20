@@ -6,7 +6,10 @@ import Typography from '@material-ui/core/Typography';
 import './styles.css';
 import Box from '@material-ui/core/Box';
 
-const handleForce = (data, fileInfo) => console.log(data, fileInfo);
+const handleForce = (data, fileInfo) => {
+  // eslint-disable-next-line no-console
+  console.log(data, fileInfo);
+};
 
 const papaparseOptions = {
   header: true,
