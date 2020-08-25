@@ -7,10 +7,15 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+  },
+  headingBorder: {
+    background: grey[100],
+    border: `1px solid ${grey[600]}`,
   },
 });
 
@@ -44,19 +49,19 @@ const rows = [
   createData('Varaiable 3', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
   createData('Varaiable 4', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
   createData('Varaiable 5', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 6', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 7', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 8', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 9', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 10', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 11', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 12', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 13', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 14', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 15', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  // createData('Varaiable 6', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  // createData('Varaiable 7', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  // createData('Varaiable 8', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  // createData('Varaiable 9', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  // createData('Varaiable 10', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  // createData('Varaiable 11', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  // createData('Varaiable 12', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  // createData('Varaiable 13', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  // createData('Varaiable 14', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  // createData('Varaiable 15', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
 ];
 
-export default function TableCSV(): JSX.Element {
+export default function TableCSV({ title }: { title: string }): JSX.Element {
   const classes = useStyles();
 
   return (
@@ -68,6 +73,24 @@ export default function TableCSV(): JSX.Element {
           aria-label="a dense table"
         >
           <TableHead>
+            <TableRow style={{}}>
+              <TableCell className={classes.headingBorder}>{title}</TableCell>
+              <TableCell
+                colSpan={4}
+                align="center"
+                className={classes.headingBorder}
+              >
+                Train
+              </TableCell>
+              <TableCell
+                colSpan={3}
+                align="center"
+                className={classes.headingBorder}
+              >
+                Test
+              </TableCell>
+              <TableCell align="center" className={classes.headingBorder} />
+            </TableRow>
             <TableRow>
               <TableCell>Variable</TableCell>
               <TableCell align="right">#N</TableCell>

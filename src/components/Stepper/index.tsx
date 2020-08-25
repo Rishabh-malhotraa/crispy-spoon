@@ -45,6 +45,7 @@ export default function FormStepper(): JSX.Element {
       </Box>
       <Box style={{ position: 'absolute', zIndex: 1, right: '0px' }}>
         <IconButton
+          type="submit"
           style={{ padding: '16px', margin: '8px' }}
           onClick={handleNext}
           disabled={activeStep === labels.length - 1}

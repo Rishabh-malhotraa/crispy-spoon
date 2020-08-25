@@ -6,7 +6,8 @@ const DataDetails = (): JSX.Element => {
   return (
     <>
       <InputCSV />
-      <TableCSV />
+      <TableCSV title="Numeric Variable" />
+      <TableCSV title="Character Variable" />
     </>
   );
 };
