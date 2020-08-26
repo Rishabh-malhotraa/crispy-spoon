@@ -8,7 +8,10 @@ const useStyles = makeStyles({
   root: {
     flexGrow: 1,
     position: 'sticky',
-    background: 'rgba(255,255,255,.1)',
+    color: 'white',
+    // background: '#E6E6E6',
+    background: 'rgba(230, 230, 230, .7)',
+    // background: 'rgba(255,255,255,.1)',
     'backdrop-filter': 'saturate(180%) blur(20px)',
     blur: '8px',
   },

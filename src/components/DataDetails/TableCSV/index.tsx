@@ -8,14 +8,25 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { grey } from '@material-ui/core/colors';
+import DropDown from 'components/Helper/DropDown';
 
 const useStyles = makeStyles({
+  root: {
+    padding: '1rem',
+    margin: 'auto',
+  },
   table: {
-    minWidth: 650,
+    width: '100%',
   },
   headingBorder: {
     background: grey[100],
-    border: `1px solid ${grey[600]}`,
+    border: `1.5px solid ${grey[600]}`,
+  },
+  col1: {
+    width: '10vw',
+  },
+  col9: {
+    width: '10vw',
   },
 });
 
@@ -28,7 +39,7 @@ function createData(
   option5: number,
   option6: number,
   option7: number,
-  option8: number
+  option8: string[]
 ) {
   return {
     name,
@@ -44,11 +55,31 @@ function createData(
 }
 
 const rows = [
-  createData('Varaiable 1', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 2', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 3', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 4', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  createData('Varaiable 5', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
+  createData('Varaiable 1', 159, 6.0, 24, 4.0, 0, 0, 0, [
+    'Placeholder 1',
+    'Placeholder 2',
+    'Placeholder 3',
+  ]),
+  createData('Varaiable 2', 159, 6.0, 24, 4.0, 0, 0, 0, [
+    'Placeholder 1',
+    'Placeholder 2',
+    'Placeholder 3',
+  ]),
+  createData('Varaiable 3', 159, 6.0, 24, 4.0, 0, 0, 0, [
+    'Placeholder 1',
+    'Placeholder 2',
+    'Placeholder 3',
+  ]),
+  createData('Varaiable 4', 159, 6.0, 24, 4.0, 0, 0, 0, [
+    'Placeholder 1',
+    'Placeholder 2',
+    'Placeholder 3',
+  ]),
+  createData('Varaiable 5', 159, 6.0, 24, 4.0, 0, 0, 0, [
+    'Placeholder 1',
+    'Placeholder 2',
+    'Placeholder 3',
+  ]),
   // createData('Varaiable 6', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
   // createData('Varaiable 7', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
   // createData('Varaiable 8', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
@@ -65,7 +96,7 @@ export default function TableCSV({ title }: { title: string }): JSX.Element {
   const classes = useStyles();
 
   return (
-    <div style={{ padding: '1rem', margin: 'auto' }}>
+    <div className={classes.root}>
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
@@ -74,7 +105,9 @@ export default function TableCSV({ title }: { title: string }): JSX.Element {
         >
           <TableHead>
             <TableRow style={{}}>
-              <TableCell className={classes.headingBorder}>{title}</TableCell>
+              <TableCell size="medium" className={classes.headingBorder}>
+                {title}
+              </TableCell>
               <TableCell
                 colSpan={4}
                 align="center"
@@ -105,7 +138,7 @@ export default function TableCSV({ title }: { title: string }): JSX.Element {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <TableRow key={row.name}>
+              <TableRow key={row.name} className={classes.col1}>
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
@@ -116,7 +149,9 @@ export default function TableCSV({ title }: { title: string }): JSX.Element {
                 <TableCell align="right">{row.option5}</TableCell>
                 <TableCell align="right">{row.option6}</TableCell>
                 <TableCell align="right">{row.option7}</TableCell>
-                <TableCell align="right">{row.option8}</TableCell>
+                <TableCell align="right" className={classes.col9}>
+                  <DropDown options={row.option8} />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

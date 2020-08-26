@@ -29,7 +29,7 @@ const InputCSV = () => (
     >
       <Grid item lg={4}>
         <Box className="csv__input__root">
-          <Typography variant="span" className="inputCSV__text">
+          <Typography variant="inherit" className="inputCSV__text">
             Placeholder Text : 1
           </Typography>
           <span>
@@ -48,7 +48,7 @@ const InputCSV = () => (
       </Grid>
       <Grid item lg={4}>
         <Box className="csv__input__root">
-          <Typography variant="span" className="inputCSV__text">
+          <Typography variant="inherit" className="inputCSV__text">
             Placeholder Text : 2
           </Typography>
           <Button style={{ padding: '0px' }}>
