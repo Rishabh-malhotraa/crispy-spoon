@@ -20,13 +20,20 @@ const useStyles = makeStyles({
   },
   headingBorder: {
     background: grey[100],
-    border: `1.5px solid ${grey[600]}`,
+    border: `3px solid ${grey[300]}`,
   },
   col1: {
     width: '10vw',
   },
-  col9: {
+  colRole: {
     width: '10vw',
+  },
+  select: {
+    color: 'red',
+    '& .MuiSelect-root': {
+      paddingTop: '2px',
+      paddingBottom: '2px',
+    },
   },
 });
 
@@ -39,7 +46,8 @@ function createData(
   option5: number,
   option6: number,
   option7: number,
-  option8: string[]
+  option8: number,
+  option9: string[]
 ) {
   return {
     name,
@@ -51,31 +59,32 @@ function createData(
     option6,
     option7,
     option8,
+    option9,
   };
 }
 
 const rows = [
-  createData('Varaiable 1', 159, 6.0, 24, 4.0, 0, 0, 0, [
+  createData('Varaiable 1', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
     'Placeholder 1',
     'Placeholder 2',
     'Placeholder 3',
   ]),
-  createData('Varaiable 2', 159, 6.0, 24, 4.0, 0, 0, 0, [
+  createData('Varaiable 2', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
     'Placeholder 1',
     'Placeholder 2',
     'Placeholder 3',
   ]),
-  createData('Varaiable 3', 159, 6.0, 24, 4.0, 0, 0, 0, [
+  createData('Varaiable 3', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
     'Placeholder 1',
     'Placeholder 2',
     'Placeholder 3',
   ]),
-  createData('Varaiable 4', 159, 6.0, 24, 4.0, 0, 0, 0, [
+  createData('Varaiable 4', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
     'Placeholder 1',
     'Placeholder 2',
     'Placeholder 3',
   ]),
-  createData('Varaiable 5', 159, 6.0, 24, 4.0, 0, 0, 0, [
+  createData('Varaiable 5', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
     'Placeholder 1',
     'Placeholder 2',
     'Placeholder 3',
@@ -92,7 +101,15 @@ const rows = [
   // createData('Varaiable 15', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
 ];
 
-export default function TableCSV({ title }: { title: string }): JSX.Element {
+interface AppProps {
+  title: string;
+  infoProps: {
+    t1: string;
+    t2: string;
+  };
+}
+
+const TableCSV: React.FC<AppProps> = ({ title, infoProps }) => {
   const classes = useStyles();
 
   return (
@@ -105,9 +122,7 @@ export default function TableCSV({ title }: { title: string }): JSX.Element {
         >
           <TableHead>
             <TableRow style={{}}>
-              <TableCell size="medium" className={classes.headingBorder}>
-                {title}
-              </TableCell>
+              <TableCell className={classes.headingBorder}>{title}</TableCell>
               <TableCell
                 colSpan={4}
                 align="center"
@@ -116,7 +131,7 @@ export default function TableCSV({ title }: { title: string }): JSX.Element {
                 Train
               </TableCell>
               <TableCell
-                colSpan={3}
+                colSpan={4}
                 align="center"
                 className={classes.headingBorder}
               >
@@ -128,11 +143,12 @@ export default function TableCSV({ title }: { title: string }): JSX.Element {
               <TableCell>Variable</TableCell>
               <TableCell align="right">#N</TableCell>
               <TableCell align="right">% Missing</TableCell>
-              <TableCell align="right">Avg</TableCell>
-              <TableCell align="right">Std Dev</TableCell>
+              <TableCell align="right">{infoProps.t1}</TableCell>
+              <TableCell align="right">{infoProps.t2}</TableCell>
+              <TableCell align="right">#N</TableCell>
               <TableCell align="right">% Missing</TableCell>
-              <TableCell align="right">Avg</TableCell>
-              <TableCell align="right">Std Dev</TableCell>
+              <TableCell align="right">{infoProps.t1}</TableCell>
+              <TableCell align="right">{infoProps.t2}</TableCell>
               <TableCell align="right">Role</TableCell>
             </TableRow>
           </TableHead>
@@ -149,8 +165,11 @@ export default function TableCSV({ title }: { title: string }): JSX.Element {
                 <TableCell align="right">{row.option5}</TableCell>
                 <TableCell align="right">{row.option6}</TableCell>
                 <TableCell align="right">{row.option7}</TableCell>
-                <TableCell align="right" className={classes.col9}>
-                  <DropDown options={row.option8} />
+                <TableCell align="right">{row.option8}</TableCell>
+                <TableCell align="right" className={classes.colRole}>
+                  <div className={classes.select}>
+                    <DropDown options={row.option9} />
+                  </div>
                 </TableCell>
               </TableRow>
             ))}
@@ -159,4 +178,6 @@ export default function TableCSV({ title }: { title: string }): JSX.Element {
       </TableContainer>
     </div>
   );
-}
+};
+
+export default TableCSV;

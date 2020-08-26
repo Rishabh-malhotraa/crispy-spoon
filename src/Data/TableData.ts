@@ -5,13 +5,14 @@ interface TableElement {
     train: {
       n: number;
       missingPercentage: number;
-      average: number;
-      standardDeviation: number;
+      distinctValues: number;
+      top3Values: number;
     };
     test: {
+      n: number;
       missingPercentage: number;
-      average: number;
-      standardDeviation: number;
+      distinctValues: number;
+      top3Values: number;
     };
   };
   role: string[];
@@ -26,13 +27,14 @@ const tableData: Array<TableElement> = [
       train: {
         n: 1,
         missingPercentage: 5,
-        average: 24,
-        standardDeviation: 1,
+        distinctValues: 1,
+        top3Values: 1,
       },
       test: {
+        n: 1,
         missingPercentage: 5,
-        average: 24,
-        standardDeviation: 1,
+        distinctValues: 1,
+        top3Values: 1,
       },
     },
     role: ['role 1', 'role 2', 'role 3'],
@@ -43,13 +45,14 @@ const tableData: Array<TableElement> = [
       train: {
         n: 1,
         missingPercentage: 5,
-        average: 24,
-        standardDeviation: 1,
+        distinctValues: 1,
+        top3Values: 1,
       },
       test: {
+        n: 1,
         missingPercentage: 5,
-        average: 24,
-        standardDeviation: 1,
+        distinctValues: 1,
+        top3Values: 1,
       },
     },
     role: ['role 1', 'role 2', 'role 3'],
