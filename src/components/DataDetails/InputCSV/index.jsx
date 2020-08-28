@@ -3,8 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import CSVReader from 'react-csv-reader';
 import Typography from '@material-ui/core/Typography';
-import './styles.css';
 import Box from '@material-ui/core/Box';
+import './styles.css';
 
 const handleForce = (data, fileInfo) => {
   // eslint-disable-next-line no-console

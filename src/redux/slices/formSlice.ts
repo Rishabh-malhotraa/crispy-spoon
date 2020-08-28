@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import StateInterface from '../../type';
+import StateInterface from 'redux/type';
 
 export const formSlice = createSlice({
   name: 'formOption',

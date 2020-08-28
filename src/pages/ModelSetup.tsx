@@ -1,5 +1,5 @@
 import React from 'react';
-import StepperPages from '../components/Stepper';
+import StepperPages from 'components/Stepper';
 
 const ModelSetup = (): JSX.Element => {
   return (

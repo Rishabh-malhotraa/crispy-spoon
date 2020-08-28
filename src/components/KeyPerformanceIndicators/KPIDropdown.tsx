@@ -6,10 +6,10 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
 import { v4 as uuid } from 'uuid';
-import { ModelType } from '../../Data/KPI';
+import { ModelType } from 'Data/KPI';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { onSelect, selectOption } from '../../redux/reducers/form/formSlice';
+import { onSelect, selectOption } from 'redux/slices/formSlice';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

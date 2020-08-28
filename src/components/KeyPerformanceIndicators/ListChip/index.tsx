@@ -1,13 +1,13 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import styles from './styles.module.css';
-import Header from '../../Helper/Header';
+import Header from 'components/Helper/Header';
 import { v1 as uuid } from 'uuid';
 import List from './List';
 
-import { KPIData, Model } from '../../../Data/KPI';
+import { KPIData, Model } from 'Data/KPI';
 import { useSelector } from 'react-redux';
-import { selectOption } from '../../../redux/reducers/form/formSlice';
+import { selectOption } from 'redux/slices/formSlice';
 
 const ListChip = (): JSX.Element => {
   const option = useSelector(selectOption);
