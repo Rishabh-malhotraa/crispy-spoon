@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 
 export type AvatarButtonClassKey = 'root' | 'label' | 'img' | 'startIcon';
