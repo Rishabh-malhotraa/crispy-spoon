@@ -3,7 +3,7 @@ import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Box from '@material-ui/core/Box';
@@ -16,6 +16,21 @@ const useStyles = makeStyles(() =>
     root: {
       width: '100%',
       background: 'tranparent',
+    },
+    buttonBox: {
+      position: 'absolute',
+      display: 'inline-block',
+      zIndex: 1,
+    },
+    positionLeft: {
+      left: '16px',
+    },
+    positionRight: {
+      right: '16px',
+    },
+    button: {
+      margin: '16px',
+      // padding: '8px',
     },
   })
 );
@@ -34,24 +49,31 @@ export default function FormStepper(): JSX.Element {
 
   return (
     <div className={classes.root}>
-      <Box style={{ position: 'absolute', zIndex: 1 }}>
-        <IconButton
-          style={{ padding: '16px', margin: '8px' }}
-          disabled={activeStep === 0}
+      <Box className={`${classes.buttonBox} ${classes.positionLeft}`}>
+        <Button
+          variant="text"
+          size="large"
+          color="inherit"
           onClick={handleBack}
+          disabled={activeStep === 0}
+          className={classes.button}
+          startIcon={<ArrowBackIcon />}
         >
-          <ArrowBackIcon />
-        </IconButton>
+          Back
+        </Button>
       </Box>
-      <Box style={{ position: 'absolute', zIndex: 1, right: '0px' }}>
-        <IconButton
-          type="submit"
-          style={{ padding: '16px', margin: '8px' }}
+      <Box className={`${classes.buttonBox} ${classes.positionRight}`}>
+        <Button
+          variant="text"
+          size="large"
+          color="inherit"
           onClick={handleNext}
           disabled={activeStep === labels.length - 1}
+          className={classes.button}
+          endIcon={<ArrowForwardIcon />}
         >
-          <ArrowForwardIcon />
-        </IconButton>
+          Next
+        </Button>
       </Box>
       <Stepper
         activeStep={activeStep}
@@ -69,3 +91,12 @@ export default function FormStepper(): JSX.Element {
     </div>
   );
 }
+// <IconButton
+// type="submit"
+// className={classes.button}
+// style={{ padding: '8px', margin: '8px' }}
+// onClick={handleNext}
+// disabled={activeStep === labels.length - 1}
+// >
+// <ArrowForwardIcon fontSize="large" />
+// </IconButton>

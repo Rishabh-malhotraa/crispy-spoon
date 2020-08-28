@@ -2,7 +2,6 @@ import React from 'react';
 import Chip from '@material-ui/core/Chip';
 
 import { v4 as uuid } from 'uuid';
-import styles from './styles.module.css';
 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { lightGreen, red } from '@material-ui/core/colors';
@@ -52,9 +51,12 @@ const List: React.FC<{ tests: string[] }> = ({ tests }) => {
                 <CancelRoundedIcon />
               )
             }
-            className={styles.chip}
             color={checked[index].selected ? 'primary' : 'secondary'}
-            style={{ margin: '4px' }}
+            style={{
+              margin: '4px',
+              fontWeight: 600,
+              color: '#040926',
+            }}
             onDelete={() => {
               handleDelete(index);
             }}

@@ -3,9 +3,13 @@
   background: transparent;
 }
 .root > * {
-  margin: 0.5rem;
+  margin: 1rem;
 }
-
+.MuiChip-root {
+  font-weight: 700;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+}
 .grid-container {
   margin-left: 3rem;
   margin-right: 3rem;
