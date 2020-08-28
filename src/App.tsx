@@ -5,7 +5,6 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import ModelSetup from 'pages/ModelSetup';
 import Navbar from 'components/Home/Navbar';
 import Tabs from 'components/Home/Tabs';
 
@@ -16,9 +15,9 @@ const App = (): JSX.Element => {
       <Tabs />
       <Router>
         <Switch>
-          <Route path="/model-setup" component={ModelSetup} />
+          <Route exact path="/" />
         </Switch>
-        <Redirect to="/model-setup" />
+        <Redirect to="/" />
       </Router>
     </>
   );

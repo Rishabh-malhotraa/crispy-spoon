@@ -22,6 +22,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^9.0.0",
     "gh-pages": "^3.1.0",
+    "husky": "^4.2.5",
     "moment": "^2.27.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -42,6 +43,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js src/**/*.jsx"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint -- --fix"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"

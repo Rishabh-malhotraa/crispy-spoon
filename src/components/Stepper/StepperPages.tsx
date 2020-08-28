@@ -1,8 +1,8 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import KeyPerformanceIndicatorsPage from '../KeyPerformanceIndicators';
-import ModelDetails from '../ModelDetails';
-import DataDetails from '../DataDetails';
+import KeyPerformanceIndicatorsPage from 'components/KeyPerformanceIndicators';
+import ModelDetails from 'components/ModelDetails';
+import DataDetails from 'components/DataDetails';
 
 function GetPage(pageNumber: number): JSX.Element | string {
   switch (pageNumber) {

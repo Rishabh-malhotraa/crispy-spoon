@@ -55,7 +55,8 @@ const List: React.FC<{ tests: string[] }> = ({ tests }) => {
             style={{
               margin: '4px',
               fontWeight: 600,
-              color: '#040926',
+              fontSize: '14px',
+              color: 'rgba(0, 0, 0, 0.7)',
             }}
             onDelete={() => {
               handleDelete(index);
