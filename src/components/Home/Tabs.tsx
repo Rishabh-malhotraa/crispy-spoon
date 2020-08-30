@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     position: 'sticky',
     color: 'white',
     // background: '#E6E6E6',
-    background: 'rgba(230, 230, 230, .7)',
+    background: '#254E70',
     // background: 'rgba(255,255,255,.1)',
     'backdrop-filter': 'saturate(180%) blur(20px)',
     blur: '8px',
@@ -35,7 +35,6 @@ export default function CenteredTabs(): JSX.Element {
           value={value}
           onChange={handleChange}
           indicatorColor="secondary"
-          textColor="secondary"
           centered
         >
           <Tab label="Model Setup" />

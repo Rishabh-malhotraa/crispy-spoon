@@ -17,12 +17,16 @@ const useStyles = makeStyles({
   root: {
     // backgroundColor: grey[800],
     display: 'inline-block',
+    maxWidth: '200px',
     position: 'fixed',
     right: '0px',
-    padding: '3rem 2rem 0rem 1rem',
+    padding: '3rem 1rem 0rem 1rem',
   },
   text: {
-    color: '#2196f3',
+    color: grey[500],
+    '& .MuiTypography-root': {
+      fontSize: '14px',
+    },
   },
 });
 
@@ -34,7 +38,7 @@ const TableOfContents = (): JSX.Element => {
       <List component="nav">
         {text.map((element) => (
           <ListItem button key={uuid()}>
-            <ListItemText primary={element} style={{ color: grey[500] }} />
+            <ListItemText className={classes.text} primary={element} />
           </ListItem>
         ))}
       </List>

@@ -12,25 +12,23 @@ const DropDown: React.FC<{ options: string[] }> = ({ options }) => {
     setValue(event.target.value as string);
   };
   return (
-    <div>
-      <FormControl variant="outlined" size="small">
-        <InputLabel htmlFor="dropdown-table" />
-        <Select
-          labelId="dropdown-table"
-          id="demo-simple-select-filled"
-          value={value}
-          onChange={handleChange}
-        >
-          {options.map((option) => {
-            return (
-              <MenuItem key={uuid()} value={option}>
-                {option}
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl variant="outlined" size="small">
+      <InputLabel htmlFor="dropdown-table" />
+      <Select
+        labelId="dropdown-table"
+        id="demo-simple-select-filled"
+        value={value}
+        onChange={handleChange}
+      >
+        {options.map((option) => {
+          return (
+            <MenuItem key={uuid()} value={option}>
+              {option}
+            </MenuItem>
+          );
+        })}
+      </Select>
+    </FormControl>
   );
 };
 
