@@ -1,8 +1,8 @@
 import React from 'react';
-import TableOfContents from 'components/TableOfContents';
-import PerformanceSummaryTable from 'components/PerformanceSummaryTable';
+import TableOfContents from 'components/QuantitativeValidationPage/TableOfContents';
+import PerformanceSummaryTable from 'components/QuantitativeValidationPage/PerformanceSummaryTable';
+import InformationBar from 'components/QuantitativeValidationPage/QuantitativeValidationHeader';
 import Grid from '@material-ui/core/Grid';
-import InformationBar from 'components/QuantitativeValidationHeader';
 
 const drawerWidth = '240px';
 const boxPadding = '50px';

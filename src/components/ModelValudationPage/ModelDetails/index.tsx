@@ -15,7 +15,7 @@ import {
   dropdowndata_risk_related_information,
   validation_data_label,
   textfield_risk_related_information,
-} from '../../Data/ModelDetailsInformation';
+} from '../../../Data/ModelDetailsInformation';
 
 const useStyles = makeStyles((theme) => ({
   root: {
