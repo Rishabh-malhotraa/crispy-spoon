@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 const validation_data_label = [{ title: 'Last Validation Date' }, { title: 'Last Montiored Date' }];
 
+/**
+ * This file contains data for dropdown menu in ModelInformation sub-page of ModelSetup
+ */
 const dropdowndata_model_related_information = [
   { title: 'Activity Classification', options: ['I', 'II', 'III'] },
   { title: 'Validation Frequency', options: ['Monthly', 'Quaterly', 'Yearly'] },

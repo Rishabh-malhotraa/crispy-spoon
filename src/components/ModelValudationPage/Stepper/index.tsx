@@ -30,11 +30,14 @@ const useStyles = makeStyles(() =>
     },
     button: {
       margin: '16px',
-      // padding: '8px',
     },
   })
 );
 
+/**
+ * manages which sub-page to display on model-setup page the layout if the page consist
+ * of two buttons for next and back wrapped in a box followed by the main stepper component
+ */
 export default function FormStepper(): JSX.Element {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -86,12 +89,3 @@ export default function FormStepper(): JSX.Element {
     </div>
   );
 }
-// <IconButton
-// type="submit"
-// className={classes.button}
-// style={{ padding: '8px', margin: '8px' }}
-// onClick={handleNext}
-// disabled={activeStep === labels.length - 1}
-// >
-// <ArrowForwardIcon fontSize="large" />
-// </IconButton>

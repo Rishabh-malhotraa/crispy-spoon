@@ -5,6 +5,11 @@ import Tabs from 'components/Home/Tabs';
 import ModelSetup from 'pages/ModelSetup';
 import QuantitativeValidation from 'pages/QuantitativeValidation';
 
+/**
+ * We are setting up react router to render different pages based on different urls
+ * eg: when patth of URL is exactly www.localhost.com/3000/model-setup
+ * renders the ModelSetup component
+ */
 const App = (): JSX.Element => {
   return (
     <>
@@ -12,10 +17,9 @@ const App = (): JSX.Element => {
         <Navbar />
         <Tabs />
         <Switch>
-          <Route exact path="/model-setup" component={ModelSetup} />
+          <Route path="/model-setup" component={ModelSetup} />
           <Route exact path="/quanitative-validation" component={QuantitativeValidation} />
         </Switch>
-        <Redirect to="/model-setup" />
       </Router>
     </>
   );

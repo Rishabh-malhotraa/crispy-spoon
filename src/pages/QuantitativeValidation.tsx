@@ -7,6 +7,10 @@ import Grid from '@material-ui/core/Grid';
 const drawerWidth = '240px';
 const boxPadding = '50px';
 
+/**
+ * Renders the Quantiative Validation page
+ */
+
 const QuantitativeValidation = (): JSX.Element => {
   return (
     <>

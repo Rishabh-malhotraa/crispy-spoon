@@ -8,6 +8,9 @@ export interface Model {
 
 export const ModelType: string[] = ['PD Model', 'LGD Model', 'Stress Testing Model'];
 
+/**
+ * KPIDATA is an array of objects which containes MODEL TEST inforamation
+ */
 export const KPIData: Array<Model> = [
   {
     modelName: 'PD Model',

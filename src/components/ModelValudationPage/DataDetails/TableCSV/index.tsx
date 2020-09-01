@@ -12,6 +12,7 @@ import DropDown from 'components/Helper/DropDown';
 
 const useStyles = makeStyles({
   root: {
+    width: '70vw',
     padding: '1rem',
     margin: 'auto',
   },
