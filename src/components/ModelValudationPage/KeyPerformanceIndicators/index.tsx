@@ -1,8 +1,8 @@
-import React from "react";
-import Grid from "@material-ui/core/Grid";
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
 
-import ListChip from "./ListChip";
-import KPIDropDown from "./KPIDropdown";
+import ListChip from './ListChip';
+import KPIDropDown from './KPIDropdown';
 
 const KeyPerformanceIndexComponent = (): JSX.Element => {
   return (

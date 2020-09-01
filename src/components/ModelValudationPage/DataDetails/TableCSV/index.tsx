@@ -1,38 +1,38 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import { grey } from "@material-ui/core/colors";
-import DropDown from "components/Helper/DropDown";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import { grey } from '@material-ui/core/colors';
+import DropDown from 'components/Helper/DropDown';
 
 const useStyles = makeStyles({
   root: {
-    padding: "1rem",
-    margin: "auto",
+    padding: '1rem',
+    margin: 'auto',
   },
   table: {
-    width: "100%",
+    width: '100%',
   },
   headingBorder: {
     background: grey[100],
     border: `3px solid ${grey[300]}`,
   },
   col1: {
-    width: "10vw",
+    width: '10vw',
   },
   colRole: {
-    width: "10vw",
+    width: '10vw',
   },
   select: {
-    color: "red",
-    "& .MuiSelect-root": {
-      paddingTop: "2px",
-      paddingBottom: "2px",
+    color: 'red',
+    '& .MuiSelect-root': {
+      paddingTop: '2px',
+      paddingBottom: '2px',
     },
   },
 });
@@ -64,30 +64,30 @@ function createData(
 }
 
 const rows = [
-  createData("Varaiable 1", 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
-    "Placeholder 1",
-    "Placeholder 2",
-    "Placeholder 3",
+  createData('Varaiable 1', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
+    'Placeholder 1',
+    'Placeholder 2',
+    'Placeholder 3',
   ]),
-  createData("Varaiable 2", 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
-    "Placeholder 1",
-    "Placeholder 2",
-    "Placeholder 3",
+  createData('Varaiable 2', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
+    'Placeholder 1',
+    'Placeholder 2',
+    'Placeholder 3',
   ]),
-  createData("Varaiable 3", 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
-    "Placeholder 1",
-    "Placeholder 2",
-    "Placeholder 3",
+  createData('Varaiable 3', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
+    'Placeholder 1',
+    'Placeholder 2',
+    'Placeholder 3',
   ]),
-  createData("Varaiable 4", 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
-    "Placeholder 1",
-    "Placeholder 2",
-    "Placeholder 3",
+  createData('Varaiable 4', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
+    'Placeholder 1',
+    'Placeholder 2',
+    'Placeholder 3',
   ]),
-  createData("Varaiable 5", 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
-    "Placeholder 1",
-    "Placeholder 2",
-    "Placeholder 3",
+  createData('Varaiable 5', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
+    'Placeholder 1',
+    'Placeholder 2',
+    'Placeholder 3',
   ]),
   // createData('Varaiable 6', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
   // createData('Varaiable 7', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
@@ -115,26 +115,14 @@ const TableCSV: React.FC<AppProps> = ({ title, infoProps }) => {
   return (
     <div className={classes.root}>
       <TableContainer component={Paper}>
-        <Table
-          className={classes.table}
-          size="small"
-          aria-label="a dense table"
-        >
+        <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow style={{}}>
               <TableCell className={classes.headingBorder}>{title}</TableCell>
-              <TableCell
-                colSpan={4}
-                align="center"
-                className={classes.headingBorder}
-              >
+              <TableCell colSpan={4} align="center" className={classes.headingBorder}>
                 Train
               </TableCell>
-              <TableCell
-                colSpan={4}
-                align="center"
-                className={classes.headingBorder}
-              >
+              <TableCell colSpan={4} align="center" className={classes.headingBorder}>
                 Test
               </TableCell>
               <TableCell align="center" className={classes.headingBorder} />

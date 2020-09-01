@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import {
-  KeyboardDatePicker,
-  MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
-import MomentUtils from "@date-io/moment";
+import React, { useState } from 'react';
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
 
 const DatePicker = (): JSX.Element => {
   const [selectedDate, handleDateChange] = useState(new Date());
@@ -22,9 +19,9 @@ const DatePicker = (): JSX.Element => {
         openTo="month"
         format="MM/yyyy"
         value={selectedDate}
-        InputAdornmentProps={{ position: "start" }}
+        InputAdornmentProps={{ position: 'start' }}
         onChange={(event) => handleChange(event)}
-        style={{ width: "45%" }}
+        style={{ width: '45%' }}
       />
     </MuiPickersUtilsProvider>
   );

@@ -1,32 +1,32 @@
-import React from "react";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box } from "@material-ui/core";
-import { v4 as uuid } from "uuid";
-import Header from "components/Helper/Header";
-import MonthOfDevelopment from "./MonthOfDevelopment";
-import ValidationDate from "./ValidationDate";
-import Dropdown from "./Dropdown";
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
+import { v4 as uuid } from 'uuid';
+import Header from 'components/Helper/Header';
+import MonthOfDevelopment from './MonthOfDevelopment';
+import ValidationDate from './ValidationDate';
+import Dropdown from './Dropdown';
 import {
   dropdowndata_model_related_information,
   dropdowndata_product_related_information,
   dropdowndata_risk_related_information,
   validation_data_label,
   textfield_risk_related_information,
-} from "../../../Data/ModelDetailsInformation";
+} from '../../../Data/ModelDetailsInformation';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& .MuiTextField-root": {
+    '& .MuiTextField-root': {
       margin: theme.spacing(1),
     },
   },
   item: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
 }));
 
@@ -39,12 +39,7 @@ const ModelDetails = (): JSX.Element => {
           <Header heading="Model Related Information" />
           <Box className={classes.root}>
             <Grid item className={classes.item}>
-              <TextField
-                required
-                label="Model Number"
-                size="small"
-                style={{ minWidth: "45%" }}
-              />
+              <TextField required label="Model Number" size="small" style={{ minWidth: '45%' }} />
               <MonthOfDevelopment />
             </Grid>
             {/* rendering out all the similar-types of components together */}
@@ -55,13 +50,7 @@ const ModelDetails = (): JSX.Element => {
             </Grid>
             <Grid item className={classes.item}>
               {dropdowndata_model_related_information.map((element) => {
-                return (
-                  <Dropdown
-                    title={element.title}
-                    options={element.options}
-                    key={uuid()}
-                  />
-                );
+                return <Dropdown title={element.title} options={element.options} key={uuid()} />;
               })}
             </Grid>
           </Box>
@@ -72,13 +61,7 @@ const ModelDetails = (): JSX.Element => {
           <Container>
             <Header heading="Product Related Information" />
             {dropdowndata_product_related_information.map((element) => {
-              return (
-                <Dropdown
-                  title={element.title}
-                  options={element.options}
-                  key={uuid()}
-                />
-              );
+              return <Dropdown title={element.title} options={element.options} key={uuid()} />;
             })}
           </Container>
         </Grid>
@@ -86,13 +69,7 @@ const ModelDetails = (): JSX.Element => {
           <Container>
             <Header heading="Risk & Modeling Relation Information" />
             {dropdowndata_risk_related_information.map((element) => {
-              return (
-                <Dropdown
-                  title={element.title}
-                  options={element.options}
-                  key={uuid()}
-                />
-              );
+              return <Dropdown title={element.title} options={element.options} key={uuid()} />;
             })}
             {textfield_risk_related_information.map((element) => {
               return (
@@ -102,9 +79,9 @@ const ModelDetails = (): JSX.Element => {
                   label={element}
                   size="small"
                   style={{
-                    maxWidth: "45%",
-                    margin: "1rem",
-                    marginLeft: "0.5rem",
+                    maxWidth: '45%',
+                    margin: '1rem',
+                    marginLeft: '0.5rem',
                   }}
                 />
               );

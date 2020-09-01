@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-const validation_data_label = [
-  { title: 'Last Validation Date' },
-  { title: 'Last Montiored Date' },
-];
+const validation_data_label = [{ title: 'Last Validation Date' }, { title: 'Last Montiored Date' }];
 
 const dropdowndata_model_related_information = [
   { title: 'Activity Classification', options: ['I', 'II', 'III'] },
@@ -34,11 +31,7 @@ const dropdowndata_risk_related_information = [
   { title: 'Analytical Technique', options: ['1', '2', '3'] },
 ];
 
-const textfield_risk_related_information = [
-  'Observation Month',
-  'Observation Window',
-  'Performance Window',
-];
+const textfield_risk_related_information = ['Observation Month', 'Observation Window', 'Performance Window'];
 
 export {
   validation_data_label,
