@@ -75,18 +75,13 @@ export default function FormStepper(): JSX.Element {
           Next
         </Button>
       </Box>
-      <Stepper
-        activeStep={activeStep}
-        alternativeLabel
-        style={{ background: 'transparent' }}
-      >
+      <Stepper activeStep={activeStep} alternativeLabel style={{ background: 'transparent' }}>
         {labels.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>
-
       <StepperPages pageNumber={activeStep} />
     </div>
   );

@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ModelSetupPage from 'pages/ModelSetup';
 import QuantitaveValidationPage from 'pages/QuantitativeValidation';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -31,12 +32,7 @@ export default function CenteredTabs(): JSX.Element {
   return (
     <>
       <AppBar className={classes.root} elevation={3}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="secondary"
-          centered
-        >
+        <Tabs value={value} onChange={handleChange} indicatorColor="secondary" centered>
           <Tab label="Model Setup" />
           <Tab label="Performance Summary" />
           <Tab label="Quantitative Validation" />
@@ -44,8 +40,8 @@ export default function CenteredTabs(): JSX.Element {
           <Tab label="Model Documentation" />
         </Tabs>
       </AppBar>
-      {value === 0 && <ModelSetupPage />}
-      {value === 2 && <QuantitaveValidationPage />}
+      {value === 0 && <Redirect to="/model-setup" />}
+      {value === 2 && <Redirect to="/quanitative-validation" />}
     </>
   );
 }

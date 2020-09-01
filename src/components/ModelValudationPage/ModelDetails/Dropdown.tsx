@@ -22,7 +22,7 @@ const Dropdown: React.FC<AppProps> = (props) => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (event: any) => {
-    setValue(event.target.value);
+    setValue(event.target.value as string);
   };
   const classes = useStyles();
   const { title, options } = props;
