@@ -14,7 +14,7 @@ import { Route, useRouteMatch } from 'react-router-dom';
  */
 
 const ModelSetup = (): JSX.Element => {
-  let { path, url } = useRouteMatch();
+  const { path, url } = useRouteMatch();
   return (
     <>
       <StepperPages />

@@ -1,8 +1,5 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import KeyPerformanceIndicatorsPage from 'components/ModelValudationPage/KeyPerformanceIndicators';
-import ModelDetails from 'components/ModelValudationPage/ModelDetails';
-import DataDetails from 'components/ModelValudationPage/DataDetails';
 import { Redirect } from 'react-router-dom';
 
 /**
