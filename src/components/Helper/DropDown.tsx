@@ -1,9 +1,9 @@
-import React from 'react';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import { v4 as uuid } from 'uuid';
-import { InputLabel } from '@material-ui/core';
+import React from "react";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import { v4 as uuid } from "uuid";
+import { InputLabel } from "@material-ui/core";
 
 const DropDown: React.FC<{ options: string[] }> = ({ options }) => {
   const [value, setValue] = React.useState(options[0]);

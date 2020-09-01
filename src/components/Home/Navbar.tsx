@@ -1,10 +1,10 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import GenpactLogo from 'assets/logos/genpact-logo.png';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import GenpactLogo from "assets/logos/genpact-logo.png";
 
 const useStyles = makeStyles({
   root: {
@@ -17,8 +17,8 @@ const useStyles = makeStyles({
     maxWidth: 160,
   },
   navbarText: {
-    color: '#36454f',
-    marginLeft: 'auto',
+    color: "#36454f",
+    marginLeft: "auto",
   },
 });
 

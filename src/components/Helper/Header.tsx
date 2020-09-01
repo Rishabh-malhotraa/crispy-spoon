@@ -1,20 +1,20 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   heading: {
-    marginTop: '1rem',
-    marginBottom: '1rem',
-    textAlign: 'center',
-    borderRadius: '12px',
-    backgroundColor: '#edf6f9',
-    width: '100%',
+    marginTop: "1rem",
+    marginBottom: "1rem",
+    textAlign: "center",
+    borderRadius: "12px",
+    backgroundColor: "#edf6f9",
+    width: "100%",
     // color: '#011627',
-    color: '#263238',
+    color: "#263238",
     fontWeight: 500,
-    letterSpacing: '3px',
+    letterSpacing: "3px",
   },
 });
 

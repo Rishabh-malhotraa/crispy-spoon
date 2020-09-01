@@ -1,8 +1,8 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import KeyPerformanceIndicatorsPage from 'components/ModelValudationPage/KeyPerformanceIndicators';
-import ModelDetails from 'components/ModelValudationPage/ModelDetails';
-import DataDetails from 'components/ModelValudationPage/DataDetails';
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import KeyPerformanceIndicatorsPage from "components/ModelValudationPage/KeyPerformanceIndicators";
+import ModelDetails from "components/ModelValudationPage/ModelDetails";
+import DataDetails from "components/ModelValudationPage/DataDetails";
 
 function GetPage(pageNumber: number): JSX.Element | string {
   switch (pageNumber) {
@@ -13,7 +13,7 @@ function GetPage(pageNumber: number): JSX.Element | string {
     case 2:
       return <DataDetails />;
     default:
-      return 'Unknown stepIndex';
+      return "Unknown stepIndex";
   }
 }
 

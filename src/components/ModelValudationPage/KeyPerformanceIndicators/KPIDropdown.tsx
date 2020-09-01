@@ -1,30 +1,30 @@
-import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Grid from '@material-ui/core/Grid';
-import { v4 as uuid } from 'uuid';
-import { ModelType } from 'Data/KPI';
+import React from "react";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Grid from "@material-ui/core/Grid";
+import { v4 as uuid } from "uuid";
+import { ModelType } from "Data/KPI";
 
-import { useSelector, useDispatch } from 'react-redux';
-import { onSelect, selectOption } from 'redux/slices/formSlice';
+import { useSelector, useDispatch } from "react-redux";
+import { onSelect, selectOption } from "redux/slices/formSlice";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex',
-      width: '100vw',
-      justifyContent: 'center',
+      display: "flex",
+      width: "100vw",
+      justifyContent: "center",
     },
     form: {
-      width: '30%',
-      margin: '24px',
-      [theme.breakpoints.down('sm')]: {
-        width: '100%',
-        marginLeft: '24px',
-        marginRight: '24px',
+      width: "30%",
+      margin: "24px",
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+        marginLeft: "24px",
+        marginRight: "24px",
       },
     },
   })

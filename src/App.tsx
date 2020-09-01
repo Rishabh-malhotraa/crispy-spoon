@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-} from 'react-router-dom';
-import Navbar from 'components/Home/Navbar';
-import Tabs from 'components/Home/Tabs';
-import ModelSetup from 'pages/ModelSetup';
-import QuantitativeValidation from 'pages/QuantitativeValidation';
+} from "react-router-dom";
+import Navbar from "components/Home/Navbar";
+import Tabs from "components/Home/Tabs";
+import ModelSetup from "pages/ModelSetup";
+import QuantitativeValidation from "pages/QuantitativeValidation";
 
 const App = (): JSX.Element => {
   return (

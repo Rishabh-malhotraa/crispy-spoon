@@ -22,7 +22,7 @@ interface TableElement {
 
 const tableData: Array<TableElement> = [
   {
-    variableName: 'variable 1',
+    variableName: "variable 1",
     variableData: {
       train: {
         n: 1,
@@ -37,10 +37,10 @@ const tableData: Array<TableElement> = [
         top3Values: 1,
       },
     },
-    role: ['role 1', 'role 2', 'role 3'],
+    role: ["role 1", "role 2", "role 3"],
   },
   {
-    variableName: 'variable 2',
+    variableName: "variable 2",
     variableData: {
       train: {
         n: 1,
@@ -55,7 +55,7 @@ const tableData: Array<TableElement> = [
         top3Values: 1,
       },
     },
-    role: ['role 1', 'role 2', 'role 3'],
+    role: ["role 1", "role 2", "role 3"],
   },
 ];
 

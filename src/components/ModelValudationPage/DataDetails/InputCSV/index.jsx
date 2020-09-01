@@ -1,10 +1,10 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import CSVReader from 'react-csv-reader';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import './styles.css';
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import CSVReader from "react-csv-reader";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import "./styles.css";
 
 const handleForce = (data, fileInfo) => {
   // eslint-disable-next-line no-console
@@ -15,7 +15,7 @@ const papaparseOptions = {
   header: true,
   dynamicTyping: true,
   skipEmptyLines: true,
-  transformHeader: (header) => header.toLowerCase().replace(/\W/g, '_'),
+  transformHeader: (header) => header.toLowerCase().replace(/\W/g, "_"),
 };
 
 const InputCSV = () => (
@@ -25,7 +25,7 @@ const InputCSV = () => (
       container
       justify="space-around"
       alignItems="center"
-      style={{ padding: '1rem' }}
+      style={{ padding: "1rem" }}
     >
       <Grid item lg={4}>
         <Box className="csv__input__root">
@@ -33,7 +33,7 @@ const InputCSV = () => (
             Placeholder Text : 1
           </Typography>
           <span>
-            <Button style={{ padding: '0px' }}>
+            <Button style={{ padding: "0px" }}>
               <div className="root1">
                 <CSVReader
                   accept=".xlsx, .xls, .csv"
@@ -51,7 +51,7 @@ const InputCSV = () => (
           <Typography variant="inherit" className="inputCSV__text">
             Placeholder Text : 2
           </Typography>
-          <Button style={{ padding: '0px' }}>
+          <Button style={{ padding: "0px" }}>
             <div className="root1">
               <CSVReader
                 accept=".xlsx, .xls, .csv"

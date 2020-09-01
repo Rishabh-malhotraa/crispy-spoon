@@ -1,12 +1,12 @@
-import React from 'react';
-import Chip from '@material-ui/core/Chip';
+import React from "react";
+import Chip from "@material-ui/core/Chip";
 
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { lightGreen, red } from '@material-ui/core/colors';
-import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
-import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { lightGreen, red } from "@material-ui/core/colors";
+import CheckCircleRoundedIcon from "@material-ui/icons/CheckCircleRounded";
+import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
 
 const colorTheme = createMuiTheme({
   palette: {
@@ -51,12 +51,12 @@ const List: React.FC<{ tests: string[] }> = ({ tests }) => {
                 <CancelRoundedIcon />
               )
             }
-            color={checked[index].selected ? 'primary' : 'secondary'}
+            color={checked[index].selected ? "primary" : "secondary"}
             style={{
-              margin: '4px',
+              margin: "4px",
               fontWeight: 600,
-              fontSize: '14px',
-              color: 'rgba(0, 0, 0, 0.7)',
+              fontSize: "14px",
+              color: "rgba(0, 0, 0, 0.7)",
             }}
             onDelete={() => {
               handleDelete(index);

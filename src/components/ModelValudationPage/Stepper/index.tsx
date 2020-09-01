@@ -1,35 +1,35 @@
-import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import Box from '@material-ui/core/Box';
+import React from "react";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import Button from "@material-ui/core/Button";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import Box from "@material-ui/core/Box";
 
-import labels from 'Data/stepperLabels';
-import StepperPages from './StepperPages';
+import labels from "Data/stepperLabels";
+import StepperPages from "./StepperPages";
 
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      width: '100%',
-      background: 'tranparent',
+      width: "100%",
+      background: "tranparent",
     },
     buttonBox: {
-      position: 'absolute',
-      display: 'inline-block',
+      position: "absolute",
+      display: "inline-block",
       zIndex: 1,
     },
     positionLeft: {
-      left: '16px',
+      left: "16px",
     },
     positionRight: {
-      right: '16px',
+      right: "16px",
     },
     button: {
-      margin: '16px',
+      margin: "16px",
       // padding: '8px',
     },
   })
@@ -78,7 +78,7 @@ export default function FormStepper(): JSX.Element {
       <Stepper
         activeStep={activeStep}
         alternativeLabel
-        style={{ background: 'transparent' }}
+        style={{ background: "transparent" }}
       >
         {labels.map((label) => (
           <Step key={label}>

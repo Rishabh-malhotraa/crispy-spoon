@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
-import StateInterface from 'redux/type';
+import { createSlice } from "@reduxjs/toolkit";
+import StateInterface from "redux/type";
 
 export const formSlice = createSlice({
-  name: 'formOption',
+  name: "formOption",
   initialState: {
-    value: '',
+    value: "",
   },
   reducers: {
     onSelect: (state, action) => {
