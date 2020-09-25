@@ -3,6 +3,7 @@ import StepperPages from 'components/ModelValudationPage/Stepper';
 import KeyPerformanceIndicatorsPage from 'components/ModelValudationPage/KeyPerformanceIndicators';
 import ModelDetails from 'components/ModelValudationPage/ModelDetails';
 import DataDetails from 'components/ModelValudationPage/DataDetails';
+import ModelForm from 'components/ModelValudationPage/ModelForm';
 import { Route, useRouteMatch } from 'react-router-dom';
 
 /**
@@ -14,10 +15,11 @@ import { Route, useRouteMatch } from 'react-router-dom';
  */
 
 const ModelSetup = (): JSX.Element => {
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
   return (
     <>
       <StepperPages />
+      <Route exact path={`${path}/model-data`} component={ModelForm} />
       <Route exact path={`${path}/KPI`} component={KeyPerformanceIndicatorsPage} />
       <Route exact path={`${path}/model-info`} component={ModelDetails} />
       <Route exact path={`${path}/table`} component={DataDetails} />

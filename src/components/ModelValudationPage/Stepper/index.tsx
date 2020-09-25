@@ -35,7 +35,7 @@ const useStyles = makeStyles(() =>
 );
 
 /**
- * manages which sub-page to display on model-setup page the layout if the page consist
+ * manages which sub-page to display on model-setup page; the layout of the page consist
  * of two buttons for next and back wrapped in a box followed by the main stepper component
  */
 export default function FormStepper(): JSX.Element {

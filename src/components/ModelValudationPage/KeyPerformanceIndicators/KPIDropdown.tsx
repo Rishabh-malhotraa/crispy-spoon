@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center',
     },
     form: {
-      width: '30%',
+      minWidth: '300px',
       margin: '24px',
       [theme.breakpoints.down('sm')]: {
         width: '100%',

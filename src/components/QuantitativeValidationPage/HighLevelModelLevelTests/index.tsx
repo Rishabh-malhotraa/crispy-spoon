@@ -13,6 +13,8 @@ import Header from 'components/Helper/Header';
 import measure from 'utils/measure';
 import { v1 as uuid } from 'uuid';
 
+import { headings } from 'Data/PerformanceComparison';
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -23,19 +25,19 @@ const useStyles = makeStyles({
 const data = ['Segment', 'Model Accuracy', 'Model Discriminatory Power', 'Model Stability'];
 const inputData = [0, 1, 2, 3, 4, 5];
 
-const PerformaceSummaryTable = (): JSX.Element => {
+const HighLevel = (): JSX.Element => {
   const classes = useStyles();
   const divRef = useRef<HTMLDivElement>(null);
   console.log(measure(divRef));
 
   return (
-    <Grid item>
-      <Header heading="Performance Summary" />
-      <TableContainer component={Paper} ref={divRef}>
-        <Table size="small" className={classes.table} aria-label="simple table">
+    <Grid item style={{ marginTop: '2rem' }}>
+      <Header heading="High Level Model Level Test" />
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              {data.map((element) => (
+              {headings.map((element) => (
                 <TableCell key={uuid()}>{element}</TableCell>
               ))}
             </TableRow>
@@ -57,4 +59,4 @@ const PerformaceSummaryTable = (): JSX.Element => {
   );
 };
 
-export default PerformaceSummaryTable;
+export default HighLevel;

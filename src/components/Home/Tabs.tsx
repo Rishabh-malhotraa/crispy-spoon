@@ -38,7 +38,7 @@ export default function CenteredTabs(): JSX.Element {
           <Tab label="Model Documentation" />
         </Tabs>
       </AppBar>
-      {value === 0 && <Redirect to="/model-setup" />}
+      {value === 0 && <Redirect to="/model-setup/KPI" />}
       {value === 2 && <Redirect to="/quanitative-validation" />}
     </>
   );
