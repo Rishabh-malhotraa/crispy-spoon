@@ -19,7 +19,18 @@ export interface TableModel {
 }
 
 const numericVariable: TableModel = {
-  heading: ['Variable', '#N', 'Missing%', 'Average', 'Standard Deviation', '#N', 'Missing%', 'Average', 'Standard Deviation', 'Role'],
+  heading: [
+    'Variable',
+    '#N',
+    'Missing%',
+    'Average',
+    'Standard Deviation',
+    '#N',
+    'Missing%',
+    'Average',
+    'Standard Deviation',
+    'Role',
+  ],
   data: [
     {
       variableName: 'Variable 1',
