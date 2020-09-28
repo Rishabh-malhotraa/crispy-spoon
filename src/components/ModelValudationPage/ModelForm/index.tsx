@@ -6,11 +6,15 @@ import { makeStyles, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles({
   border: {
-    borderRight: '2px solid #2f2f2f',
+    borderRight: '2px solid #8BA6A9',
+    '& .MuiTypography-root': {
+      padding: '1rem',
+      color: '#36454f',
+    },
   },
   textFieldContainer: {
     '& .MuiGrid-item': {
-      padding: '.2rem',
+      padding: '.3rem',
     },
     '& .MuiTextField-root': {
       width: '400px',
@@ -27,24 +31,25 @@ const ModelInfo = () => {
           {/* Model Specified */}
           <Grid item container direction="row" justify="center">
             <Grid item sm={3} className={classes.border}>
-              <Typography variant="h4">Model Specifics</Typography>
+              <Typography variant="h5">Model Specifics</Typography>
             </Grid>
             <Grid
               item
               container
               sm={6}
               direction="column"
-              style={{ paddingLeft: '1rem' }}
+              style={{ padding: '0rem 0rem 2rem 1rem' }}
               className={classes.textFieldContainer}
             >
               <Grid item>
-                <TextField id="filled-basic" label="Model Name" variant="filled" />
+                <TextField id="filled-basic" label="Model Name" variant="filled" size="small" />
               </Grid>
               <Grid item>
-                <TextField id="filled-basic" label="Activity Classification" variant="filled" />
+                <TextField id="filled-basic" label="Activity Classification" variant="filled" size="small" />
               </Grid>
               <Grid item>
                 <TextField
+                  size="small"
                   label="Last vaidation Date"
                   type="date"
                   variant="filled"
@@ -53,43 +58,44 @@ const ModelInfo = () => {
               </Grid>
               <Grid item>
                 <TextField
+                  size="small"
                   label="Last Monitoring Date"
                   type="date"
-                  variant="filled"
+                  variant="outlined"
                   defaultValue="2020-01-01"
                 />
               </Grid>
             </Grid>
           </Grid>
           {/* Asset Details */}
-          <Grid item container style={{ paddingTop: '3rem' }} justify="center">
+          <Grid item container justify="center">
             <Grid item sm={3} className={classes.border}>
-              <Typography variant="h4">Asset Details</Typography>
+              <Typography variant="h5">Asset Details</Typography>
             </Grid>
             <Grid
               item
               container
               direction="column"
               sm={6}
-              style={{ paddingLeft: '1rem' }}
+              style={{ padding: '0rem 0rem 2rem 1rem' }}
               className={classes.textFieldContainer}
             >
               <Grid item>
-                <TextField id="filled-basic" label="Asset Class" variant="outlined" />
+                <TextField id="filled-basic" label="Asset Class" variant="outlined" size="small" />
               </Grid>
               <Grid item>
-                <TextField id="filled-basic" label="Product Name" variant="filled" />
+                <TextField id="filled-basic" label="Product Name" variant="outlined" size="small" />
               </Grid>
               <Grid item>
-                <TextField id="filled-basic" label="Country" variant="standard" />
+                <TextField id="filled-basic" label="Country" variant="outlined" size="small" />
               </Grid>
               <Grid item>
-                <TextField id="filled-basic" label="Portfolio" variant="filled" />
+                <TextField id="filled-basic" label="Portfolio" variant="outlined" size="small" />
               </Grid>
             </Grid>
           </Grid>
           {/* Development Data Time Frame */}
-          <Grid item container style={{ paddingTop: '3rem' }} justify="center">
+          <Grid item container justify="center">
             <Grid item sm={3} className={classes.border}>
               <Typography variant="h5">Development Data Time Frame</Typography>
             </Grid>
@@ -98,7 +104,7 @@ const ModelInfo = () => {
               container
               direction="column"
               sm={6}
-              style={{ paddingLeft: '1rem' }}
+              style={{ padding: '0rem 0rem 2rem 1rem' }}
               className={classes.textFieldContainer}
             >
               <Grid item>
@@ -118,7 +124,7 @@ const ModelInfo = () => {
             </Grid>
           </Grid>
           {/* Validation Data Time Frame */}
-          <Grid item container style={{ paddingTop: '3rem' }} justify="center">
+          <Grid item container justify="center">
             <Grid item sm={3} className={classes.border}>
               <Typography variant="h5">Validation Data Time Frame</Typography>
             </Grid>
@@ -127,7 +133,7 @@ const ModelInfo = () => {
               container
               direction="column"
               sm={6}
-              style={{ paddingLeft: '1rem' }}
+              style={{ padding: '0rem 0rem 2rem 1rem' }}
               className={classes.textFieldContainer}
             >
               <Grid item>

@@ -9,23 +9,24 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { grey } from '@material-ui/core/colors';
 import DropDown from 'components/Helper/DropDown';
+import { TableModel } from 'Data/tableData';
 
 const useStyles = makeStyles({
   root: {
-    width: '70vw',
-    padding: '1rem',
-    margin: 'auto',
+    marginTop: '2rem',
+    paddingLeft: '8rem',
+    paddingRight: '8rem',
+    '& .MuiTableCell-root': {
+      fontSize: '16px',
+    },
+    // margin: 'auto',
   },
-  table: {
-    width: '100%',
-  },
+
   headingBorder: {
     background: grey[100],
     border: `3px solid ${grey[300]}`,
   },
-  col1: {
-    width: '10vw',
-  },
+
   colRole: {
     width: '10vw',
   },
@@ -38,87 +39,21 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(
-  name: string,
-  option1: number,
-  option2: number,
-  option3: number,
-  option4: number,
-  option5: number,
-  option6: number,
-  option7: number,
-  option8: number,
-  option9: string[]
-) {
-  return {
-    name,
-    option1,
-    option2,
-    option3,
-    option4,
-    option5,
-    option6,
-    option7,
-    option8,
-    option9,
-  };
-}
-
-const rows = [
-  createData('Varaiable 1', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
-    'Placeholder 1',
-    'Placeholder 2',
-    'Placeholder 3',
-  ]),
-  createData('Varaiable 2', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
-    'Placeholder 1',
-    'Placeholder 2',
-    'Placeholder 3',
-  ]),
-  createData('Varaiable 3', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
-    'Placeholder 1',
-    'Placeholder 2',
-    'Placeholder 3',
-  ]),
-  createData('Varaiable 4', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
-    'Placeholder 1',
-    'Placeholder 2',
-    'Placeholder 3',
-  ]),
-  createData('Varaiable 5', 159, 6.0, 24, 4.0, 0, 0, 0, 0, [
-    'Placeholder 1',
-    'Placeholder 2',
-    'Placeholder 3',
-  ]),
-  // createData('Varaiable 6', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  // createData('Varaiable 7', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  // createData('Varaiable 8', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  // createData('Varaiable 9', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  // createData('Varaiable 10', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  // createData('Varaiable 11', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  // createData('Varaiable 12', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  // createData('Varaiable 13', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  // createData('Varaiable 14', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-  // createData('Varaiable 15', 159, 6.0, 24, 4.0, 0, 0, 0, 0),
-];
-
 interface AppProps {
   title: string;
-  infoProps: {
-    t1: string;
-    t2: string;
-  };
+  tableData: TableModel;
 }
+const menu = ['Placeholder 1', 'Placeholder 2', '23'];
 
-const TableCSV: React.FC<AppProps> = ({ title, infoProps }) => {
+const TableCSV: React.FC<AppProps> = ({ title, tableData }) => {
   const classes = useStyles();
-
+  const { heading, data } = tableData;
   return (
     <div className={classes.root}>
       <TableContainer component={Paper}>
-        <Table className={classes.table} size="small" aria-label="a dense table">
+        <Table size="small" aria-label="a dense table">
           <TableHead>
-            <TableRow style={{}}>
+            <TableRow>
               <TableCell className={classes.headingBorder}>{title}</TableCell>
               <TableCell colSpan={4} align="center" className={classes.headingBorder}>
                 Train
@@ -129,35 +64,32 @@ const TableCSV: React.FC<AppProps> = ({ title, infoProps }) => {
               <TableCell align="center" className={classes.headingBorder} />
             </TableRow>
             <TableRow>
-              <TableCell>Variable</TableCell>
-              <TableCell align="right">#N</TableCell>
-              <TableCell align="right">% Missing</TableCell>
-              <TableCell align="right">{infoProps.t1}</TableCell>
-              <TableCell align="right">{infoProps.t2}</TableCell>
-              <TableCell align="right">#N</TableCell>
-              <TableCell align="right">% Missing</TableCell>
-              <TableCell align="right">{infoProps.t1}</TableCell>
-              <TableCell align="right">{infoProps.t2}</TableCell>
-              <TableCell align="right">Role</TableCell>
+              {heading.map((element, index) => {
+                return (
+                  <TableCell key={element} align={index === 0 ? 'left' : 'center'}>
+                    {element}
+                  </TableCell>
+                );
+              })}
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name} className={classes.col1}>
+            {data.map((row) => (
+              <TableRow key={row.variableName}>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {row.variableName}
                 </TableCell>
-                <TableCell align="right">{row.option1}</TableCell>
-                <TableCell align="right">{row.option2}</TableCell>
-                <TableCell align="right">{row.option3}</TableCell>
-                <TableCell align="right">{row.option4}</TableCell>
-                <TableCell align="right">{row.option5}</TableCell>
-                <TableCell align="right">{row.option6}</TableCell>
-                <TableCell align="right">{row.option7}</TableCell>
-                <TableCell align="right">{row.option8}</TableCell>
-                <TableCell align="right" className={classes.colRole}>
+                <TableCell align="center">{row.train.n}</TableCell>
+                <TableCell align="center">{row.train.missing}</TableCell>
+                <TableCell align="center">{row.train.option3}</TableCell>
+                <TableCell align="center">{row.train.option4}</TableCell>
+                <TableCell align="center">{row.test.n}</TableCell>
+                <TableCell align="center">{row.test.missing}</TableCell>
+                <TableCell align="center">{row.test.option3}</TableCell>
+                <TableCell align="center">{row.test.option4}</TableCell>
+                <TableCell align="center" className={classes.colRole}>
                   <div className={classes.select}>
-                    <DropDown options={row.option9} />
+                    <DropDown options={menu} />
                   </div>
                 </TableCell>
               </TableRow>

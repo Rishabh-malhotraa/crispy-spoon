@@ -1,62 +1,105 @@
-// Type Casting
-interface TableElement {
-  variableName: string;
-  variableData: {
+export interface TableModel {
+  heading: string[];
+  data: {
+    variableName: string;
     train: {
-      n: number;
-      missingPercentage: number;
-      distinctValues: number;
-      top3Values: number;
+      n: string;
+      missing: string;
+      option3: string;
+      option4: string;
     };
     test: {
-      n: number;
-      missingPercentage: number;
-      distinctValues: number;
-      top3Values: number;
+      n: string;
+      missing: string;
+      option3: string;
+      option4: string;
     };
-  };
-  role: string[];
+    role?: string;
+  }[];
 }
 
-// tableData is an array of type TableElement
-
-const tableData: Array<TableElement> = [
-  {
-    variableName: 'variable 1',
-    variableData: {
+const numericVariable: TableModel = {
+  heading: ['Variable', '#N', 'Missing%', 'Average', 'Standard Deviation', '#N', 'Missing%', 'Average', 'Standard Deviation', 'Role'],
+  data: [
+    {
+      variableName: 'Variable 1',
       train: {
-        n: 1,
-        missingPercentage: 5,
-        distinctValues: 1,
-        top3Values: 1,
+        n: '12',
+        missing: '12%',
+        option3: '12',
+        option4: '123',
       },
       test: {
-        n: 1,
-        missingPercentage: 5,
-        distinctValues: 1,
-        top3Values: 1,
+        n: '1',
+        missing: '1%',
+        option3: ' 123',
+        option4: '1',
       },
+      role: 'Segmentation Variable',
     },
-    role: ['role 1', 'role 2', 'role 3'],
-  },
-  {
-    variableName: 'variable 2',
-    variableData: {
+    {
+      variableName: 'Variable 1',
       train: {
-        n: 1,
-        missingPercentage: 5,
-        distinctValues: 1,
-        top3Values: 1,
+        n: '12',
+        missing: '12%',
+        option3: '12',
+        option4: '123',
       },
       test: {
-        n: 1,
-        missingPercentage: 5,
-        distinctValues: 1,
-        top3Values: 1,
+        n: '1',
+        missing: '1%',
+        option3: ' 123',
+        option4: '1',
+      },
+      role: 'Business Interested Segment',
+    },
+  ],
+};
+const characterVariable: TableModel = {
+  heading: [
+    'Variable',
+    '#N',
+    'Missing%',
+    'Average',
+    'Standard Deviation',
+    '#N',
+    'Missing%',
+    '#Distinct Values',
+    'Top 3 Values',
+    'Role',
+  ],
+  data: [
+    {
+      variableName: 'Variable 1',
+      train: {
+        n: '12',
+        missing: '12%',
+        option3: '12',
+        option4: '123',
+      },
+      test: {
+        n: '1',
+        missing: '1%',
+        option3: ' 123',
+        option4: '1',
       },
     },
-    role: ['role 1', 'role 2', 'role 3'],
-  },
-];
+    {
+      variableName: 'Variable 1',
+      train: {
+        n: '12',
+        missing: '12%',
+        option3: '12',
+        option4: '123',
+      },
+      test: {
+        n: '1',
+        missing: '1%',
+        option3: ' 123',
+        option4: '1',
+      },
+    },
+  ],
+};
 
-export default tableData;
+export { characterVariable, numericVariable };
