@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      width: '100vw',
+      width: '100%',
       justifyContent: 'center',
     },
     form: {

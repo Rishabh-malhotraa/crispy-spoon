@@ -4,6 +4,7 @@ import KeyPerformanceIndicatorsPage from 'components/ModelValudationPage/KeyPerf
 import ModelDetails from 'components/ModelValudationPage/ModelDetails';
 import DataDetails from 'components/ModelValudationPage/DataDetails';
 import ModelForm from 'components/ModelValudationPage/ModelForm';
+import ModelSpecification from 'components/ModelValudationPage/ModelSpecification';
 import { Route, useRouteMatch } from 'react-router-dom';
 
 /**
@@ -21,7 +22,7 @@ const ModelSetup = (): JSX.Element => {
       <StepperPages />
       <Route exact path={`${path}/model-data`} component={ModelForm} />
       <Route exact path={`${path}/KPI`} component={KeyPerformanceIndicatorsPage} />
-      <Route exact path={`${path}/model-info`} component={ModelDetails} />
+      <Route exact path={`${path}/model-info`} component={ModelSpecification} />
       <Route exact path={`${path}/table`} component={DataDetails} />
     </>
   );

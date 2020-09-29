@@ -23,7 +23,7 @@ const ListChip = (): JSX.Element => {
   }
   const { data } = SelectedModelData;
   return (
-    <Grid container direction="column" className={styles['grid-container']}>
+    <Grid item direction="column" className={styles['grid-container']}>
       {flag &&
         data.map(({ tests, title }) => {
           return (

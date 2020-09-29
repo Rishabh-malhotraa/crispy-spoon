@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 const ModelInfo = () => {
   const classes = useStyles();
   return (
-    <div>
+    <div style={{}}>
       <Container>
         <Grid container>
           {/* Model Specified */}

@@ -11,6 +11,7 @@ const useStyles = makeStyles({
     borderRadius: '12px',
     backgroundColor: '#f0f1ff',
     width: '100%',
+    height: 'fit-content',
     // color: '#011627',
     color: '#263238',
     fontWeight: 500,
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Header: React.FC<{ heading: string }> = ({ heading }) => {
+const Header: React.FC<{ heading: string | undefined }> = ({ heading }) => {
   const classes = useStyles();
   return (
     <Typography variant="h6" className={classes.heading}>

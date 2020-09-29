@@ -54,7 +54,9 @@ const TableCSV: React.FC<AppProps> = ({ title, tableData }) => {
         <Table size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell className={classes.headingBorder}>{title}</TableCell>
+              <TableCell className={classes.headingBorder} style={{ width: '15%' }}>
+                {title}
+              </TableCell>
               <TableCell colSpan={4} align="center" className={classes.headingBorder}>
                 Train
               </TableCell>
@@ -89,7 +91,7 @@ const TableCSV: React.FC<AppProps> = ({ title, tableData }) => {
                 <TableCell align="center">{row.test.option4}</TableCell>
                 <TableCell align="center" className={classes.colRole}>
                   <div className={classes.select}>
-                    <DropDown options={menu} />
+                    <DropDown options={menu} variant="outlined" />
                   </div>
                 </TableCell>
               </TableRow>

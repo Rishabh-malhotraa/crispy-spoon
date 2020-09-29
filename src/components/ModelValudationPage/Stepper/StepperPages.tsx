@@ -9,11 +9,11 @@ import { Redirect } from 'react-router-dom';
 function GetPage(pageNumber: number): JSX.Element | string {
   switch (pageNumber) {
     case 0:
-      return <Redirect to="/model-setup/table" />;
-    case 1:
       return <Redirect to="/model-setup/KPI" />;
-    case 2:
+    case 1:
       return <Redirect to="/model-setup/model-data" />;
+    case 2:
+      return <Redirect to="/model-setup/table" />;
     case 3:
       return <Redirect to="/model-setup/model-info" />;
     default:

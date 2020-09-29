@@ -23,9 +23,13 @@ const KeyPerformanceIndexComponent = (): JSX.Element => {
       <Grid item style={{ width: '100%' }} md={6} className="padding">
         <ModelInformation />
       </Grid>
-      <Grid item container md={6} className="padding">
-        <Header heading="Key Performace Metrics" />
-        <KPIDropDown />
+      <Grid item md={6} className="padding">
+        <Grid item style={{ padding: '1rem' }}>
+          <Header heading="Key Performace Metrics" />
+        </Grid>
+        <Grid item>
+          <KPIDropDown />
+        </Grid>
         <ListChip />
       </Grid>
     </Grid>
