@@ -28,10 +28,6 @@ export default {
     heading: 'Model Specifics',
     data: [
       {
-        name: 'Type of Model',
-        options: ['PlaceHolder 1', '2', '3'],
-      },
-      {
         name: 'Model Structure',
         options: ['PlaceHolder 1', '2', '3'],
       },

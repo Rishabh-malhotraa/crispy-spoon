@@ -11,11 +11,9 @@ function GetPage(pageNumber: number): JSX.Element | string {
     case 0:
       return <Redirect to="/model-setup/KPI" />;
     case 1:
-      return <Redirect to="/model-setup/model-data" />;
-    case 2:
       return <Redirect to="/model-setup/table" />;
-    case 3:
-      return <Redirect to="/model-setup/model-info" />;
+    case 2:
+      return <Redirect to="/model-setup/model-specification" />;
     default:
       return 'Unknown stepIndex';
   }

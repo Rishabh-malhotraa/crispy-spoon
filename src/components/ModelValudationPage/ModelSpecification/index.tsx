@@ -8,6 +8,8 @@ import TableRow from '@material-ui/core/TableRow';
 import DropDown from 'components/Helper/DropDown';
 import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
+import ListDropDown from './ListDropdown';
+import InfoIcon from 'components/QuantitativeValidationPage/QuantitativeValidationHeader/InfoIcon';
 
 const data = [
   {
@@ -19,14 +21,14 @@ const data = [
   },
 ];
 
-const ModelSpecification = () => {
+const ModelSpecification = (): JSX.Element => {
   return (
     <div style={{ padding: '3rem' }}>
       <TableContainer component={Paper}>
         <Table size="medium" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell style={{ width: '15%' }}>Segments</TableCell>
+              <TableCell>Segments</TableCell>
               <TableCell align="center">Analyticial Technique</TableCell>
               <TableCell align="center">Pickle File</TableCell>
               <TableCell align="center">Model Fit Detail</TableCell>
@@ -47,15 +49,12 @@ const ModelSpecification = () => {
                 <TableCell align="center">
                   <Input type="file" name="pickle-file" id="" />
                 </TableCell>
-                <TableCell align="center">{row.technique}</TableCell>
-                <TableCell align="center">{row.modelFitDetails}</TableCell>
-                {
-                  //   <TableCell align="center" className={classes.colRole}>
-                  //   <div className={classes.select}>
-                  //     <DropDown options={menu} />
-                  //   </div>
-                  // </TableCell>
-                }
+                <TableCell align="center">
+                  <ListDropDown />
+                </TableCell>
+                <TableCell align="center">
+                  <InfoIcon />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

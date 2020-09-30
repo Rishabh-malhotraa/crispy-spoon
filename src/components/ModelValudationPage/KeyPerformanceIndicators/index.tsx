@@ -8,9 +8,9 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    '& .padding ': {
-      padding: '1rem',
-    },
+    // '& .padding ': {
+    //   padding: '1rem',
+    // },
   },
 });
 
@@ -27,9 +27,7 @@ const KeyPerformanceIndexComponent = (): JSX.Element => {
         <Grid item style={{ padding: '1rem' }}>
           <Header heading="Key Performace Metrics" />
         </Grid>
-        <Grid item>
-          <KPIDropDown />
-        </Grid>
+        <Grid item />
         <ListChip />
       </Grid>
     </Grid>

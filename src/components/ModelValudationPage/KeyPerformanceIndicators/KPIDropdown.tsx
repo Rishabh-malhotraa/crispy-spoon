@@ -1,5 +1,4 @@
 import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,24 +10,24 @@ import { ModelType } from 'Data/KPI';
 import { useSelector, useDispatch } from 'react-redux';
 import { onSelect, selectOption } from 'redux/slices/formSlice';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      width: '100%',
-      justifyContent: 'center',
-    },
-    form: {
-      minWidth: '300px',
-      margin: '24px',
-      [theme.breakpoints.down('sm')]: {
-        width: '100%',
-        marginLeft: '24px',
-        marginRight: '24px',
-      },
-    },
-  })
-);
+// const useStyles = makeStyles((theme: Theme) =>
+//   createStyles({
+//     root: {
+//       display: 'flex',
+//       width: '100%',
+//       justifyContent: 'center',
+//     },
+//     form: {
+//       minWidth: '300px',
+//       margin: '24px',
+//       [theme.breakpoints.down('sm')]: {
+//         width: '100%',
+//         marginLeft: '24px',
+//         marginRight: '24px',
+//       },
+//     },
+//   })
+// );
 
 function MenuItems(): JSX.Element[] {
   return ModelType.map((model: string) => {
@@ -41,7 +40,7 @@ function MenuItems(): JSX.Element[] {
 }
 
 const SimpleSelect = (): JSX.Element => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const option = useSelector(selectOption); // value of state from reducer
   const dispatch = useDispatch(); // dispatch function
 
@@ -50,8 +49,8 @@ const SimpleSelect = (): JSX.Element => {
   };
 
   return (
-    <Grid item className={classes.root}>
-      <FormControl variant="outlined" size="small" className={classes.form}>
+    <Grid item>
+      <FormControl variant="filled" size="small" style={{ width: '100%' }}>
         <InputLabel id="KPI-dropdown-label">Model Type</InputLabel>
         <Select
           labelId="KPI-dropdown-label"

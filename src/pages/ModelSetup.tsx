@@ -20,9 +20,11 @@ const ModelSetup = (): JSX.Element => {
   return (
     <>
       <StepperPages />
-      <Route exact path={`${path}/model-data`} component={ModelForm} />
+      {
+        // <Route exact path={`${path}/model-data`} component={ModelForm} />
+      }
       <Route exact path={`${path}/KPI`} component={KeyPerformanceIndicatorsPage} />
-      <Route exact path={`${path}/model-info`} component={ModelSpecification} />
+      <Route exact path={`${path}/model-specification`} component={ModelSpecification} />
       <Route exact path={`${path}/table`} component={DataDetails} />
     </>
   );

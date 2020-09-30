@@ -13,16 +13,23 @@ interface AppProps {
   size?: SizeType;
   variant?: VariantType;
   inputLabel?: string;
+  width?: string;
 }
 
-const DropDown: React.FC<AppProps> = ({ options, size = 'small', variant = 'outlined', inputLabel = '' }) => {
+const DropDown: React.FC<AppProps> = ({
+  options,
+  size = 'small',
+  variant = 'outlined',
+  inputLabel = '',
+  width = '100%',
+}) => {
   const [value, setValue] = React.useState('');
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setValue(event.target.value as string);
   };
   return (
-    <FormControl variant={variant} size={size} style={{ minWidth: '100%' }}>
+    <FormControl variant={variant} size={size} style={{ minWidth: width }}>
       <InputLabel id={`dropdown-table${inputLabel}`}>{inputLabel}</InputLabel>
       <Select
         labelId={`dropdown-table${inputLabel}`}
