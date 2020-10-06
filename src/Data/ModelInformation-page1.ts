@@ -3,7 +3,7 @@
  * heading : Model Dimension | Model Specifics
  * name -> dropdown label
  * options-> options which can be selected in that dropdown
- **/
+ * */
 export const modelDimension = {
   heading: 'Model Dimension',
   data: [
@@ -26,7 +26,6 @@ export const modelDimension = {
     },
   ],
 };
-
 
 export const modelSpecification = {
   heading: 'Model Specifics',
@@ -56,7 +55,7 @@ export const modelSpecification = {
 
 /**
  * Dropdown information for Model Use
- * Show different options for different kind of function 
+ * Show different options for different kind of function
  * eg: if the function is Risk the options would be ['LOS','STR'...etc]
  * Make sure model options in ModelInformation.ts and ModeType are same(check spelling)
  */
@@ -86,7 +85,7 @@ export const modelUseData = {
   ],
 };
 
-//TODOS: risk info and asset data needs to be imported from here there are
+// TODOS: risk info and asset data needs to be imported from here there are
 // hard coded for the time being
 
 export default { modelDimension, modelSpecification, modelUseData };
