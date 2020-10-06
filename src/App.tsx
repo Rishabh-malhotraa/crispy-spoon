@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from 'components/Home/Navbar';
 import Tabs from 'components/Home/Tabs';
 import ModelSetup from 'pages/ModelSetup';
@@ -20,6 +20,7 @@ const App = (): JSX.Element => {
           <Route path="/model-setup" component={ModelSetup} />
           <Route exact path="/quantitative-validation" component={QuantitativeValidation} />
         </Switch>
+        <Redirect to="/model-setup/KPI" />
       </Router>
     </>
   );
