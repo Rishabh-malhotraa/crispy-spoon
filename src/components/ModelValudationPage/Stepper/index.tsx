@@ -8,7 +8,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Box from '@material-ui/core/Box';
 
-import labels from 'Data/stepperLabels';
+import labels from 'Data/Stepper-Labels';
 import StepperPages from './StepperPages';
 
 const useStyles = makeStyles(() =>

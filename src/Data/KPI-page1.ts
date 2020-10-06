@@ -8,7 +8,7 @@ export interface Model {
   type: string;
 }
 
-const data: Model[] = [
+export const data: Model[] = [
   {
     title: 'Model Level Test',
     name: 'Gini Coefficient',

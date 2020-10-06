@@ -5,8 +5,8 @@
 /* eslint-disable import/no-named-as-default-member */
 import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import ModelInformationData from 'Data/ModelInformation-page1';
-import { modelTypeData, ModelTypeInterface } from 'Data/ModelType-page1';
+import ModelInformationData from 'Data/Model-Information-page1';
+import { modelTypeData, ModelTypeInterface } from 'Data/Model-Type-page1';
 import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import DropDown from '../DropDown';

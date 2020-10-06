@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { grey } from '@material-ui/core/colors';
 import DropDown from 'components/Helper/DropDown';
-import { TableModel } from 'Data/tableData-page2';
+import { TableModel } from 'Data/Table-Data-page2';
 
 const useStyles = makeStyles({
   root: {

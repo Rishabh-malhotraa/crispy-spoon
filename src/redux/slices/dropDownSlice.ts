@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import StateInterface from 'redux/type';
 
-const initialValue = {
+export const initialValue = {
   function: '',
   outcomeType: '',
   dataStructure: '',
