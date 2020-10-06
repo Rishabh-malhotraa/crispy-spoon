@@ -23,6 +23,7 @@ module.exports = {
     'react/prop-types': 'off',
     'no-param-reassign': 'off',
     'import/order': 'off',
+    'no-shadow': 'off',
   },
   settings: {
     react: {

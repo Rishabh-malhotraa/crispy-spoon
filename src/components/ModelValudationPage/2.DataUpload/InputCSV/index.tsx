@@ -85,7 +85,7 @@ const InputCSV = (): JSX.Element => {
           </Grid>
         </Grid>
         <Grid item>
-          <Button variant="outlined">MAP THE DATA</Button>
+          <Button variant="outlined">PROFILE THE DATA</Button>
         </Grid>
       </Grid>
     </>

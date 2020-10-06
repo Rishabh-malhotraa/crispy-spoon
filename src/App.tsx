@@ -18,7 +18,7 @@ const App = (): JSX.Element => {
         <Tabs />
         <Switch>
           <Route path="/model-setup" component={ModelSetup} />
-          <Route exact path="/quanitative-validation" component={QuantitativeValidation} />
+          <Route exact path="/quantitative-validation" component={QuantitativeValidation} />
         </Switch>
       </Router>
     </>

@@ -36,8 +36,8 @@ const DropDown: React.FC<AppProps> = ({
   const [value, setValue] = React.useState(initialValue);
 
   const handleChange: EventProps = (event, fieldId) => {
-    const value = event.target.value as string;
-    onChangeHandler(fieldId, value);
+    const tempValue = event.target.value as string;
+    onChangeHandler(fieldId, tempValue);
     setValue(value);
   };
   return (

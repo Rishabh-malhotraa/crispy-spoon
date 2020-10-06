@@ -10,10 +10,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Header from 'components/Helper/Header';
-import measure from 'utils/measure';
 import { v1 as uuid } from 'uuid';
 
-import { headings } from 'Data/PerformanceComparison';
+import { headings } from 'Data/redundant/PerformanceComparison-page4';
 
 const useStyles = makeStyles({
   table: {
@@ -28,7 +27,6 @@ const inputData = [0, 1, 2, 3, 4, 5];
 const HighLevel = (): JSX.Element => {
   const classes = useStyles();
   const divRef = useRef<HTMLDivElement>(null);
-  console.log(measure(divRef));
 
   return (
     <Grid item style={{ marginTop: '2rem' }}>

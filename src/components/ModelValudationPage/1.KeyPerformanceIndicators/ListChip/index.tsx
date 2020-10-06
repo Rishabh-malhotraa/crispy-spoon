@@ -5,7 +5,7 @@ import Header from 'components/Helper/Header';
 import { v1 as uuid } from 'uuid';
 import List from './List';
 
-import { KPIData, Model } from 'Data/KPI';
+import { KPIData, Model } from 'Data/redundant/KPI';
 import { useSelector } from 'react-redux';
 import { selectOption } from 'redux/slices/formSlice';
 

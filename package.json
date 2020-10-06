@@ -33,6 +33,11 @@
     "format": "prettier --write \"src/**/*.js\" \"src/**/*.jsx\"",
     "lint": "eslint src/**/*.ts src/**/*.tsx"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm run lint -- --fix"
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

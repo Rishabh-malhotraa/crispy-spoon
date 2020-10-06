@@ -5,7 +5,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
 import { v4 as uuid } from 'uuid';
-import { ModelType } from 'Data/KPI';
+// this is old KPI file and needs to be updates to new once the data is filled in
+import { ModelType } from 'Data/redundant/KPI';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { onSelect, selectOption } from 'redux/slices/formSlice';

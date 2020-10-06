@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Redirect } from 'react-router-dom';
-import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
 
 const useStyles = makeStyles({
   root: {
@@ -50,12 +49,12 @@ export default function CenteredTabs(): JSX.Element {
           centered
         >
           <Tab label="Model Setup" />
-          <Tab label="Qualitative Validation" />
+          <Tab label="Quantitative Validation" />
           <Tab label="Model Documentation" />
         </Tabs>
       </AppBar>
       {value === 0 && <Redirect to="/model-setup/KPI" />}
-      {value === 1 && <Redirect to="/quanitative-validation" />}
+      {value === 1 && <Redirect to="/quantitative-validation" />}
     </>
   );
 }

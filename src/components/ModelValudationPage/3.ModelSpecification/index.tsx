@@ -31,8 +31,8 @@ const ModelSpecification = (): JSX.Element => {
               <TableCell>Segments</TableCell>
               <TableCell align="center">Analyticial Technique</TableCell>
               <TableCell align="center">Pickle File</TableCell>
-              <TableCell align="center">Model Fit Detail</TableCell>
-              <TableCell align="center">Model Information</TableCell>
+              <TableCell align="center">Select Variable Used</TableCell>
+              <TableCell align="center">Selected Variables Used</TableCell>
               <TableCell align="center" />
             </TableRow>
           </TableHead>

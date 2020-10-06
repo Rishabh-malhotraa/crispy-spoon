@@ -5,14 +5,14 @@
 /* eslint-disable import/no-named-as-default-member */
 import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import ModelInformationData from 'Data/ModelInformation';
-import { modelTypeData, ModelTypeInterface } from 'Data/ModelType';
+import ModelInformationData from 'Data/ModelInformation-page1';
+import { modelTypeData, ModelTypeInterface } from 'Data/ModelType-page1';
 import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import DropDown from '../DropDown';
 import Header from 'components/Helper/Header';
 import KPIDropDown from '../KPIDropdown';
-import { CountryType, countries } from 'Data/countryList';
+import { CountryType, countries } from 'Data/countrylist';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const useStyles = makeStyles({
@@ -57,14 +57,6 @@ const ModelInformation: React.FC<AppProps> = ({ onChangeHandler }) => {
     setValues({ ...values, [fieldId]: value });
     onChangeHandler(values);
   };
-  // useEffect(() => {
-  //   setValues({ ...values, 'Outcome Type': '' });
-  // }, [values.Function]);
-
-  // const textFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, fieldId: string) => {
-  //   const temp_value = e.target.value;
-  //   handleFormInput(fieldId, temp_value);
-  // };
 
   const modelUse = () => {
     const functionName: string = values.Function;
@@ -199,9 +191,6 @@ const ModelInformation: React.FC<AppProps> = ({ onChangeHandler }) => {
                 inputLabel={modelSpecification.data[4].name}
                 onChangeHandler={handleFormInput}
               />
-              {
-                // <ListView title={modelSpecification.heading} data={modelSpecification.data} />
-              }
             </div>
           </Grid>
         </Grid>

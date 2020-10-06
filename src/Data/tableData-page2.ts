@@ -66,6 +66,9 @@ const numericVariable: TableModel = {
     },
   ],
 };
+// TODOS: change avergae to distinct values
+// TODOS: NO "standard deviation" and "top 3" values for character tabl
+
 const characterVariable: TableModel = {
   heading: [
     'Variable',

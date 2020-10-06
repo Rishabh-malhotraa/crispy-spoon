@@ -1,7 +1,7 @@
 import React from 'react';
 import InputCSV from './InputCSV';
 import TableCSV from './TableCSV';
-import { characterVariable, numericVariable } from 'Data/tableData';
+import { characterVariable, numericVariable } from 'Data/tableData-page2';
 
 const DataDetails = (): JSX.Element => {
   return (

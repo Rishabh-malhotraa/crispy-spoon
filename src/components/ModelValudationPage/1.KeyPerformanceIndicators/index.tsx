@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Header from 'components/Helper/Header';
 import ListChip from './ListChip';
-import KPIDropDown from './KPIDropdown';
 import ModelInformation from './Model-Information';
 import { makeStyles } from '@material-ui/core';
 
@@ -17,7 +16,8 @@ const useStyles = makeStyles({
 
 const KeyPerformanceIndexComponent = (): JSX.Element => {
   const classes = useStyles();
-  const [data, setData] = useState();
+  // const [data, setData] = useState();
+  const [, setData] = useState();
 
   const callback = (args: any) => {
     setData(args);

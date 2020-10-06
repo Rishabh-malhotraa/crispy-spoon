@@ -10,7 +10,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Header from 'components/Helper/Header';
-import measure from 'utils/measure';
 import { v1 as uuid } from 'uuid';
 
 const useStyles = makeStyles({
@@ -26,7 +25,6 @@ const inputData = [0, 1, 2, 3, 4, 5];
 const PerformaceSummaryTable = (): JSX.Element => {
   const classes = useStyles();
   const divRef = useRef<HTMLDivElement>(null);
-  console.log(measure(divRef));
 
   return (
     <Grid item>

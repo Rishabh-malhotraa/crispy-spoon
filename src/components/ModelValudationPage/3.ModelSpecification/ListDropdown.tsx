@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -49,25 +49,25 @@ const names = [
   'Variable name',
 ];
 
-export default function MultipleSelect() {
+export default function MultipleSelect(): JSX.Element {
   const classes = useStyles();
-  const theme = useTheme();
   const [personName, setPersonName] = React.useState<string[]>([]);
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setPersonName(event.target.value as string[]);
   };
 
-  const handleChangeMultiple = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const { options } = event.target as HTMLSelectElement;
-    const value: string[] = [];
-    for (let i = 0, l = options.length; i < l; i += 1) {
-      if (options[i].selected) {
-        value.push(options[i].value);
-      }
-    }
-    setPersonName(value);
-  };
+  // dunno why this was written 😭
+  // const handleChangeMultiple = (event: React.ChangeEvent<{ value: unknown }>) => {
+  //   const { options } = event.target as HTMLSelectElement;
+  //   const value: string[] = [];
+  //   for (let i = 0, l = options.length; i < l; i += 1) {
+  //     if (options[i].selected) {
+  //       value.push(options[i].value);
+  //     }
+  //   }
+  //   setPersonName(value);
+  // };
 
   return (
     <div>
