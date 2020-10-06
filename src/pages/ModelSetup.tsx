@@ -1,9 +1,9 @@
 import React from 'react';
 import StepperPages from 'components/ModelValudationPage/Stepper';
 import KeyPerformanceIndicatorsPage from 'components/ModelValudationPage/KeyPerformanceIndicators';
-import ModelDetails from 'components/ModelValudationPage/ModelDetails';
+// import ModelDetails from 'components/ModelValudationPage/ModelDetails';
 import DataDetails from 'components/ModelValudationPage/DataDetails';
-import ModelForm from 'components/ModelValudationPage/ModelForm';
+// import ModelForm from 'components/ModelValudationPage/ModelForm';
 import ModelSpecification from 'components/ModelValudationPage/ModelSpecification';
 import { Route, useRouteMatch } from 'react-router-dom';
 

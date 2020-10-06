@@ -1,3 +1,9 @@
+"husky": {
+"hooks": {
+"pre-commit": "npm run format && npm run lint -- --fix"
+}
+},
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

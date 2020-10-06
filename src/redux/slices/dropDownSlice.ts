@@ -1,10 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 import StateInterface from 'redux/type';
 
+const initialValue = {
+  function: '',
+  outcomeType: '',
+  dataStructure: '',
+  modelUse: '',
+  analyticTechnique: '',
+  modelType: '',
+  modelStructure: '',
+  entity: '',
+  buisnessUnit: '',
+  modelTier: '',
+  riskType: '',
+  eventName: '',
+};
+
 export const formSlice = createSlice({
-  name: 'formOption',
+  name: 'dropDowm',
   initialState: {
-    value: 'LGD Model',
+    value: '',
   },
   reducers: {
     onSelect: (state, action) => {
