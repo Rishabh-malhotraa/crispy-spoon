@@ -57,7 +57,7 @@ export const modelSpecification = {
  * Dropdown information for Model Use
  * Show different options for different kind of function
  * eg: if the function is Risk the options would be ['LOS','STR'...etc]
- * Make sure model options in ModelInformation.ts and ModeType are same(check spelling)
+ * Make sure options for modelUse in Model-Information.ts and Model-Type are same(check spelling)
  */
 export const modelUseData = {
   name: 'Model Use',

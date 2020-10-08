@@ -4,7 +4,7 @@ import StateInterface from 'redux/type';
 export const formSlice = createSlice({
   name: 'formOption',
   initialState: {
-    value: {},
+    value: 'LGD Model',
   },
   reducers: {
     onSelect: (state, action) => {
@@ -13,7 +13,7 @@ export const formSlice = createSlice({
   },
 });
 
-export const selectOption = (state: StateInterface): string => state.formOption.value;
+export const selectOption = (state: StateInterface): string => state.kpiOption.value;
 export const { onSelect } = formSlice.actions;
 
 export default formSlice.reducer;

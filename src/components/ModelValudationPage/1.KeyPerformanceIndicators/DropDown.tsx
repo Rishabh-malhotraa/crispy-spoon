@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { memo } from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { v4 as uuid } from 'uuid';
 import { InputLabel } from '@material-ui/core';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectOption, onSelect } from 'redux/slices/formSlice';
+import { Fields } from 'redux/type';
 
 type SizeType = 'medium' | 'small';
 type VariantType = 'outlined' | 'filled' | 'standard';
@@ -15,12 +18,11 @@ interface AppProps {
   inputLabel?: string;
   width?: string;
   initialValue?: string;
-  fieldId?: string;
-  onChangeHandler: (fieldId: string, value: string) => void;
+  fieldId: Fields;
 }
 
 interface EventProps {
-  (event: React.ChangeEvent<{ value: unknown }>, fieldId: string): void;
+  (event: React.ChangeEvent<{ value: unknown }>, fieldId: Fields): void;
 }
 
 const DropDown: React.FC<AppProps> = ({
@@ -29,16 +31,17 @@ const DropDown: React.FC<AppProps> = ({
   variant = 'outlined',
   inputLabel = '',
   width = '100%',
-  initialValue = '',
-  fieldId = '',
-  onChangeHandler,
+  fieldId,
 }) => {
-  const [value, setValue] = React.useState(initialValue);
+  // we will get the state object here!
+  const dropDownState = useSelector(selectOption);
+  console.log(fieldId);
+
+  const dispatch = useDispatch();
 
   const handleChange: EventProps = (event, fieldId) => {
-    const tempValue = event.target.value as string;
-    onChangeHandler(fieldId, tempValue);
-    setValue(value);
+    const payload = { value: event.target.value as string, field: fieldId };
+    dispatch(onSelect(payload));
   };
   return (
     <FormControl variant={variant} size={size} style={{ minWidth: width }}>
@@ -46,7 +49,7 @@ const DropDown: React.FC<AppProps> = ({
       <Select
         labelId={`dropdown-table${inputLabel}`}
         id="demo-simple-select-filled"
-        value={value}
+        value={dropDownState[fieldId]}
         onChange={(e) => handleChange(e, fieldId)}
       >
         {options.map((option) => {
@@ -61,4 +64,4 @@ const DropDown: React.FC<AppProps> = ({
   );
 };
 
-export default DropDown;
+export default memo(DropDown);

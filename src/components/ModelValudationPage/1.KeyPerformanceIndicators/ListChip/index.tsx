@@ -7,7 +7,7 @@ import List from './List';
 
 import { KPIData, Model } from 'Data/redundant/KPI';
 import { useSelector } from 'react-redux';
-import { selectOption } from 'redux/slices/formSlice';
+import { selectOption } from 'redux/slices/KPISlice';
 
 const ListChip = (): JSX.Element => {
   const option = useSelector(selectOption);
@@ -23,7 +23,7 @@ const ListChip = (): JSX.Element => {
   }
   const { data } = SelectedModelData;
   return (
-    <Grid item direction="column" className={styles['grid-container']}>
+    <Grid item className={styles['grid-container']}>
       {flag &&
         data.map(({ tests, title }) => {
           return (

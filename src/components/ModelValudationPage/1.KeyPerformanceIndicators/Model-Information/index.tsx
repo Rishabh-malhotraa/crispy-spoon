@@ -3,7 +3,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-named-as-default-member */
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import Grid from '@material-ui/core/Grid';
 import ModelInformationData from 'Data/Model-Information-page1';
 import { modelTypeData, ModelTypeInterface } from 'Data/Model-Type-page1';
@@ -14,6 +14,9 @@ import Header from 'components/Helper/Header';
 import KPIDropDown from '../KPIDropdown';
 import { CountryType, countries } from 'Data/countrylist';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { useSelector, useDispatch } from 'react-redux';
+import { onSelect, selectOption } from 'redux/slices/formSlice';
+import { checkPropTypes } from 'prop-types';
 
 const useStyles = makeStyles({
   root: {
@@ -27,39 +30,18 @@ const useStyles = makeStyles({
   },
 });
 
-export interface ObjectProp {
-  Function: string;
-  'Outcome Type'?: string;
-  'Data Structure'?: string;
-  'Analytic Technique'?: string;
-  'Model Use'?: string;
-}
-
-const initialState = {
-  Function: 'Risk',
-  'Outcome Type': '',
-  'Data Structure': '',
-  'Anaytical Technique': '',
-  'Model Use': '',
-};
-
 const dataOption = ['123', '12121', '213312'];
-interface AppProps {
-  onChangeHandler: (args: any) => void;
-}
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const ModelInformation: React.FC<AppProps> = ({ onChangeHandler }) => {
+const ModelInformation = (): JSX.Element => {
+  const dispatch = useDispatch();
+  const formState = useSelector(selectOption);
+  console.log(formState);
   const { modelDimension, modelSpecification, modelUseData } = ModelInformationData;
-  const [values, setValues] = useState<ObjectProp>(initialState);
 
-  const handleFormInput = (fieldId: string, value: string) => {
-    setValues({ ...values, [fieldId]: value });
-    onChangeHandler(values);
-  };
+  // this is the redux---ish thing you need to hanlde
 
   const modelUse = () => {
-    const functionName: string = values.Function;
+    const functionName: string = formState.function;
     const { collection } = modelUseData;
     const data = collection.filter((element) => element.type === functionName);
     return data[0].options;
@@ -70,19 +52,19 @@ const ModelInformation: React.FC<AppProps> = ({ onChangeHandler }) => {
     if (ModelTypeOptions) {
       ModelTypeOptions.splice(0, ModelTypeOptions.length);
     }
-    if (values.Function) {
+    if (formState.function) {
       ModelTypeOptions = modelTypeData.filter((element: ModelTypeInterface) => {
-        if (element.function === values.Function) return element;
+        if (element.function === formState.function) return element;
       });
     }
-    if (values['Outcome Type']) {
+    if (formState.outcomeType) {
       ModelTypeOptions = ModelTypeOptions.filter((element: ModelTypeInterface) => {
-        if (element.outcomeType === values['Outcome Type']) return element;
+        if (element.outcomeType === formState.outcomeType) return element;
       });
     }
-    if (values['Model Use']) {
+    if (formState.modelUse) {
       ModelTypeOptions = ModelTypeOptions.filter((element: ModelTypeInterface) => {
-        if (element.modelUse.find((str) => str === values['Model Use'])) return element;
+        if (element.modelUse.find((str) => str === formState.modelUse)) return element;
       });
     }
     const ModelTypeData = ModelTypeOptions.map((element: ModelTypeInterface) => {
@@ -92,6 +74,18 @@ const ModelInformation: React.FC<AppProps> = ({ onChangeHandler }) => {
   };
 
   const classes = useStyles();
+  const Check = () => {
+    return (
+      <DropDown
+        options={modelDimension.data[1].options}
+        variant="filled"
+        size="small"
+        inputLabel={modelDimension.data[1].name}
+        fieldId="outcomeType"
+      />
+    );
+  };
+
   return (
     <div className={classes.root}>
       <form>
@@ -105,42 +99,35 @@ const ModelInformation: React.FC<AppProps> = ({ onChangeHandler }) => {
                 size="small"
                 initialValue="Risk"
                 inputLabel={modelDimension.data[0].name}
-                fieldId={modelDimension.data[0].name}
-                onChangeHandler={handleFormInput}
+                fieldId="function"
+                // fieldId={modelDimension.data[0].name}
               />
-              <DropDown
-                options={modelDimension.data[1].options}
-                variant="filled"
-                size="small"
-                inputLabel={modelDimension.data[1].name}
-                fieldId={modelDimension.data[1].name}
-                onChangeHandler={handleFormInput}
-              />
+              {useMemo(() => Check(), [formState.outcomeType])}
               <DropDown
                 options={modelDimension.data[2].options}
                 variant="filled"
                 size="small"
                 inputLabel={modelDimension.data[2].name}
-                fieldId={modelDimension.data[2].name}
-                onChangeHandler={handleFormInput}
+                fieldId="function"
+                // fieldId={modelDimension.data[2].name}
               />
 
               <DropDown
                 options={modelDimension.data[3].options}
                 variant="filled"
                 size="small"
-                fieldId={modelDimension.data[3].name}
+                fieldId="function"
+                // fieldId={modelDimension.data[3].name}
                 inputLabel={modelDimension.data[3].name}
-                onChangeHandler={handleFormInput}
               />
 
               <DropDown
                 options={modelUse()}
                 variant="filled"
                 size="small"
-                fieldId={modelUseData.name}
+                fieldId="function"
+                // fieldId={modelUseData.name}
                 inputLabel={modelUseData.name}
-                onChangeHandler={handleFormInput}
               />
             </div>
           </Grid>
@@ -155,41 +142,41 @@ const ModelInformation: React.FC<AppProps> = ({ onChangeHandler }) => {
                 options={modelSpecifics()}
                 variant="filled"
                 size="small"
-                fieldId={modelSpecification.data[0].name}
+                fieldId="function"
+                // fieldId={modelSpecification.data[0].name}
                 inputLabel={modelSpecification.data[0].name}
-                onChangeHandler={handleFormInput}
               />
               <DropDown
                 options={modelSpecification.data[1].options}
                 variant="filled"
                 size="small"
-                fieldId={modelSpecification.data[1].name}
+                fieldId="function"
+                // fieldId={modelSpecification.data[1].name}
                 inputLabel={modelSpecification.data[1].name}
-                onChangeHandler={handleFormInput}
               />
               <DropDown
                 options={modelSpecification.data[2].options}
                 variant="filled"
                 size="small"
-                fieldId={modelSpecification.data[2].name}
+                fieldId="function"
+                // fieldId={modelSpecification.data[2].name}
                 inputLabel={modelSpecification.data[2].name}
-                onChangeHandler={handleFormInput}
               />
               <DropDown
                 options={modelSpecification.data[3].options}
                 variant="filled"
                 size="small"
-                fieldId={modelSpecification.data[3].name}
+                fieldId="function"
+                // fieldId={modelSpecification.data[3].name}
                 inputLabel={modelSpecification.data[3].name}
-                onChangeHandler={handleFormInput}
               />
               <DropDown
                 options={modelSpecification.data[4].options}
                 variant="filled"
                 size="small"
-                fieldId={modelSpecification.data[4].name}
+                fieldId="function"
+                // fieldId={modelSpecification.data[4].name}
                 inputLabel={modelSpecification.data[4].name}
-                onChangeHandler={handleFormInput}
               />
             </div>
           </Grid>
@@ -205,16 +192,18 @@ const ModelInformation: React.FC<AppProps> = ({ onChangeHandler }) => {
                 options={dataOption}
                 variant="filled"
                 inputLabel="Risk Type"
-                fieldId="Risk Type"
-                onChangeHandler={handleFormInput}
+                fieldId="function"
+                // fieldId="Risk Type"
+
                 width="45%"
               />
               <DropDown
                 options={dataOption}
                 variant="filled"
                 inputLabel="Event Name"
-                fieldId="Event Name"
-                onChangeHandler={handleFormInput}
+                fieldId="function"
+                // fieldId="Event Name"
+
                 width="45%"
               />
             </Grid>

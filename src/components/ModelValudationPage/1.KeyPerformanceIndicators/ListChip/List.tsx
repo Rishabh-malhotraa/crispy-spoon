@@ -42,23 +42,21 @@ const List: React.FC<{ tests: string[] }> = ({ tests }) => {
       <div>
         {tests.map((test, index) => {
           return (
-            <>
-              <Chip
-                key={uuid()}
-                label={test}
-                deleteIcon={checked[index].selected ? <CheckCircleRoundedIcon /> : <CancelRoundedIcon />}
-                color={checked[index].selected ? 'primary' : 'secondary'}
-                style={{
-                  margin: '4px',
-                  fontWeight: 600,
-                  fontSize: '14px',
-                  color: 'rgba(0, 0, 0, 0.7)',
-                }}
-                onDelete={() => {
-                  handleDelete(index);
-                }}
-              />
-            </>
+            <Chip
+              key={uuid()}
+              label={test}
+              deleteIcon={checked[index].selected ? <CheckCircleRoundedIcon /> : <CancelRoundedIcon />}
+              color={checked[index].selected ? 'primary' : 'secondary'}
+              style={{
+                margin: '4px',
+                fontWeight: 600,
+                fontSize: '14px',
+                color: 'rgba(0, 0, 0, 0.7)',
+              }}
+              onDelete={() => {
+                handleDelete(index);
+              }}
+            />
           );
         })}
       </div>

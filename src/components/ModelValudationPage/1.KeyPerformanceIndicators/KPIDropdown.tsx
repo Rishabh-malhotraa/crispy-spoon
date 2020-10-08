@@ -9,7 +9,7 @@ import { v4 as uuid } from 'uuid';
 import { ModelType } from 'Data/redundant/KPI';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { onSelect, selectOption } from 'redux/slices/formSlice';
+import { onSelect, selectOption } from 'redux/slices/KPISlice';
 
 // const useStyles = makeStyles((theme: Theme) =>
 //   createStyles({

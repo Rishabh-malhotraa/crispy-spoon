@@ -7,3 +7,10 @@
 - [ ] Quantitative Analysis Page
 - [ ] Documentation page
 - [ ] KPI integration on Click
+
+---
+
+- Redux Integration on Weekend, with the first & second page.
+- Logic for the first page, flushed out, also look into memoization of the component, if render times are high!
+- Native Select Improvement.
+- Bake in the functionality for API request.
