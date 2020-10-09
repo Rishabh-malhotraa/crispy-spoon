@@ -22,7 +22,7 @@ const modelDimension = {
 
     {
       name: 'Analytic Technique',
-      options: ['Regression', 'Simulation', 'Machine Learing'],
+      options: ['Regression', 'Simulation', 'Machine Learning'],
     },
   ],
 };
@@ -56,7 +56,7 @@ const modelInformation = {
   heading: 'Model Information',
   data: [
     {
-      name: 'Activity Classification',
+      name: 'Activity Class...',
       options: ['1', '2', '3'],
     },
     {

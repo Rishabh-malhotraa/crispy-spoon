@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -9,7 +10,10 @@ import { makeStyles } from '@material-ui/core';
 import axios from 'axios';
 import { URL } from 'API/api';
 import { useSelector } from 'react-redux';
-import { selectOption } from 'redux/slices/formSlice';
+import { selectForm } from 'redux/slices/formSlice';
+import { selectEventDefination } from 'redux/slices/eventDefinationSlice';
+import { selectModelName } from 'redux/slices/modelNameSlice';
+import { selectuuid } from 'redux/slices/uuidSlice';
 
 const useStyles = makeStyles({
   root: { fontFamily: 'Roboto' },
@@ -29,7 +33,10 @@ const useStyles = makeStyles({
 const InputCSV = (): JSX.Element => {
   const developmentFileRef = useRef<HTMLInputElement>(null);
   const validationFileRef = useRef<HTMLInputElement>(null);
-  const formState = useSelector(selectOption);
+  const formState = useSelector(selectForm);
+  const eventDefination = useSelector(selectEventDefination);
+  const modelName = useSelector(selectModelName);
+  const KEY = useSelector(selectuuid);
 
   const [devFile, setDevFile] = useState<Blob>();
   const [devFileName, setDevFileName] = useState<string>('Choose a development(Train) file');
@@ -49,6 +56,10 @@ const InputCSV = (): JSX.Element => {
     }
   };
 
+  const getFormData = () => {
+    return { ...formState, eventDefination, modelName };
+  };
+
   const handleOnSumbit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (devFile || valFile) {
@@ -56,9 +67,15 @@ const InputCSV = (): JSX.Element => {
       //  not null assertion
       formData.append('developmentFile', devFile!);
       formData.append('validationFile', valFile!);
-      formData.append('formData', JSON.stringify(formState));
+      formData.append('formData', JSON.stringify(getFormData()));
+      formData.append('UUID', KEY);
 
       console.log(Array.from(formData));
+
+      // @ts-ignore
+      for (const pair of formData.entries()) {
+        console.log(`${pair[0]}, ${pair[1]}`);
+      }
 
       try {
         const response = await axios.post('http://localhost:5000/upload-file', formData, {

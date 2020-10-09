@@ -1,4 +1,6 @@
 // follow CamelCASE strictly
+import { Data } from 'Data/KPI-page1';
+
 export type Form = {
   function: string;
   outcomeType: string;
@@ -27,6 +29,12 @@ export type Form = {
   validationPerformanceWindow: string;
 };
 
+export type KpiType = {
+  'Model Level Test': Data[];
+  'Factor Level Test': Data[];
+  'Statistical Tests | Assumptions': Data[];
+};
+
 export type Fields =
   | 'function'
   | 'outcomeType'
@@ -53,15 +61,17 @@ export type Fields =
   | 'validationObservationMonth'
   | 'validationObservationWindow'
   | 'validationPerformanceWindow';
+
 export default interface StateInterface {
   formOption: Form;
-  kpiOption: {
-    value: string;
-  };
   eventDefinationOption: {
     eventDefination: string;
   };
-  modeNameOption: {
-    modeName: string;
+  modelNameOption: {
+    modelName: string;
   };
+  uuidOption: {
+    value: string;
+  };
+  kpiOption: KPIType;
 }

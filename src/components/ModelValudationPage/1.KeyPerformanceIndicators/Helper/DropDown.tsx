@@ -5,7 +5,7 @@ import Select from '@material-ui/core/Select';
 import { v4 as uuid } from 'uuid';
 import { InputLabel } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectOption, onSelect } from 'redux/slices/formSlice';
+import { selectForm, onSelect } from 'redux/slices/formSlice';
 import { Fields } from 'redux/type';
 
 type SizeType = 'medium' | 'small';
@@ -34,7 +34,7 @@ const DropDown: React.FC<AppProps> = ({
   fieldId,
 }) => {
   // we will get the state object here!
-  const dropDownState = useSelector(selectOption);
+  const dropDownState = useSelector(selectForm);
 
   const dispatch = useDispatch();
 

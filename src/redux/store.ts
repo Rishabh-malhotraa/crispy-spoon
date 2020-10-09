@@ -1,15 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
-import KPIReducer from './slices/KPISlice';
-import formReducer from './slices/formSlice';
-import eventDefinationReducer from './slices/eventDefinationSlice';
-import modelNameReducer from './slices/modelNameSlice';
+import KpiReducer from 'redux/slices/KPISlice';
+import formReducer from 'redux/slices/formSlice';
+import eventDefinationReducer from 'redux/slices/eventDefinationSlice';
+import modelNameReducer from 'redux/slices/modelNameSlice';
+import uuidReducer from 'redux/slices/uuidSlice';
 
 const store = configureStore({
   reducer: {
-    kpiOption: KPIReducer,
+    kpiOption: KpiReducer,
     formOption: formReducer,
     eventDefinationOption: eventDefinationReducer,
-    modeNameOption: modelNameReducer,
+    modelNameOption: modelNameReducer,
+    uuidOption: uuidReducer,
+    KpiOption: KpiReducer,
   },
 });
 

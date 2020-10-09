@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import StateInterface from 'redux/type';
 
 export const modelNameOption = createSlice({
-  name: 'modeNameOption',
+  name: 'modelNameOption',
   initialState: {
     modelName: '',
   },
@@ -13,7 +13,7 @@ export const modelNameOption = createSlice({
   },
 });
 
-export const selectModelName = (state: any): string => state.modeNameOption.eventDefination;
+export const selectModelName = (state: StateInterface): string => state.modelNameOption.modelName;
 export const { onModelNameType } = modelNameOption.actions;
 
 export default modelNameOption.reducer;

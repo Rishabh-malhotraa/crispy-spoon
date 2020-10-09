@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createSlice } from '@reduxjs/toolkit';
 import StateInterface, { Form, Fields } from 'redux/type';
 /**
@@ -8,7 +8,7 @@ import StateInterface, { Form, Fields } from 'redux/type';
  *     - name? I still dont know what name does, tbrh
  */
 
-export const initialValue = {
+const initialValue = {
   function: 'Risk',
   outcomeType: '',
   dataStructure: '',
@@ -27,7 +27,7 @@ export const initialValue = {
   country: '',
   productName: '',
   portfolio: '',
-  lastValidationDate: '2020-01-31',
+  lastValidationDate: '',
   lastMonitoredDate: '2020-01-31',
   developmentObservationMonth: '2020-01-31',
   developmentObservationWindow: '2020-01-31',
@@ -37,8 +37,8 @@ export const initialValue = {
   validationPerformanceWindow: '2020-01-31',
 };
 
-export const formSlice = createSlice({
-  name: 'form',
+const formSlice = createSlice({
+  name: 'formOption',
   initialState: initialValue,
   reducers: {
     onSelect: (state, action) => {
@@ -53,7 +53,7 @@ export const formSlice = createSlice({
 // setValues({ ...values, [fieldId]: value });
 
 // you'll get values of state from here, the interface fiel
-export const selectOption = (state: StateInterface): Form => {
+export const selectForm = (state: StateInterface): Form => {
   return state.formOption;
 };
 export const { onSelect } = formSlice.actions;

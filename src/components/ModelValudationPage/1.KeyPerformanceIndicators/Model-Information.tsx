@@ -9,13 +9,12 @@ import ModelInformationData from 'Data/Model-Information-page1';
 import { modelTypeData, ModelTypeInterface } from 'Data/Model-Type-page1';
 import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-import DropDown from '../DropDown';
+import DropDown from './Helper/DropDown';
 import Header from 'components/Helper/Header';
-import KPIDropDown from '../KPIDropdown';
 import { CountryType, countries } from 'Data/countrylist';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useSelector, useDispatch } from 'react-redux';
-import { onSelect, selectOption } from 'redux/slices/formSlice';
+import { onSelect, selectForm } from 'redux/slices/formSlice';
 import { onEventDefinationType, selectEventDefination } from 'redux/slices/eventDefinationSlice';
 import { onModelNameType, selectModelName } from 'redux/slices/modelNameSlice';
 import { Fields } from 'redux/type';
@@ -35,9 +34,10 @@ const useStyles = makeStyles({
 const dataOption = ['123', '12121', '213312'];
 
 const ModelInformation = (): JSX.Element => {
+  // eslint-disable-next-line no-console
   console.log('h');
   const dispatch = useDispatch();
-  const formState = useSelector(selectOption);
+  const formState = useSelector(selectForm);
   const { modelDimension, modelSpecification, modelUseData, modelInformation } = ModelInformationData;
 
   // this is the redux---ish thing you need to hanlde
@@ -146,7 +146,6 @@ const ModelInformation = (): JSX.Element => {
           <Grid item xs={6} className="padding">
             <Header heading={modelSpecification.heading} />
             <div style={{ padding: '8px' }}>
-              <KPIDropDown />
               <DropDown
                 options={modelTypeOptions}
                 variant="filled"
