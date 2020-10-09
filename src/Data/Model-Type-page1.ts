@@ -44,13 +44,13 @@ export const modelTypeData: ModelTypeInterface[] = [
   },
   {
     modelType: 'Reven',
-    function: 'Others',
+    function: 'OTHERS',
     outcomeType: 'Continuous',
     modelUse: ['PPN'],
   },
   {
     modelType: 'Expen',
-    function: 'Other',
+    function: 'OTHERS',
     outcomeType: 'Binary',
     modelUse: ['SEG'],
   },

@@ -8,8 +8,6 @@ import StateInterface, { Form, Fields } from 'redux/type';
  *     - name? I still dont know what name does, tbrh
  */
 
-const d = new Date();
-
 export const initialValue = {
   function: 'Risk',
   outcomeType: '',
@@ -27,27 +25,26 @@ export const initialValue = {
   assetName: '',
   assetClass: '',
   country: '',
-  eventDefination: '',
-  modelName: '',
   productName: '',
   portfolio: '',
-  developmentObservationMonth: d.getDate(),
-  developmentObservationWindow: d.getDate(),
-  developmentPerformanceWindow: d.getDate(),
-  validationObservationMonth: d.getDate(),
-  validationObservationWindow: d.getDate(),
-  validationPerformanceWindow: d.getDate(),
+  lastValidationDate: '2020-01-31',
+  lastMonitoredDate: '2020-01-31',
+  developmentObservationMonth: '2020-01-31',
+  developmentObservationWindow: '2020-01-31',
+  developmentPerformanceWindow: '2020-01-31',
+  validationObservationMonth: '2020-01-31',
+  validationObservationWindow: '2020-01-31',
+  validationPerformanceWindow: '2020-01-31',
 };
 
-const name = 'function';
 export const formSlice = createSlice({
   name: 'form',
   initialState: initialValue,
   reducers: {
     onSelect: (state, action) => {
       const { field, value }: { field: Fields; value: string } = action.payload;
-      console.log(field);
-      state.businessUnit = value;
+      // @ts-ignore
+      state[field] = value;
     },
   },
 });

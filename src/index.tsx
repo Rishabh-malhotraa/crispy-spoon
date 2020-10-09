@@ -4,7 +4,6 @@ import App from './App';
 import { Provider } from 'react-redux';
 import './index.css';
 import store from 'redux/store';
-
 /**
  * everything inside the "root" DOM node will be managed by React DOM.
  *

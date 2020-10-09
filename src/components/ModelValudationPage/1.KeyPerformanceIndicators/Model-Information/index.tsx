@@ -3,7 +3,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-named-as-default-member */
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import ModelInformationData from 'Data/Model-Information-page1';
 import { modelTypeData, ModelTypeInterface } from 'Data/Model-Type-page1';
@@ -16,7 +16,9 @@ import { CountryType, countries } from 'Data/countrylist';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useSelector, useDispatch } from 'react-redux';
 import { onSelect, selectOption } from 'redux/slices/formSlice';
-import { checkPropTypes } from 'prop-types';
+import { onEventDefinationType, selectEventDefination } from 'redux/slices/eventDefinationSlice';
+import { onModelNameType, selectModelName } from 'redux/slices/modelNameSlice';
+import { Fields } from 'redux/type';
 
 const useStyles = makeStyles({
   root: {
@@ -33,12 +35,23 @@ const useStyles = makeStyles({
 const dataOption = ['123', '12121', '213312'];
 
 const ModelInformation = (): JSX.Element => {
+  console.log('h');
   const dispatch = useDispatch();
   const formState = useSelector(selectOption);
-  console.log(formState);
-  const { modelDimension, modelSpecification, modelUseData } = ModelInformationData;
+  const { modelDimension, modelSpecification, modelUseData, modelInformation } = ModelInformationData;
 
   // this is the redux---ish thing you need to hanlde
+
+  useEffect(() => {
+    dispatch(onSelect({ value: '', field: 'modelUse' }));
+  }, [formState.function]);
+  useEffect(() => {
+    dispatch(onSelect({ value: '', field: 'outcomeType' }));
+  }, [formState.function]);
+
+  const textFieldInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, fieldId: Fields) => {
+    dispatch(onSelect({ value: e.target.value, field: fieldId }));
+  };
 
   const modelUse = () => {
     const functionName: string = formState.function;
@@ -48,9 +61,11 @@ const ModelInformation = (): JSX.Element => {
   };
   let ModelTypeOptions: ModelTypeInterface[];
 
-  const modelSpecifics = () => {
-    if (ModelTypeOptions) {
-      ModelTypeOptions.splice(0, ModelTypeOptions.length);
+  const [modelTypeOptions, setModelTypeOptions] = useState(['Placeholder']);
+
+  useEffect(() => {
+    if (modelTypeOptions) {
+      setModelTypeOptions(modelTypeOptions.splice(0, modelTypeOptions.length));
     }
     if (formState.function) {
       ModelTypeOptions = modelTypeData.filter((element: ModelTypeInterface) => {
@@ -70,8 +85,8 @@ const ModelInformation = (): JSX.Element => {
     const ModelTypeData = ModelTypeOptions.map((element: ModelTypeInterface) => {
       return element.modelType;
     });
-    return ModelTypeData;
-  };
+    setModelTypeOptions(ModelTypeData);
+  }, [formState.modelUse, formState.function, formState.outcomeType]);
 
   const classes = useStyles();
   const Check = () => {
@@ -100,7 +115,6 @@ const ModelInformation = (): JSX.Element => {
                 initialValue="Risk"
                 inputLabel={modelDimension.data[0].name}
                 fieldId="function"
-                // fieldId={modelDimension.data[0].name}
               />
               {useMemo(() => Check(), [formState.outcomeType])}
               <DropDown
@@ -108,25 +122,20 @@ const ModelInformation = (): JSX.Element => {
                 variant="filled"
                 size="small"
                 inputLabel={modelDimension.data[2].name}
-                fieldId="function"
-                // fieldId={modelDimension.data[2].name}
+                fieldId="dataStructure"
               />
-
               <DropDown
                 options={modelDimension.data[3].options}
                 variant="filled"
                 size="small"
-                fieldId="function"
-                // fieldId={modelDimension.data[3].name}
+                fieldId="analyticTechnique"
                 inputLabel={modelDimension.data[3].name}
               />
-
               <DropDown
                 options={modelUse()}
                 variant="filled"
                 size="small"
-                fieldId="function"
-                // fieldId={modelUseData.name}
+                fieldId="modelUse"
                 inputLabel={modelUseData.name}
               />
             </div>
@@ -139,43 +148,38 @@ const ModelInformation = (): JSX.Element => {
             <div style={{ padding: '8px' }}>
               <KPIDropDown />
               <DropDown
-                options={modelSpecifics()}
+                options={modelTypeOptions}
                 variant="filled"
                 size="small"
-                fieldId="function"
-                // fieldId={modelSpecification.data[0].name}
+                fieldId="modelType"
                 inputLabel={modelSpecification.data[0].name}
               />
               <DropDown
                 options={modelSpecification.data[1].options}
                 variant="filled"
                 size="small"
-                fieldId="function"
-                // fieldId={modelSpecification.data[1].name}
+                fieldId="modelStructure"
                 inputLabel={modelSpecification.data[1].name}
               />
               <DropDown
                 options={modelSpecification.data[2].options}
                 variant="filled"
                 size="small"
-                fieldId="function"
-                // fieldId={modelSpecification.data[2].name}
+                fieldId="entity"
                 inputLabel={modelSpecification.data[2].name}
               />
               <DropDown
                 options={modelSpecification.data[3].options}
                 variant="filled"
                 size="small"
-                fieldId="function"
-                // fieldId={modelSpecification.data[3].name}
+                fieldId="businessUnit"
                 inputLabel={modelSpecification.data[3].name}
               />
               <DropDown
                 options={modelSpecification.data[4].options}
                 variant="filled"
                 size="small"
-                fieldId="function"
-                // fieldId={modelSpecification.data[4].name}
+                fieldId="modelTier"
                 inputLabel={modelSpecification.data[4].name}
               />
             </div>
@@ -192,18 +196,14 @@ const ModelInformation = (): JSX.Element => {
                 options={dataOption}
                 variant="filled"
                 inputLabel="Risk Type"
-                fieldId="function"
-                // fieldId="Risk Type"
-
+                fieldId="riskType"
                 width="45%"
               />
               <DropDown
                 options={dataOption}
                 variant="filled"
                 inputLabel="Event Name"
-                fieldId="function"
-                // fieldId="Event Name"
-
+                fieldId="eventName"
                 width="45%"
               />
             </Grid>
@@ -213,22 +213,80 @@ const ModelInformation = (): JSX.Element => {
                 variant="filled"
                 size="small"
                 style={{ width: '100%' }}
-                // onChange={(e) => {
-                //   textFieldChange(e, 'Event Defination');
-                // }}
+                value={useSelector(selectEventDefination)}
+                onChange={(e) => {
+                  dispatch(onEventDefinationType(e.target.value));
+                }}
               />
             </Grid>
           </Grid>
         </div>
         <Grid item style={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
-          <Header heading="Model Inforamtion" />
+          <Header heading={modelInformation.heading} />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <TextField label="Model Name" variant="filled" size="small" style={{ width: '22%' }} />
             <TextField
-              label="Activity Classification"
+              label="Model Name"
               variant="filled"
               size="small"
               style={{ width: '22%' }}
+              value={useSelector(selectModelName)}
+              onChange={(e) => {
+                dispatch(onModelNameType(e.target.value));
+              }}
+            />
+            <DropDown
+              options={modelInformation.data[0].options}
+              variant="filled"
+              size="small"
+              fieldId="activityClassification"
+              inputLabel={modelInformation.data[0].name}
+              width="22%"
+            />
+            <DropDown
+              options={modelInformation.data[1].options}
+              variant="filled"
+              size="small"
+              fieldId="assetClass"
+              inputLabel={modelInformation.data[1].name}
+              width="22%"
+            />
+            <DropDown
+              options={modelInformation.data[2].options}
+              variant="filled"
+              size="small"
+              fieldId="assetClass"
+              inputLabel={modelInformation.data[2].name}
+              width="22%"
+            />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
+            <DropDown
+              options={modelInformation.data[3].options}
+              variant="filled"
+              size="small"
+              fieldId="assetClass"
+              inputLabel={modelInformation.data[3].name}
+              width="22%"
+            />
+            <Autocomplete
+              id="country-select"
+              style={{ width: '22%' }}
+              options={countries as CountryType[]}
+              autoHighlight
+              getOptionLabel={(option) => option.label}
+              renderOption={(option) => <>{`${option.label} ${option.code}`}</>}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Country"
+                  variant="filled"
+                  size="small"
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: 'new-password', // disable autocomplete and autofill
+                  }}
+                />
+              )}
             />
             <TextField
               label="Last Validation Date"
@@ -247,40 +305,15 @@ const ModelInformation = (): JSX.Element => {
               style={{ width: '22%' }}
             />
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
-            <TextField label="Asset Class" variant="filled" size="small" style={{ width: '22%' }} />
-            <TextField label="Product Name" variant="filled" size="small" style={{ width: '22%' }} />
-
-            <Autocomplete
-              id="country-select"
-              style={{ width: '22%' }}
-              options={countries as CountryType[]}
-              autoHighlight
-              getOptionLabel={(option) => option.label}
-              renderOption={(option) => <>{`${option.label} ${option.code}`}</>}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Choose a country"
-                  variant="filled"
-                  size="small"
-                  inputProps={{
-                    ...params.inputProps,
-                    autoComplete: 'new-password', // disable autocomplete and autofill
-                  }}
-                />
-              )}
-            />
-            <TextField label="Portfolio" variant="filled" size="small" style={{ width: '22%' }} />
-          </div>
-          <Header heading="Development Data date Frame" />
+          <Header heading="Validation Data date Frame" />
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
             <TextField
               label="Observation Month"
               variant="filled"
               size="small"
               type="date"
-              defaultValue="2020-01-31"
+              onChange={(e) => textFieldInput(e, 'validationObservationMonth')}
+              value={formState.validationObservationMonth}
               style={{ width: '30%' }}
             />
             <TextField
@@ -288,7 +321,8 @@ const ModelInformation = (): JSX.Element => {
               variant="filled"
               size="small"
               type="date"
-              defaultValue="2020-01-31"
+              onChange={(e) => textFieldInput(e, 'validationObservationWindow')}
+              value={formState.validationObservationWindow}
               style={{ width: '30%' }}
             />
             <TextField
@@ -296,7 +330,8 @@ const ModelInformation = (): JSX.Element => {
               variant="filled"
               size="small"
               type="date"
-              defaultValue="2020-01-31"
+              onChange={(e) => textFieldInput(e, 'validationPerformanceWindow')}
+              value={formState.validationPerformanceWindow}
               style={{ width: '30%' }}
             />
           </div>
@@ -307,7 +342,8 @@ const ModelInformation = (): JSX.Element => {
               variant="filled"
               size="small"
               type="date"
-              defaultValue="2020-01-31"
+              onChange={(e) => textFieldInput(e, 'developmentObservationMonth')}
+              value={formState.developmentObservationMonth}
               style={{ width: '30%' }}
             />
             <TextField
@@ -315,7 +351,8 @@ const ModelInformation = (): JSX.Element => {
               variant="filled"
               size="small"
               type="date"
-              defaultValue="2020-01-31"
+              onChange={(e) => textFieldInput(e, 'developmentObservationWindow')}
+              value={formState.developmentObservationWindow}
               style={{ width: '30%' }}
             />
             <TextField
@@ -323,7 +360,8 @@ const ModelInformation = (): JSX.Element => {
               variant="filled"
               size="small"
               type="date"
-              defaultValue="2020-01-31"
+              onChange={(e) => textFieldInput(e, 'developmentPerformanceWindow')}
+              value={formState.developmentPerformanceWindow}
               style={{ width: '30%' }}
             />
           </div>

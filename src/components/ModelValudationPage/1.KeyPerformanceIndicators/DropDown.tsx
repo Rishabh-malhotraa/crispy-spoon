@@ -35,7 +35,6 @@ const DropDown: React.FC<AppProps> = ({
 }) => {
   // we will get the state object here!
   const dropDownState = useSelector(selectOption);
-  console.log(fieldId);
 
   const dispatch = useDispatch();
 
@@ -43,13 +42,17 @@ const DropDown: React.FC<AppProps> = ({
     const payload = { value: event.target.value as string, field: fieldId };
     dispatch(onSelect(payload));
   };
+
+  const setValue = (): string | Date | undefined => {
+    return dropDownState[fieldId];
+  };
   return (
     <FormControl variant={variant} size={size} style={{ minWidth: width }}>
       <InputLabel id={`dropdown-table${inputLabel}`}>{inputLabel}</InputLabel>
       <Select
         labelId={`dropdown-table${inputLabel}`}
         id="demo-simple-select-filled"
-        value={dropDownState[fieldId]}
+        value={setValue()}
         onChange={(e) => handleChange(e, fieldId)}
       >
         {options.map((option) => {

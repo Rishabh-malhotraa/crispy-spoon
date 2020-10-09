@@ -4,7 +4,7 @@
  * name -> dropdown label
  * options-> options which can be selected in that dropdown
  * */
-export const modelDimension = {
+const modelDimension = {
   heading: 'Model Dimension',
   data: [
     {
@@ -27,11 +27,11 @@ export const modelDimension = {
   ],
 };
 
-export const modelSpecification = {
+const modelSpecification = {
   heading: 'Model Specifics',
   data: [
     {
-      name: 'Type of Model',
+      name: 'Model Type -II',
       options: ['Model 1', 'Model 2', 'Model 3', 'Model 4', 'Model 5'],
     },
     {
@@ -52,6 +52,27 @@ export const modelSpecification = {
     },
   ],
 };
+const modelInformation = {
+  heading: 'Model Information',
+  data: [
+    {
+      name: 'Activity Classification',
+      options: ['1', '2', '3'],
+    },
+    {
+      name: 'Asset Class',
+      options: ['1', '2', '3'],
+    },
+    {
+      name: 'Product Name',
+      options: ['0', '1'],
+    },
+    {
+      name: 'Protfolio',
+      options: ['0', '1', '3'],
+    },
+  ],
+};
 
 /**
  * Dropdown information for Model Use
@@ -59,7 +80,7 @@ export const modelSpecification = {
  * eg: if the function is Risk the options would be ['LOS','STR'...etc]
  * Make sure options for modelUse in Model-Information.ts and Model-Type are same(check spelling)
  */
-export const modelUseData = {
+const modelUseData = {
   name: 'Model Use',
   collection: [
     {
@@ -85,7 +106,4 @@ export const modelUseData = {
   ],
 };
 
-// TODOS: risk info and asset data needs to be imported from here there are
-// hard coded for the time being
-
-export default { modelDimension, modelSpecification, modelUseData };
+export default { modelDimension, modelSpecification, modelUseData, modelInformation };

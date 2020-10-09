@@ -21,6 +21,7 @@ const ListChip = (): JSX.Element => {
       }
     }
   }
+
   const { data } = SelectedModelData;
   return (
     <Grid item className={styles['grid-container']}>

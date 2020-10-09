@@ -4,7 +4,7 @@ import Navbar from 'components/Home/Navbar';
 import Tabs from 'components/Home/Tabs';
 import ModelSetup from 'pages/ModelSetup';
 import QuantitativeValidation from 'pages/QuantitativeValidation';
-
+import { v4 as uuid } from 'uuid';
 /**
  * We are setting up react router to render different pages based on different urls
  * eg: when patth of URL is exactly www.localhost.com/3000/model-setup
@@ -20,7 +20,7 @@ const App = (): JSX.Element => {
           <Route path="/model-setup" component={ModelSetup} />
           <Route exact path="/quantitative-validation" component={QuantitativeValidation} />
         </Switch>
-        <Redirect to="/model-setup/KPI" />
+        <Redirect to="/model-setup/table" />
       </Router>
     </>
   );

@@ -13,19 +13,18 @@ export type Form = {
   riskType: string;
   eventName: string;
   activityClassification: string;
-  assetName: string;
   assetClass: string;
   country: string;
-  eventDefination: string;
-  modelName: string;
+  lastValidationDate: string;
+  lastMonitoredDate: string;
   productName: string;
   portfolio: string;
-  developmentObservationMonth: Date;
-  developmentObservationWindow: Date;
-  developmentPerformanceWindow: Date;
-  validationObservationMonth: Date;
-  validationObservationWindow: Date;
-  validationPerformanceWindow: Date;
+  developmentObservationMonth: string;
+  developmentObservationWindow: string;
+  developmentPerformanceWindow: string;
+  validationObservationMonth: string;
+  validationObservationWindow: string;
+  validationPerformanceWindow: string;
 };
 
 export type Fields =
@@ -42,11 +41,10 @@ export type Fields =
   | 'riskType'
   | 'eventName'
   | 'activityClassification'
-  | 'assetName'
   | 'assetClass'
   | 'country'
-  | 'eventDefination'
-  | 'modelName'
+  | 'lastValidationDate'
+  | 'lastMonitoredDate'
   | 'productName'
   | 'portfolio'
   | 'developmentObservationMonth'
@@ -59,5 +57,11 @@ export default interface StateInterface {
   formOption: Form;
   kpiOption: {
     value: string;
+  };
+  eventDefinationOption: {
+    eventDefination: string;
+  };
+  modeNameOption: {
+    modeName: string;
   };
 }

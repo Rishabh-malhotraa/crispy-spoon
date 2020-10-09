@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import { grey } from '@material-ui/core/colors';
 import DropDown from 'components/Helper/DropDown';
 import { TableModel } from 'Data/Table-Data-page2';
+import { v4 as uuid } from 'uuid';
 
 const useStyles = makeStyles({
   root: {
@@ -68,7 +69,7 @@ const TableCSV: React.FC<AppProps> = ({ title, tableData }) => {
             <TableRow>
               {heading.map((element, index) => {
                 return (
-                  <TableCell key={element} align={index === 0 ? 'left' : 'center'}>
+                  <TableCell key={uuid()} align={index === 0 ? 'left' : 'center'}>
                     {element}
                   </TableCell>
                 );
@@ -77,7 +78,7 @@ const TableCSV: React.FC<AppProps> = ({ title, tableData }) => {
           </TableHead>
           <TableBody>
             {data.map((row) => (
-              <TableRow key={row.variableName}>
+              <TableRow key={uuid()}>
                 <TableCell component="th" scope="row">
                   {row.variableName}
                 </TableCell>
