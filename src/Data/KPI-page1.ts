@@ -17,7 +17,13 @@ export interface Data {
   selected: boolean;
 }
 
-// { kpiName: '', analyticTechnique: '', dataStructure: '', outcomeType: '' },
+/** FORMAT OF ENTERTING ANY NEW KPI
+ * KPI variable is an array of object each object containes
+ * test name-> "Model level test etc.." & data which contains a list of all
+ * the kpis
+ * Format of entried in data variable:-
+ * { kpiName: '', analyticTechnique: '', dataStructure: '', outcomeType: '' },
+ */
 
 const Data: KPI[] = [
   {

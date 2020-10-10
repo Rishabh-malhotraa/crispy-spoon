@@ -15,6 +15,8 @@ import store from 'redux/store';
  ** /pages --> This folder contains all the first level pages for the project {eg: www.localhost.com:3000/{first_level}/{second_level}.. }
  *
  ** /Data --> This folder contains files which has specific information according to which the components are rendered {eg: model information for KPI pages}
+ *  Data is written as .ts{typescript} files as opposed to json files to allow strong typechecking in the components that use them to prevent error while development
+ *  they could be converted into json by improting the variable and
  *
  ** /redux --> this folder is used to setup up redux  a package which helps us manage global state.
  * state is restricted to page, when the page is rerendered the state of that page is lost, but if we want to persist some state which would be used
@@ -30,7 +32,7 @@ import store from 'redux/store';
  ** components/{<pageName>Page} --> this contains list of all components used for a {first-level} page, {eg page/QuantitativeValidation file
  * containes components imported from the components/QuantitativeValidationPage/{components} }
  *
- ** utils -> this folder contains a list of utility function used throughout the app
+ ** api -> this folder contains a links to restAPI endpoints, all the link used in deeply nested components are imported from this file
  *
  * NOTE: index.jsx is the entry point for every folder {example: import Stepper from 'components/ModelValidationPage/Stepper' references the index file in that folder }
  */
