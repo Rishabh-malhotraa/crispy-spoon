@@ -24,6 +24,8 @@ module.exports = {
     'no-param-reassign': 'off',
     'import/order': 'off',
     'no-shadow': 'off',
+    'consistent-return': 'off',
+    // 'array-callback-return': 'off',
   },
   settings: {
     react: {

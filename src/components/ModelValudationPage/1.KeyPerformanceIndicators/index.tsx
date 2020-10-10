@@ -18,10 +18,10 @@ const KeyPerformanceIndexComponent = (): JSX.Element => {
 
   return (
     <Grid container direction="row" className={classes.root}>
-      <Grid item style={{ padding: '1rem' }} md={6}>
+      <Grid item style={{ padding: '1rem' }} sm={12} md={6}>
         <ModelInformation />
       </Grid>
-      <Grid item md={6} style={{ padding: '1rem' }}>
+      <Grid item sm={12} md={6} style={{ padding: '1rem' }}>
         <Metrics />
       </Grid>
     </Grid>

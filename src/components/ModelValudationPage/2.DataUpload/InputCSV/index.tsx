@@ -8,12 +8,14 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 import axios from 'axios';
-import { URL } from 'API/api';
 import { useSelector } from 'react-redux';
 import { selectForm } from 'redux/slices/formSlice';
 import { selectEventDefination } from 'redux/slices/eventDefinationSlice';
 import { selectModelName } from 'redux/slices/modelNameSlice';
 import { selectuuid } from 'redux/slices/uuidSlice';
+import { selectKpi } from 'redux/slices/KPISlice';
+import { Data as DataModel, TestName } from 'Data/KPI-page1';
+import { PROFILE_DATA_URL } from 'API/api';
 
 const useStyles = makeStyles({
   root: { fontFamily: 'Roboto' },
@@ -37,6 +39,7 @@ const InputCSV = (): JSX.Element => {
   const eventDefination = useSelector(selectEventDefination);
   const modelName = useSelector(selectModelName);
   const KEY = useSelector(selectuuid);
+  const kpi = useSelector(selectKpi);
 
   const [devFile, setDevFile] = useState<Blob>();
   const [devFileName, setDevFileName] = useState<string>('Choose a development(Train) file');
@@ -60,29 +63,40 @@ const InputCSV = (): JSX.Element => {
     return { ...formState, eventDefination, modelName };
   };
 
+  // prepating the KPI data to be send
+  const getKpiData = () => {
+    const kpiData = Object.entries(kpi).map(([keyName, data]) => {
+      const newArray = data.filter((node) => node.selected === true).map((node) => node.testName);
+      return { test: keyName, data: newArray };
+    });
+    return kpiData;
+  };
+
   const handleOnSumbit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (devFile || valFile) {
       const formData = new FormData();
       //  not null assertion
-      formData.append('developmentFile', devFile!);
-      formData.append('validationFile', valFile!);
-      formData.append('formData', JSON.stringify(getFormData()));
-      formData.append('UUID', KEY);
+      formData.append('development-file', devFile!);
+      formData.append('validation-file', valFile!);
+      formData.append('form-data', JSON.stringify(getFormData()));
+      formData.append('requested-kpi', JSON.stringify(getKpiData()));
+      formData.append('uuid', KEY);
 
       console.log(Array.from(formData));
 
-      // @ts-ignore
-      for (const pair of formData.entries()) {
-        console.log(`${pair[0]}, ${pair[1]}`);
-      }
+      // // @ts-ignore
+      // for (const pair of formData.entries()) {
+      //   console.log(`${pair[0]}, ${pair[1]}`);
+      // }
 
       try {
-        const response = await axios.post('http://localhost:5000/upload-file', formData, {
+        const responseData = await axios.post(PROFILE_DATA_URL, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
+        console.log(responseData);
       } catch (err) {
         if (err.response.status === 500) {
           console.log('There was a problem with the server');
@@ -90,12 +104,6 @@ const InputCSV = (): JSX.Element => {
           console.log(err.response.data.msg);
         }
       }
-      // .then((res) => {
-      //   console.log(res);
-      //   const { fileName, filePath } = res.data;
-      //   setUploadedFile({ fileName, filePath });
-      // })
-      // .catch((err) => console.log(err));
     }
   };
 

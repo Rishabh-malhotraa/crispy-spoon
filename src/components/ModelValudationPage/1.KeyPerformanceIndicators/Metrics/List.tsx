@@ -44,13 +44,12 @@ const List: React.FC<AppProps> = ({ title, data }) => {
 
   // get the KPI data array from the dropdown menu thingy!!!
 
-  let tempKPIList: Model[] = data;
-  let tempKPIList1: Model[] = data;
-  let tempKPIList2: Model[] = data;
-  let tempKPIList3: Model[] = data;
-
   useEffect(() => {
-    tempKPIList = data.slice(0);
+    let tempKPIList: Model[] = data;
+    let tempKPIList1: Model[] = data;
+    let tempKPIList2: Model[] = data;
+    let tempKPIList3: Model[] = data;
+
     if (formState.outcomeType) {
       tempKPIList1 = data.filter((element: Model) => {
         if (element.outcomeType === formState.outcomeType) return element;
@@ -66,7 +65,6 @@ const List: React.FC<AppProps> = ({ title, data }) => {
         if (element.analyticTechnique === formState.analyticTechnique) return element;
       });
     }
-
     // console.log('tempKPIList1->');
     // console.log(tempKPIList1);
     // console.log('tempKPIList2->');
@@ -82,7 +80,7 @@ const List: React.FC<AppProps> = ({ title, data }) => {
       return { testName: element.kpiName, selected: true };
     });
     dispatch(onKpiSelect({ field: title, value: newArray }));
-  }, [formState.outcomeType, formState.analyticTechnique, formState.dataStructure]);
+  }, [formState.outcomeType, formState.analyticTechnique, formState.dataStructure, dispatch, data, title]);
 
   return (
     <ThemeProvider theme={colorTheme}>

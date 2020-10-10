@@ -3,7 +3,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-named-as-default-member */
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import ModelInformationData from 'Data/Model-Information-page1';
 import { modelTypeData, ModelTypeInterface } from 'Data/Model-Type-page1';
@@ -44,11 +44,10 @@ const ModelInformation = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(onSelect({ value: '', field: 'modelUse' }));
-  }, [formState.function]);
+  }, [formState.function, dispatch]);
   useEffect(() => {
     dispatch(onSelect({ value: '', field: 'outcomeType' }));
-  }, [formState.function]);
-
+  }, [formState.function, dispatch]);
   const textFieldInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, fieldId: Fields) => {
     dispatch(onSelect({ value: e.target.value, field: fieldId }));
   };
@@ -59,14 +58,11 @@ const ModelInformation = (): JSX.Element => {
     const data = collection.filter((element) => element.type === functionName);
     return data[0].options;
   };
-  let ModelTypeOptions: ModelTypeInterface[];
 
   const [modelTypeOptions, setModelTypeOptions] = useState(['Placeholder']);
 
   useEffect(() => {
-    if (modelTypeOptions) {
-      setModelTypeOptions(modelTypeOptions.splice(0, modelTypeOptions.length));
-    }
+    let ModelTypeOptions: ModelTypeInterface[] = modelTypeData;
     if (formState.function) {
       ModelTypeOptions = modelTypeData.filter((element: ModelTypeInterface) => {
         if (element.function === formState.function) return element;
@@ -89,23 +85,12 @@ const ModelInformation = (): JSX.Element => {
   }, [formState.modelUse, formState.function, formState.outcomeType]);
 
   const classes = useStyles();
-  const Check = () => {
-    return (
-      <DropDown
-        options={modelDimension.data[1].options}
-        variant="filled"
-        size="small"
-        inputLabel={modelDimension.data[1].name}
-        fieldId="outcomeType"
-      />
-    );
-  };
 
   return (
     <div className={classes.root}>
       <form>
         <Grid container item>
-          <Grid item xs={6} className="padding">
+          <Grid item md={6} className="padding">
             <Header heading={modelDimension.heading} />
             <div style={{ padding: '8px' }}>
               <DropDown
@@ -116,7 +101,13 @@ const ModelInformation = (): JSX.Element => {
                 inputLabel={modelDimension.data[0].name}
                 fieldId="function"
               />
-              {useMemo(() => Check(), [formState.outcomeType])}
+              <DropDown
+                options={modelDimension.data[1].options}
+                variant="filled"
+                size="small"
+                inputLabel={modelDimension.data[1].name}
+                fieldId="outcomeType"
+              />
               <DropDown
                 options={modelDimension.data[2].options}
                 variant="filled"
@@ -143,7 +134,7 @@ const ModelInformation = (): JSX.Element => {
           {
             // end of left list
           }
-          <Grid item xs={6} className="padding">
+          <Grid item md={6} className="padding">
             <Header heading={modelSpecification.heading} />
             <div style={{ padding: '8px' }}>
               <DropDown
@@ -253,7 +244,7 @@ const ModelInformation = (): JSX.Element => {
               options={modelInformation.data[2].options}
               variant="filled"
               size="small"
-              fieldId="assetClass"
+              fieldId="productName"
               inputLabel={modelInformation.data[2].name}
               width="22%"
             />
@@ -263,7 +254,7 @@ const ModelInformation = (): JSX.Element => {
               options={modelInformation.data[3].options}
               variant="filled"
               size="small"
-              fieldId="assetClass"
+              fieldId="portfolio"
               inputLabel={modelInformation.data[3].name}
               width="22%"
             />

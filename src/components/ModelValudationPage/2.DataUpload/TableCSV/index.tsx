@@ -14,9 +14,11 @@ import { v4 as uuid } from 'uuid';
 
 const useStyles = makeStyles({
   root: {
+    zoom: '1.0',
     marginTop: '2rem',
     paddingLeft: '8rem',
     paddingRight: '8rem',
+    maxWidth: '1100px',
     '& .MuiTableCell-root': {
       fontSize: '16px',
     },

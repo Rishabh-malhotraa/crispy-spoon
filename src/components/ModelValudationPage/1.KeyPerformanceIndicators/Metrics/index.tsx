@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import styles from './styles.module.css';
 import Header from 'components/Helper/Header';
 import { v1 as uuid } from 'uuid';
 import List from './List';
@@ -13,7 +12,7 @@ const ListChip = (): JSX.Element => {
       <Grid item>
         <Header heading="Key Performace Metrics" />
       </Grid>
-      <Grid item className={styles['grid-container']}>
+      <Grid item>
         {KPIData.map(({ data, test }) => {
           return (
             <Grid item key={uuid()}>

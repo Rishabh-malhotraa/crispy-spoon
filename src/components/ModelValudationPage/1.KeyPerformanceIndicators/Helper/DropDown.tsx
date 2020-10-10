@@ -50,6 +50,7 @@ const DropDown: React.FC<AppProps> = ({
     <FormControl variant={variant} size={size} style={{ minWidth: width }}>
       <InputLabel id={`dropdown-table${inputLabel}`}>{inputLabel}</InputLabel>
       <Select
+        required
         labelId={`dropdown-table${inputLabel}`}
         id="demo-simple-select-filled"
         value={setValue()}
