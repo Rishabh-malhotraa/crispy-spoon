@@ -1,5 +1,3 @@
-/* eslint-disable @react/jsx-one-expression-per-line */
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
