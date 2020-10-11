@@ -60,11 +60,13 @@ const List: React.FC<AppProps> = ({ title, data }) => {
         if (element.dataStructure === formState.dataStructure) return element;
       });
     }
+    // cheecks f
     if (formState.analyticTechnique) {
       tempKPIList3 = data.filter((element) => {
         if (element.analyticTechnique === formState.analyticTechnique) return element;
       });
     }
+
     // console.log('tempKPIList1->');
     // console.log(tempKPIList1);
     // console.log('tempKPIList2->');

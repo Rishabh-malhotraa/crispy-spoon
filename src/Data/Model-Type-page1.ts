@@ -28,7 +28,7 @@ export const modelTypeData: ModelTypeInterface[] = [
     modelType: 'Trans-II',
     function: 'Fraud',
     outcomeType: 'Conituous',
-    modelUse: ['OTHERR'],
+    modelUse: ['OTHER'],
   },
   {
     modelType: 'Marke',

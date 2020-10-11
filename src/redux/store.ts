@@ -4,6 +4,8 @@ import formReducer from 'redux/slices/formSlice';
 import eventDefinationReducer from 'redux/slices/eventDefinationSlice';
 import modelNameReducer from 'redux/slices/modelNameSlice';
 import uuidReducer from 'redux/slices/uuidSlice';
+import characterTableReducer from 'redux/slices/characterTableSlice';
+import numericTableReducer from 'redux/slices/numericTableSlice';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +15,8 @@ const store = configureStore({
     modelNameOption: modelNameReducer,
     uuidOption: uuidReducer,
     KpiOption: KpiReducer,
+    characterTableOption: characterTableReducer,
+    numericTableOption: numericTableReducer,
   },
 });
 

@@ -31,7 +31,7 @@ const modelSpecification = {
   heading: 'Model Specifics',
   data: [
     {
-      name: 'Model Type -II',
+      name: 'Model Type',
       options: ['Model 1', 'Model 2', 'Model 3', 'Model 4', 'Model 5'],
     },
     {

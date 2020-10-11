@@ -14,3 +14,11 @@
 - Logic for the first page, flushed out, also look into memoization of the component, if render times are high!
 - Native Select Improvement.
 - Bake in the functionality for API request.
+
+---
+
+``` json
+    "hooks": {
+      "pre-commit": "npm run format && npm run lint -- --fix"
+    }
+```

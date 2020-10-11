@@ -74,4 +74,11 @@ export default interface StateInterface {
     value: string;
   };
   kpiOption: KPIType;
+  characterTableOption: {
+    characterTableData: { name: string; selection: string }[];
+    flag: boolean;
+  };
+  numericTableOption: {
+    numericTableData: { name: string; selection: string }[];
+  };
 }
