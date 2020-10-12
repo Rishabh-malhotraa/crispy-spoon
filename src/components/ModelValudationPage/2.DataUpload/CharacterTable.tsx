@@ -9,7 +9,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { grey } from '@material-ui/core/colors';
-import { TableModel } from 'Data/Table-Data-page2';
 import { v4 as uuid } from 'uuid';
 import { characterVariableRoles } from 'Data/TableData-page-2';
 import TablePagination from '@material-ui/core/TablePagination';
@@ -18,6 +17,7 @@ import FormControl from '@material-ui/core/FormControl';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCharacterTableState, onSelect, onValidate } from 'redux/slices/characterTableSlice';
 import Typography from '@material-ui/core/Typography';
+import { CharacterDataType } from 'Data/response';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,29 +63,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface AppProps {
-  title: string;
-  tableData: TableModel;
-}
-
 interface EventProps {
   (event: React.ChangeEvent<{ value: unknown }>, index: number): void;
 }
 
-const CharacterTable: React.FC = () => {
+interface AppProps {
+  data: CharacterDataType[];
+}
+
+const CharacterTable: React.FC<AppProps> = ({ data }) => {
   const classes = useStyles();
-  const data = [
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-  ];
+
   const [page, setPage] = useState(0);
   const [validationError, setValidationError] = useState<JSX.Element>();
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -105,7 +93,7 @@ const CharacterTable: React.FC = () => {
   const handleChange: EventProps = (event, index) => {
     const payload = {
       index,
-      value: { selection: event.target.value as string, name: data[index].name },
+      value: { selection: event.target.value as string, name: data[index].variableName },
     };
     dispatch(onSelect(payload));
   };
@@ -175,17 +163,17 @@ const CharacterTable: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, i) => (
+              {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((element, i) => (
                 <TableRow key={uuid()}>
                   <TableCell component="th" scope="row">
-                    Variable Name
+                    {element.variableName}
                   </TableCell>
-                  <TableCell align="center">1</TableCell>
-                  <TableCell align="center">5%</TableCell>
-                  <TableCell align="center">100</TableCell>
-                  <TableCell align="center">1</TableCell>
-                  <TableCell align="center">5%</TableCell>
-                  <TableCell align="center">100</TableCell>
+                  <TableCell align="center">{element.train.n}</TableCell>
+                  <TableCell align="center">{element.train.missing}</TableCell>
+                  <TableCell align="center">{element.train.distinctCatergories}</TableCell>
+                  <TableCell align="center">{element.test.n}</TableCell>
+                  <TableCell align="center">{element.test.missing}</TableCell>
+                  <TableCell align="center">{element.test.distinctCatergories}</TableCell>
                   <TableCell
                     align="center"
                     className={classes.colRole}

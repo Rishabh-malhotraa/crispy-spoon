@@ -1,5 +1,6 @@
 // follow CamelCASE strictly
 import { Data } from 'Data/KPI-page1';
+import { CharacterDataType, NumericDataType } from 'Data/response';
 
 export type Form = {
   function: string;
@@ -80,5 +81,9 @@ export default interface StateInterface {
   };
   numericTableOption: {
     numericTableData: { name: string; selection: string }[];
+  };
+  responseDataOption: {
+    characterTableData: CharacterDataType[];
+    numericTableData: NumericDataType[];
   };
 }

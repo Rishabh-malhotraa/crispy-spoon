@@ -6,6 +6,7 @@ import modelNameReducer from 'redux/slices/modelNameSlice';
 import uuidReducer from 'redux/slices/uuidSlice';
 import characterTableReducer from 'redux/slices/characterTableSlice';
 import numericTableReducer from 'redux/slices/numericTableSlice';
+import responseDataReducer from 'redux/slices/responseDataSlice';
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     KpiOption: KpiReducer,
     characterTableOption: characterTableReducer,
     numericTableOption: numericTableReducer,
+    responseDataOption: responseDataReducer,
   },
 });
 

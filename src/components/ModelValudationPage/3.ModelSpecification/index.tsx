@@ -6,7 +6,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import DropDown from 'components/Helper/DropDown';
-import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
 import ListDropDown from './ListDropdown';
 import InfoIcon from 'components/QuantitativeValidationPage/QuantitativeValidationHeader/InfoIcon';

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-console */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -8,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectForm } from 'redux/slices/formSlice';
 import { selectEventDefination } from 'redux/slices/eventDefinationSlice';
 import { selectModelName } from 'redux/slices/modelNameSlice';
@@ -16,6 +17,8 @@ import { selectuuid } from 'redux/slices/uuidSlice';
 import { selectKpi } from 'redux/slices/KPISlice';
 import { Data as DataModel, TestName } from 'Data/KPI-page1';
 import { PROFILE_DATA_URL } from 'API/api';
+import { response as responseSample, CharacterDataType, NumericDataType } from 'Data/response';
+import { populateData } from 'redux/slices/responseDataSlice';
 
 const useStyles = makeStyles({
   root: { fontFamily: 'Roboto' },
@@ -40,6 +43,7 @@ const InputCSV = (): JSX.Element => {
   const modelName = useSelector(selectModelName);
   const KEY = useSelector(selectuuid);
   const kpi = useSelector(selectKpi);
+  const dispatch = useDispatch();
 
   const [devFile, setDevFile] = useState<Blob>();
   const [devFileName, setDevFileName] = useState<string>('Choose a development(Train) file');
@@ -51,10 +55,10 @@ const InputCSV = (): JSX.Element => {
     if (file) {
       if (fileName === 'development file') {
         setDevFile(file);
-        setDevFileName(`Development File: ${file.name as string}`);
+        setDevFileName(`Development File: ${file.name}`);
       } else if (fileName === 'validation file') {
         setValFile(file);
-        setValFileName(`Validation File: ${file.name as string}`);
+        setValFileName(`Validation File: ${file.name}`);
       }
     }
   };
@@ -70,6 +74,51 @@ const InputCSV = (): JSX.Element => {
       return { test: keyName, data: newArray };
     });
     return kpiData;
+  };
+
+  const prepareResponse = (responseData: any) => {
+    const { DA_Num_Test, DA_Num_Train, DA_Char_Test, DA_Char_Train } = responseData;
+
+    const characterData: CharacterDataType[] = DA_Char_Test.Data.map((element: any, index: number) => {
+      const trainData = DA_Char_Train.Data[index];
+      const testData = DA_Char_Test.Data[index];
+      const temp: CharacterDataType = {
+        variableName: testData.VAR_NAME,
+        test: {
+          n: testData.TOTAL_OBS,
+          missing: testData.MISSING_PERCENT,
+          distinctCatergories: testData.DISTINCT_CATEGORIES,
+        },
+        train: {
+          n: trainData.TOTAL_OBS,
+          missing: trainData.MISSING_PERCENT,
+          distinctCatergories: trainData.DISTINCT_CATEGORIES,
+        },
+      };
+      return temp;
+    });
+
+    const numericData: NumericDataType[] = DA_Num_Test.Data.map((element: any, index: number) => {
+      const trainData = DA_Num_Train.Data[index];
+      const testData = DA_Num_Test.Data[index];
+      const temp: NumericDataType = {
+        variableName: testData.VAR_NAME,
+        test: {
+          n: testData.TOTAL_OBS,
+          missing: testData.MISSING_PERCENT,
+          deviation: testData.STD_DEV,
+          mean: testData.MEAN,
+        },
+        train: {
+          n: trainData.TOTAL_OBS,
+          missing: trainData.MISSING_PERCENT,
+          deviation: testData.STD_DEV,
+          mean: trainData.MEAN,
+        },
+      };
+      return temp;
+    });
+    dispatch(populateData({ numericData, characterData }));
   };
 
   const handleOnSumbit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -97,6 +146,12 @@ const InputCSV = (): JSX.Element => {
           },
         });
         console.log(responseData);
+
+        // if (responseData.uuid !== KEY) {
+        const responseDataUUID = KEY;
+        if (responseDataUUID === KEY) {
+          prepareResponse(responseSample);
+        }
       } catch (err) {
         if (err.response.status === 500) {
           console.log('There was a problem with the server');

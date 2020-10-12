@@ -25,6 +25,8 @@ module.exports = {
     'import/order': 'off',
     'no-shadow': 'off',
     'consistent-return': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     // 'array-callback-return': 'off',
   },
   settings: {

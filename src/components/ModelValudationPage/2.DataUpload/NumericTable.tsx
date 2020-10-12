@@ -16,6 +16,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import FormControl from '@material-ui/core/FormControl';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectNumericTableState, onSelect } from 'redux/slices/numericTableSlice';
+import { NumericDataType } from 'Data/response';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,20 +71,9 @@ interface EventProps {
   (event: React.ChangeEvent<{ value: unknown }>, index: number): void;
 }
 
-const NumericTable: React.FC = () => {
+const NumericTable: React.FC<{ data: NumericDataType[] }> = ({ data }) => {
+  // const { data } = props;
   const classes = useStyles();
-  const data = [
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-    { name: 'Rishabh' },
-  ];
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const numericTableState = useSelector(selectNumericTableState);
@@ -102,7 +92,7 @@ const NumericTable: React.FC = () => {
   const handleChange: EventProps = (event, index) => {
     const payload = {
       index,
-      value: { selection: event.target.value as string, name: data[index].name },
+      value: { selection: event.target.value as string, name: data[index].variableName },
     };
     dispatch(onSelect(payload));
   };
@@ -124,11 +114,11 @@ const NumericTable: React.FC = () => {
                   className={classes.headingBorder}
                   style={{ width: '15%', visibility: 'hidden' }}
                 />
-                <TableCell colSpan={3} align="center" className={classes.headingBorder}>
+                <TableCell colSpan={4} align="center" className={classes.headingBorder}>
                   Train
                 </TableCell>
                 <TableCell
-                  colSpan={3}
+                  colSpan={4}
                   align="center"
                   className={classes.headingBorder}
                   style={{ backgroundColor: grey[400] }}
@@ -145,10 +135,12 @@ const NumericTable: React.FC = () => {
                 <TableCell align="center">Numeric Variable</TableCell>
                 <TableCell align="center">#N</TableCell>
                 <TableCell align="center">Missing%</TableCell>
-                <TableCell align="center">Distinct Values</TableCell>
+                <TableCell align="center">Mean</TableCell>
+                <TableCell align="center">Deviation</TableCell>
                 <TableCell align="center">#N</TableCell>
                 <TableCell align="center">Missing%</TableCell>
-                <TableCell align="center">Distinct Values</TableCell>
+                <TableCell align="center">Mean</TableCell>
+                <TableCell align="center">Deviation</TableCell>
                 <TableCell align="center" style={{ minWidth: '14vw' }}>
                   Role
                 </TableCell>
@@ -158,14 +150,16 @@ const NumericTable: React.FC = () => {
               {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, i) => (
                 <TableRow key={uuid()}>
                   <TableCell component="th" scope="row">
-                    Variable Name
+                    {row.variableName}
                   </TableCell>
-                  <TableCell align="center">1</TableCell>
-                  <TableCell align="center">5%</TableCell>
-                  <TableCell align="center">100</TableCell>
-                  <TableCell align="center">1</TableCell>
-                  <TableCell align="center">5%</TableCell>
-                  <TableCell align="center">100</TableCell>
+                  <TableCell align="center">{row.train.n}</TableCell>
+                  <TableCell align="center">{row.train.missing}</TableCell>
+                  <TableCell align="center">{row.train.mean}</TableCell>
+                  <TableCell align="center">{row.train.deviation}</TableCell>
+                  <TableCell align="center">{row.test.n}</TableCell>
+                  <TableCell align="center">{row.test.missing}</TableCell>
+                  <TableCell align="center">{row.test.mean}</TableCell>
+                  <TableCell align="center">{row.test.deviation}</TableCell>
                   <TableCell align="center" className={classes.colRole}>
                     <div className={classes.select}>
                       <FormControl size="small" style={{ minWidth: '100%' }}>
