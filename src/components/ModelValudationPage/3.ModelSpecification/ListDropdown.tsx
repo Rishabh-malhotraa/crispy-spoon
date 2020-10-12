@@ -1,96 +1,37 @@
-import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
+import React, { useState } from 'react';
+import MultiSelect from 'react-multi-select-component';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 240,
-      maxWidth: 400,
-    },
-    chips: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    chip: {
-      margin: 2,
-    },
-    noLabel: {
-      marginTop: theme.spacing(3),
-    },
-  })
-);
+const Example: React.FC = () => {
+  const options = [
+    { label: 'Grapes 🍇', value: 'grapes' },
+    { label: 'Mango 🥭', value: 'mango' },
+    { label: 'Strawberry 🍓', value: 'strawberry', disabled: true },
+    { label: 'Watermelon 🍉', value: 'watermelon' },
+    { label: 'Pear 🍐', value: 'pear' },
+    { label: 'Apple 🍎', value: 'apple' },
+    { label: 'Tangerine 🍊', value: 'tangerine' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Pineapple 🍍', value: 'pineapple' },
+    { label: 'Peach 🍑', value: 'peach' },
+  ];
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-const names = [
-  'Variable name',
-  'Variable name',
-  'Variable name',
-  'Variable name',
-  'Variable name',
-  'Variable name',
-  'Variable name',
-];
-
-export default function MultipleSelect(): JSX.Element {
-  const classes = useStyles();
-  const [personName, setPersonName] = React.useState<string[]>([]);
-
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setPersonName(event.target.value as string[]);
-  };
-
-  // dunno why this was written 😭
-  // const handleChangeMultiple = (event: React.ChangeEvent<{ value: unknown }>) => {
-  //   const { options } = event.target as HTMLSelectElement;
-  //   const value: string[] = [];
-  //   for (let i = 0, l = options.length; i < l; i += 1) {
-  //     if (options[i].selected) {
-  //       value.push(options[i].value);
-  //     }
-  //   }
-  //   setPersonName(value);
-  // };
+  const [selected, setSelected] = useState([]);
 
   return (
-    <div>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-checkbox-label">Variable Name</InputLabel>
-        <Select
-          labelId="demo-mutiple-checkbox-label"
-          id="demo-mutiple-checkbox"
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<Input />}
-          renderValue={(selected) => (selected as string[]).join(', ')}
-          MenuProps={MenuProps}
-        >
-          {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+    <div style={{}}>
+      <MultiSelect options={options} value={selected} onChange={setSelected} labelledBy="Select" />
     </div>
   );
-}
+};
+
+export default Example;

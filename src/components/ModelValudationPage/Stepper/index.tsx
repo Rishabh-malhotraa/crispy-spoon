@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Box from '@material-ui/core/Box';
+import { useSelector } from 'react-redux';
+import { selectCharacterTableState } from 'redux/slices/characterTableSlice';
 
 import labels from 'Data/Stepper-Labels';
 import StepperPages from './StepperPages';
@@ -39,6 +41,7 @@ const useStyles = makeStyles(() =>
  * of two buttons for next and back wrapped in a box followed by the main stepper component
  */
 export default function FormStepper(): JSX.Element {
+  const { flag } = useSelector(selectCharacterTableState);
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -71,7 +74,7 @@ export default function FormStepper(): JSX.Element {
           size="large"
           color="inherit"
           onClick={handleNext}
-          disabled={activeStep === labels.length - 1}
+          disabled={activeStep === labels.length - 1 || (activeStep === 1 && flag)}
           className={classes.button}
           endIcon={<ArrowForwardIcon />}
         >

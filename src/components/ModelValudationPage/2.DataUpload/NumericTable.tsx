@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
   headingBorder: {
     background: grey[100],
-    border: `3px solid ${grey[300]}`,
+    // border: `3px solid ${grey[300]}`,
   },
 
   colRole: {
@@ -119,19 +119,30 @@ const NumericTable: React.FC = () => {
           <Table size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell align="center" className={classes.headingBorder} style={{ width: '15%' }}>
-                  Numeric Variable
-                </TableCell>
+                <TableCell
+                  align="center"
+                  className={classes.headingBorder}
+                  style={{ width: '15%', visibility: 'hidden' }}
+                />
                 <TableCell colSpan={3} align="center" className={classes.headingBorder}>
                   Train
                 </TableCell>
-                <TableCell colSpan={3} align="center" className={classes.headingBorder}>
+                <TableCell
+                  colSpan={3}
+                  align="center"
+                  className={classes.headingBorder}
+                  style={{ backgroundColor: grey[400] }}
+                >
                   Test
                 </TableCell>
-                <TableCell align="center" className={classes.headingBorder} />
+                <TableCell
+                  align="center"
+                  className={classes.headingBorder}
+                  style={{ visibility: 'hidden' }}
+                />
               </TableRow>
               <TableRow>
-                <TableCell align="center">Variable</TableCell>
+                <TableCell align="center">Numeric Variable</TableCell>
                 <TableCell align="center">#N</TableCell>
                 <TableCell align="center">Missing%</TableCell>
                 <TableCell align="center">Distinct Values</TableCell>

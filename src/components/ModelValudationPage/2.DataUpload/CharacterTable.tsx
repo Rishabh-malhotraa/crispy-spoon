@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
   headingBorder: {
     background: grey[100],
-    border: `3px solid ${grey[300]}`,
+    // border: `3px solid ${grey[300]}`,
   },
 
   colRole: {
@@ -122,9 +123,7 @@ const CharacterTable: React.FC = () => {
           variant="h6"
           style={{ color: 'red', textAlign: 'center', paddingTop: '2rem', fontStyle: 'italic' }}
         >
-          Role for only
-          <u>ONE VARIABLE</u>
-          can be selected as Segmentation Variable
+          Role for only <u>ONE VARIABLE</u> can be selected as Segmentation Variable
         </Typography>
       );
     return setValidationError(<></>);
@@ -138,19 +137,32 @@ const CharacterTable: React.FC = () => {
           <Table size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell align="center" className={classes.headingBorder} style={{ width: '15%' }}>
+                <TableCell
+                  align="center"
+                  className={classes.headingBorder}
+                  style={{ width: '15%', visibility: 'hidden' }}
+                >
                   Character Variable
                 </TableCell>
                 <TableCell colSpan={3} align="center" className={classes.headingBorder}>
                   Train
                 </TableCell>
-                <TableCell colSpan={3} align="center" className={classes.headingBorder}>
+                <TableCell
+                  colSpan={3}
+                  align="center"
+                  className={classes.headingBorder}
+                  style={{ backgroundColor: grey[300] }}
+                >
                   Test
                 </TableCell>
-                <TableCell align="center" className={classes.headingBorder} />
+                <TableCell
+                  align="center"
+                  className={classes.headingBorder}
+                  style={{ visibility: 'hidden' }}
+                />
               </TableRow>
               <TableRow>
-                <TableCell align="center">Variable</TableCell>
+                <TableCell align="center">Character Variable</TableCell>
                 <TableCell align="center">#N</TableCell>
                 <TableCell align="center">Missing%</TableCell>
                 <TableCell align="center">Distinct Values</TableCell>
@@ -174,9 +186,13 @@ const CharacterTable: React.FC = () => {
                   <TableCell align="center">1</TableCell>
                   <TableCell align="center">5%</TableCell>
                   <TableCell align="center">100</TableCell>
-                  <TableCell align="center" className={classes.colRole}>
+                  <TableCell
+                    align="center"
+                    className={classes.colRole}
+                    style={{ paddingTop: '0px', paddingBottom: '0px' }}
+                  >
                     <div className={classes.select}>
-                      <FormControl size="small" style={{ minWidth: '100%' }}>
+                      <FormControl size="small" style={{ minWidth: '100%', height: '24px' }}>
                         <NativeSelect
                           value={Value(i)}
                           onChange={(e) => handleChange(e, page * rowsPerPage + i)}

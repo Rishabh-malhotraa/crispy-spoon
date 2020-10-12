@@ -13,12 +13,14 @@
     "@reduxjs/toolkit": "^1.4.0",
     "axios": "^0.20.0",
     "classnames": "^2.2.6",
+    "clsx": "^1.1.1",
     "date-fns": "^2.16.1",
     "moment": "^2.27.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-csv-reader": "^3.1.1",
     "react-dom": "^16.13.1",
+    "react-multi-select-component": "^3.0.4",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
@@ -34,7 +36,11 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "lint": "eslint src/**/*.ts src/**/*.tsx"
   },
-  "husky": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm run lint -- --fix"
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
