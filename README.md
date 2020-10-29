@@ -1,12 +1,13 @@
 # TODOS
 
-- [ ] Page 1 redux Integration
-- [ ] Page 2 redux Integration
-- [ ] Post Request for Page 1 and Page 2
-- [ ] Remove the bug in page one for selection
+- [x] Page 1 redux Integration
+- [x] Page 2 redux Integration
+- [x] Post Request for Page 1 and Page 2
+- [x] Add filtering for dropdown options
+- [ ] Add filtering for KPI options
+- [ ] Change Chip to Checkbox Layout? (low priority)
 - [ ] Quantitative Analysis Page
-- [ ] Documentation page
-- [ ] KPI integration on Click
+- [ ] Model Documentation page
 
 ---
 
@@ -17,8 +18,18 @@
 
 ---
 
-``` json
-    "hooks": {
-      "pre-commit": "npm run format && npm run lint -- --fix"
-    }
+## How to start the Application
+
+Install the required dependencies.
+
+``` bash
+npm install
 ```
+
+To run the application
+
+``` bash
+npm run start
+```
+
+---
