@@ -9,7 +9,7 @@ import StateInterface, { Form, Fields } from 'redux/type';
  */
 
 const initialValue = {
-  function: 'Risk',
+  function: '',
   outcomeType: '',
   dataStructure: '',
   analyticTechnique: '',

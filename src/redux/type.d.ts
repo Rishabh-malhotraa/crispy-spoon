@@ -86,4 +86,7 @@ export default interface StateInterface {
     characterTableData: CharacterDataType[];
     numericTableData: NumericDataType[];
   };
+  tabIndexOption: {
+    value: number;
+  };
 }

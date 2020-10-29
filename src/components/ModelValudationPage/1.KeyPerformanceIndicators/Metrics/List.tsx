@@ -89,21 +89,23 @@ const List: React.FC<AppProps> = ({ title, data }) => {
       <div>
         {checked.map((element, index) => {
           return (
-            <Chip
-              key={uuid()}
-              label={element.testName}
-              deleteIcon={element.selected ? <CheckCircleRoundedIcon /> : <CancelRoundedIcon />}
-              color={element.selected ? 'primary' : 'secondary'}
-              style={{
-                margin: '4px',
-                fontWeight: 600,
-                fontSize: '14px',
-                color: 'rgba(0, 0, 0, 0.7)',
-              }}
-              onDelete={() => {
-                dispatch(onKpiDelete({ field: title, index }));
-              }}
-            />
+            <>
+              <Chip
+                key={uuid()}
+                label={element.testName}
+                deleteIcon={element.selected ? <CheckCircleRoundedIcon /> : <CancelRoundedIcon />}
+                color={element.selected ? 'primary' : 'secondary'}
+                style={{
+                  margin: '4px',
+                  fontWeight: 600,
+                  fontSize: '14px',
+                  color: 'rgba(0, 0, 0, 0.7)',
+                }}
+                onDelete={() => {
+                  dispatch(onKpiDelete({ field: title, index }));
+                }}
+              />
+            </>
           );
         })}
       </div>

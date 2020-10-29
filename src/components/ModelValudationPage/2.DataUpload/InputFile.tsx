@@ -134,29 +134,26 @@ const InputCSV = (): JSX.Element => {
 
       console.log(Array.from(formData));
 
-      // // @ts-ignore
-      // for (const pair of formData.entries()) {
-      //   console.log(`${pair[0]}, ${pair[1]}`);
-      // }
-
       try {
-        const responseData = await axios.post(PROFILE_DATA_URL, formData, {
+        const { data } = await axios.post(PROFILE_DATA_URL, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
-        console.log(responseData);
+        console.log(data);
 
         // if (responseData.uuid !== KEY) {
         const responseDataUUID = KEY;
         if (responseDataUUID === KEY) {
-          prepareResponse(responseSample);
+          console.log(data);
+          prepareResponse(data);
         }
       } catch (err) {
-        if (err.response.status === 500) {
+        if (err) {
           console.log('There was a problem with the server');
+          console.log(err);
         } else {
-          console.log(err.response.data.msg);
+          console.log(err.response);
         }
       }
     }

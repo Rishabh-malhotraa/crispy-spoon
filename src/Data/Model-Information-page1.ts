@@ -103,6 +103,10 @@ const modelUseData = {
       type: 'OTHERS',
       options: ['PPN', 'BAL', 'PRE', 'OTHERS'],
     },
+    {
+      type: '',
+      options: ['Please Select the Function First'],
+    },
   ],
 };
 

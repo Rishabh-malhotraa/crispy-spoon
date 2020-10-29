@@ -5,6 +5,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectTabIndex } from 'redux/slices/tabIndexSlice';
 
 const useStyles = makeStyles({
   root: {
@@ -30,12 +32,8 @@ const useStyles = makeStyles({
 });
 
 export default function CenteredTabs(): JSX.Element {
+  const tabIndex = useSelector(selectTabIndex);
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
-  };
 
   return (
     <>
@@ -43,8 +41,7 @@ export default function CenteredTabs(): JSX.Element {
         <Tabs
           variant="fullWidth"
           className={classes.tabsElement}
-          value={value}
-          onChange={handleChange}
+          value={tabIndex}
           indicatorColor="secondary"
           centered
         >
@@ -53,8 +50,9 @@ export default function CenteredTabs(): JSX.Element {
           <Tab label="Model Documentation" />
         </Tabs>
       </AppBar>
-      {value === 0 && <Redirect to="/model-setup/KPI" />}
-      {value === 1 && <Redirect to="/quantitative-validation" />}
+      {tabIndex === 0 && <Redirect to="/model-setup/KPI" />}
+      {tabIndex === 1 && <Redirect to="/quantitative-validation" />}
+      {tabIndex === 2 && <Redirect to="/rishabh" />}
     </>
   );
 }

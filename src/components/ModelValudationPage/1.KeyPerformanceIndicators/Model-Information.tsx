@@ -53,6 +53,7 @@ const ModelInformation = (): JSX.Element => {
   };
 
   const modelUse = () => {
+    // this is null here
     const functionName: string = formState.function;
     const { collection } = modelUseData;
     const data = collection.filter((element) => element.type === functionName);
@@ -61,9 +62,19 @@ const ModelInformation = (): JSX.Element => {
 
   const [modelTypeOptions, setModelTypeOptions] = useState(['Placeholder']);
 
+  /**
+   * This function is used to get ModelTypeOptions!
+   * refactor this state logic into a reducer later
+   * just simple filtering process
+   */
   useEffect(() => {
     let ModelTypeOptions: ModelTypeInterface[] = modelTypeData;
     if (formState.function) {
+      ModelTypeOptions = modelTypeData.filter((element: ModelTypeInterface) => {
+        if (element.function === formState.function) return element;
+      });
+    }
+    if (formState.function === '') {
       ModelTypeOptions = modelTypeData.filter((element: ModelTypeInterface) => {
         if (element.function === formState.function) return element;
       });
@@ -97,7 +108,6 @@ const ModelInformation = (): JSX.Element => {
                 options={modelDimension.data[0].options}
                 variant="filled"
                 size="small"
-                initialValue="Risk"
                 inputLabel={modelDimension.data[0].name}
                 fieldId="function"
               />
@@ -220,6 +230,7 @@ const ModelInformation = (): JSX.Element => {
               size="small"
               style={{ width: '22%' }}
               value={useSelector(selectModelName)}
+              required
               onChange={(e) => {
                 dispatch(onModelNameType(e.target.value));
               }}
@@ -263,6 +274,7 @@ const ModelInformation = (): JSX.Element => {
               style={{ width: '22%' }}
               options={countries as CountryType[]}
               autoHighlight
+              autoComplete={false}
               getOptionLabel={(option) => option.label}
               renderOption={(option) => <>{`${option.label} ${option.code}`}</>}
               renderInput={(params) => (
@@ -295,37 +307,7 @@ const ModelInformation = (): JSX.Element => {
               style={{ width: '22%' }}
             />
           </div>
-          <Header heading="Validation Data date Frame" />
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
-            <TextField
-              label="Observation Month"
-              variant="filled"
-              size="small"
-              type="date"
-              onChange={(e) => textFieldInput(e, 'validationObservationMonth')}
-              value={formState.validationObservationMonth}
-              style={{ width: '30%' }}
-            />
-            <TextField
-              label="Observation Window"
-              variant="filled"
-              size="small"
-              type="date"
-              onChange={(e) => textFieldInput(e, 'validationObservationWindow')}
-              value={formState.validationObservationWindow}
-              style={{ width: '30%' }}
-            />
-            <TextField
-              label="Performance Window"
-              variant="filled"
-              size="small"
-              type="date"
-              onChange={(e) => textFieldInput(e, 'validationPerformanceWindow')}
-              value={formState.validationPerformanceWindow}
-              style={{ width: '30%' }}
-            />
-          </div>
-          <Header heading="Development Data date Frame" />
+          <Header heading="Development Data TimeFrame" />
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
             <TextField
               label="Observation Month"
@@ -352,6 +334,36 @@ const ModelInformation = (): JSX.Element => {
               type="date"
               onChange={(e) => textFieldInput(e, 'developmentPerformanceWindow')}
               value={formState.developmentPerformanceWindow}
+              style={{ width: '30%' }}
+            />
+          </div>
+          <Header heading="Validation Data TimeFrame" />
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
+            <TextField
+              label="Observation Month"
+              variant="filled"
+              size="small"
+              type="date"
+              onChange={(e) => textFieldInput(e, 'validationObservationMonth')}
+              value={formState.validationObservationMonth}
+              style={{ width: '30%' }}
+            />
+            <TextField
+              label="Observation Window"
+              variant="filled"
+              size="small"
+              type="date"
+              onChange={(e) => textFieldInput(e, 'validationObservationWindow')}
+              value={formState.validationObservationWindow}
+              style={{ width: '30%' }}
+            />
+            <TextField
+              label="Performance Window"
+              variant="filled"
+              size="small"
+              type="date"
+              onChange={(e) => textFieldInput(e, 'validationPerformanceWindow')}
+              value={formState.validationPerformanceWindow}
               style={{ width: '30%' }}
             />
           </div>

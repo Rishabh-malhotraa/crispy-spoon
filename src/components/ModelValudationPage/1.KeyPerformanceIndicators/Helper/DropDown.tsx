@@ -47,7 +47,7 @@ const DropDown: React.FC<AppProps> = ({
     return dropDownState[fieldId];
   };
   return (
-    <FormControl variant={variant} size={size} style={{ minWidth: width }}>
+    <FormControl variant={variant} size={size} required style={{ minWidth: width }}>
       <InputLabel id={`dropdown-table${inputLabel}`}>{inputLabel}</InputLabel>
       <Select
         required

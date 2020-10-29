@@ -7,6 +7,7 @@ import uuidReducer from 'redux/slices/uuidSlice';
 import characterTableReducer from 'redux/slices/characterTableSlice';
 import numericTableReducer from 'redux/slices/numericTableSlice';
 import responseDataReducer from 'redux/slices/responseDataSlice';
+import tabIndexReducer from './slices/tabIndexSlice';
 
 const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
     characterTableOption: characterTableReducer,
     numericTableOption: numericTableReducer,
     responseDataOption: responseDataReducer,
+    tabIndexOption: tabIndexReducer,
   },
 });
 

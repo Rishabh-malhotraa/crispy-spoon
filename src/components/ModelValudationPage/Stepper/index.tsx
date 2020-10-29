@@ -7,9 +7,11 @@ import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Box from '@material-ui/core/Box';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectCharacterTableState } from 'redux/slices/characterTableSlice';
-
+import { onTabIndexChange } from 'redux/slices/tabIndexSlice';
+import { selectForm } from 'redux/slices/formSlice';
+import { selectModelName } from 'redux/slices/modelNameSlice';
 import labels from 'Data/Stepper-Labels';
 import StepperPages from './StepperPages';
 
@@ -44,6 +46,9 @@ export default function FormStepper(): JSX.Element {
   const { flag } = useSelector(selectCharacterTableState);
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+  const dispatch = useDispatch();
+  const formState = useSelector(selectForm);
+  const modelName = useSelector(selectModelName);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -51,6 +56,38 @@ export default function FormStepper(): JSX.Element {
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  if (activeStep === 3) {
+    dispatch(onTabIndexChange(1));
+  }
+
+  // this is the validation check, if none of the given are filled the next step would be dissabled
+  const checkRequiredValues = () => {
+    if (activeStep === 0) {
+      if (
+        formState.function &&
+        formState.outcomeType &&
+        formState.dataStructure &&
+        formState.analyticTechnique &&
+        formState.modelUse &&
+        formState.modelType &&
+        formState.modelStructure &&
+        formState.entity &&
+        formState.businessUnit &&
+        formState.modelTier &&
+        formState.riskType &&
+        formState.eventName &&
+        modelName &&
+        formState.activityClassification &&
+        formState.assetClass &&
+        formState.assetClass &&
+        formState.productName &&
+        formState.portfolio
+      )
+        return false;
+    }
+    return true;
   };
 
   return (
@@ -74,7 +111,7 @@ export default function FormStepper(): JSX.Element {
           size="large"
           color="inherit"
           onClick={handleNext}
-          disabled={activeStep === labels.length - 1 || (activeStep === 1 && flag)}
+          disabled={(activeStep === 1 && flag) || !checkRequiredValues()}
           className={classes.button}
           endIcon={<ArrowForwardIcon />}
         >

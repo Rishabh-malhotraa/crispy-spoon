@@ -54,7 +54,7 @@ const ModelSpecification = (): JSX.Element => {
           {/* End of headings */}
           <TableBody>
             {data.map((row) => (
-              <TableRow key={row.segment}>
+              <TableRow key={row.technique}>
                 <TableCell>1. Name of Segment</TableCell>
                 <TableCell align="center">
                   <DropDown options={AnalyticalTechnique} />

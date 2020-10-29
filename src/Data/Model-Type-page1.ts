@@ -7,6 +7,12 @@ export interface ModelTypeInterface {
 
 export const modelTypeData: ModelTypeInterface[] = [
   {
+    modelType: 'Please Select Function First',
+    function: '',
+    outcomeType: 'Binary',
+    modelUse: [''],
+  },
+  {
     modelType: 'PD',
     function: 'Risk',
     outcomeType: 'Binary',
