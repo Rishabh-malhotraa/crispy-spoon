@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: 'auto',
     marginTop: '2rem',
-    maxWidth: '70%',
+    maxWidth: '85vw',
     '& .MuiTableCell-root': {
       fontSize: '16px',
     },
@@ -121,7 +121,7 @@ const NumericTable: React.FC<{ data: NumericDataType[] }> = ({ data }) => {
                   colSpan={4}
                   align="center"
                   className={classes.headingBorder}
-                  style={{ backgroundColor: grey[400] }}
+                  style={{ backgroundColor: grey[300] }}
                 >
                   Test
                 </TableCell>
