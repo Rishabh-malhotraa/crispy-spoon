@@ -18,6 +18,37 @@ export interface TableModel {
   }[];
 }
 
+// export interface TableDATAII {
+//   KPIName: string;
+//   Description: string;
+//   TrainData: {
+//     value: number;
+//     color: string;
+//   };
+//   TestData: {
+//     value: number;
+//     color: string;
+//   };
+// }
+
+// export interface TableModelII {
+//   data: {
+//     sectionName: 'XYXX';
+//     dataII: {
+//       KPIName: string;
+//       Description: string;
+//       TrainData: {
+//         value: number;
+//         color: string;
+//       };
+//       TestData: {
+//         value: number;
+//         color: string;
+//       }[];
+//     };
+//   };
+// }
+
 const numericVariable: TableModel = {
   heading: [
     'Variable',

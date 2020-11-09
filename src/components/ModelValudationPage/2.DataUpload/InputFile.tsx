@@ -157,6 +157,7 @@ const InputCSV = (): JSX.Element => {
         console.log(data);
 
         // if (responseData.uuid !== KEY) {
+        // before prod make sure they return key from the backend
         const responseDataUUID = KEY;
         if (responseDataUUID === KEY) {
           console.log(data);
@@ -196,6 +197,8 @@ const InputCSV = (): JSX.Element => {
                     <TableCell align="left">{devFileName}</TableCell>
                     <TableCell align="right">
                       <Button
+                        variant="outlined"
+                        color="primary"
                         onClick={() => {
                           developmentFileRef.current?.click();
                         }}
@@ -219,6 +222,8 @@ const InputCSV = (): JSX.Element => {
                     <TableCell align="left">{valFileName}</TableCell>
                     <TableCell align="right">
                       <Button
+                        variant="contained"
+                        color="primary"
                         onClick={() => {
                           validationFileRef.current?.click();
                         }}
