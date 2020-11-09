@@ -19,6 +19,13 @@ import { Data as DataModel, TestName } from 'Data/KPI-page1';
 import { PROFILE_DATA_URL } from 'API/api';
 import { response as responseSample, CharacterDataType, NumericDataType } from 'Data/response';
 import { populateData } from 'redux/slices/responseDataSlice';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
   root: { fontFamily: 'Roboto' },
@@ -31,6 +38,13 @@ const useStyles = makeStyles({
     borderRadius: '1rem',
     '& .MuiTypography-root': {
       padding: '.5rem',
+    },
+  },
+  table: {
+    marginTop: '.5rem',
+    width: '85vw',
+    '& .MuiTableCell-root': {
+      fontSize: '16px',
     },
   },
 });
@@ -55,10 +69,10 @@ const InputCSV = (): JSX.Element => {
     if (file) {
       if (fileName === 'development file') {
         setDevFile(file);
-        setDevFileName(`Development File: ${file.name}`);
+        setDevFileName(`${file.name}`);
       } else if (fileName === 'validation file') {
         setValFile(file);
-        setValFileName(`Validation File: ${file.name}`);
+        setValFileName(`${file.name}`);
       }
     }
   };
@@ -143,6 +157,7 @@ const InputCSV = (): JSX.Element => {
         console.log(data);
 
         // if (responseData.uuid !== KEY) {
+        // before prod make sure they return key from the backend
         const responseDataUUID = KEY;
         if (responseDataUUID === KEY) {
           console.log(data);
@@ -163,48 +178,78 @@ const InputCSV = (): JSX.Element => {
   return (
     <>
       <form onSubmit={(e) => handleOnSumbit(e)}>
-        <Grid container direction="row" justify="space-around" className={classes.root}>
-          <Grid
-            item
-            onClick={() => {
-              developmentFileRef.current?.click();
-            }}
-          >
-            <input
-              type="file"
-              className={classes.hide}
-              ref={developmentFileRef}
-              onChange={(e) => {
-                handleInputChange(e, 'development file');
-              }}
-            />
-            <Grid item>
-              <Button variant="outlined">{devFileName}</Button>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            onClick={() => {
-              validationFileRef.current?.click();
-            }}
-          >
-            <input
-              type="file"
-              className={classes.hide}
-              ref={validationFileRef}
-              onChange={(e) => {
-                handleInputChange(e, 'validation file');
-              }}
-            />
-            <Grid item>
-              <Button variant="outlined">{valFileName}</Button>
-            </Grid>
-          </Grid>
-          <Grid item>
-            <Button variant="outlined" type="submit">
-              PROFILE THE DATA
-            </Button>
-          </Grid>
+        <Grid container justify="center">
+          <Paper elevation={3}>
+            <TableContainer component="div" className={classes.table}>
+              <Table className={classes.table} aria-label="simple table" size="small">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>File Category</TableCell>
+                    <TableCell align="left">FileName</TableCell>
+                    <TableCell align="right">Actions</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell component="th" scope="row">
+                      Development File
+                    </TableCell>
+                    <TableCell align="left">{devFileName}</TableCell>
+                    <TableCell align="right">
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                        onClick={() => {
+                          developmentFileRef.current?.click();
+                        }}
+                      >
+                        CHOOSE FILE
+                        <input
+                          type="file"
+                          className={classes.hide}
+                          ref={developmentFileRef}
+                          onChange={(e) => {
+                            handleInputChange(e, 'development file');
+                          }}
+                        />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="th" scope="row">
+                      Validation File
+                    </TableCell>
+                    <TableCell align="left">{valFileName}</TableCell>
+                    <TableCell align="right">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                          validationFileRef.current?.click();
+                        }}
+                      >
+                        CHOOSE FILE
+                        <input
+                          type="file"
+                          className={classes.hide}
+                          ref={validationFileRef}
+                          onChange={(e) => {
+                            handleInputChange(e, 'validation file');
+                          }}
+                        />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="th" scope="row" colSpan={2} />
+                    <TableCell align="right">
+                      <Button type="submit">PROFILE THE DATA</Button>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
         </Grid>
       </form>
     </>

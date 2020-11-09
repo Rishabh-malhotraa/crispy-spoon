@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -9,11 +10,15 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Box from '@material-ui/core/Box';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCharacterTableState } from 'redux/slices/characterTableSlice';
+import { selectNumericTableState } from 'redux/slices/numericTableSlice';
 import { onTabIndexChange } from 'redux/slices/tabIndexSlice';
 import { selectForm } from 'redux/slices/formSlice';
 import { selectModelName } from 'redux/slices/modelNameSlice';
+import { selectuuid } from 'redux/slices/uuidSlice';
 import labels from 'Data/Stepper-Labels';
 import StepperPages from './StepperPages';
+import axios from 'axios';
+import { NEXT_BUTTON_DATA_UPLOAD } from 'API/api';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -43,15 +48,58 @@ const useStyles = makeStyles(() =>
  * of two buttons for next and back wrapped in a box followed by the main stepper component
  */
 export default function FormStepper(): JSX.Element {
-  const { flag } = useSelector(selectCharacterTableState);
-  const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const dispatch = useDispatch();
+  const classes = useStyles();
   const formState = useSelector(selectForm);
   const modelName = useSelector(selectModelName);
+  const { numericTableData } = useSelector(selectNumericTableState);
+  const { flag, characterTableData } = useSelector(selectCharacterTableState);
+  const KEY = useSelector(selectuuid);
 
+  //  on handleNext you submit formdata! on step 3|| this all is a mess plus CORS giving me a headache
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (activeStep === 1) {
+      const formData = new FormData();
+      formData.append('character-table', JSON.stringify(characterTableData));
+      formData.append('numeric-table', JSON.stringify(numericTableData));
+      formData.append('uuid', KEY);
+      axios
+        .post(NEXT_BUTTON_DATA_UPLOAD, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+          },
+        })
+        .then((response) => {
+          console.log(response);
+          // discard the response if the key does not match with the key you send
+          // make sure they res
+          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        })
+        .catch((error) => {
+          console.log(error);
+          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        });
+      // const responseDataUUID = KEY;
+      // if (responseDataUUID === KEY) {
+      //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
+      // }
+
+      // catch (err) {
+      //   if (err) {
+      //     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      //     console.log('There was a problem with the server');
+      //     console.log(err);
+      //   } else {
+      //     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      //     console.log(err.response);
+      //   }
+      // }
+    } else {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -89,6 +137,38 @@ export default function FormStepper(): JSX.Element {
     }
     return true;
   };
+
+  /** Api Request for the second step if the stepper */
+  // const ValidateStepTwo = async (e: React.FormEvent<HTMLButtonElement>) => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append('character-table', JSON.stringify(characterTableData));
+  //   formData.append('numeric-table', JSON.stringify(numericTableData));
+  //   formData.append('uuid', KEY);
+  //   try {
+  //     const { data } = await axios.post(NEXT_BUTTON_DATA_UPLOAD, formData, {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data',
+  //       },
+  //     });
+
+  //     // discard the response if the key does not match with the key you send
+  //     // make sure they res
+  //     console.log(data);
+  //     const responseDataUUID = KEY;
+  //     if (responseDataUUID === KEY) {
+  //       setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  //     }
+  //   } catch (err) {
+  //     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  //     if (err) {
+  //       console.log('There was a problem with the server');
+  //       console.log(err);
+  //     } else {
+  //       console.log(err.response);
+  //     }
+  //   }
+  // };
 
   return (
     <div className={classes.root}>

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: 'auto',
     marginTop: '2rem',
-    maxWidth: '70%',
+    maxWidth: '85vw',
     '& .MuiTableCell-root': {
       fontSize: '16px',
     },

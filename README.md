@@ -4,6 +4,7 @@
 - [x] Page 2 redux Integration
 - [x] Post Request for Page 1 and Page 2
 - [x] Add filtering for dropdown options
+- [x] Table for file upload
 - [ ] Add filtering for KPI options
 - [ ] Change Chip to Checkbox Layout? (low priority)
 - [ ] Quantitative Analysis Page
