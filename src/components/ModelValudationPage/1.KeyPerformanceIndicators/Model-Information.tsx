@@ -31,7 +31,24 @@ const useStyles = makeStyles({
   },
 });
 
-const dataOption = ['123', '12121', '213312'];
+const dataOption = ['Credit Risk', 'Market Risk', 'Others'];
+const dataOption1 = [
+  'Bad',
+  'Balance',
+  'Breach',
+  'Breach of Var Limit',
+  'Default',
+  'Good',
+  'Loss',
+  'NA',
+  'Negative Class',
+  'NPV',
+  'Positive Class',
+  'Response',
+  'Revenue',
+  'Sales',
+  'Valuation Mismatch',
+];
 
 const ModelInformation = (): JSX.Element => {
   // eslint-disable-next-line no-console
@@ -200,7 +217,7 @@ const ModelInformation = (): JSX.Element => {
                 width="45%"
               />
               <DropDown
-                options={dataOption}
+                options={dataOption1}
                 variant="filled"
                 inputLabel="Event Name"
                 fieldId="eventName"
