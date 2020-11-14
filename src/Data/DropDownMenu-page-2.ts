@@ -1,3 +1,4 @@
+// options for dropdown menu in table in CharacterVariableRows
 export const characterVariableRoles = [
   '',
   'Actual Event Variable',

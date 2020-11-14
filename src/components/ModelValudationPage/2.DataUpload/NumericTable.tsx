@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import { grey } from '@material-ui/core/colors';
 import { TableModel } from 'Data/Table-Data-page2';
 import { v4 as uuid } from 'uuid';
-import { numericVariableRoles } from 'Data/TableData-page-2';
+import { numericVariableRoles } from 'Data/DropDownMenu-page-2';
 import TablePagination from '@material-ui/core/TablePagination';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import FormControl from '@material-ui/core/FormControl';

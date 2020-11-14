@@ -1,29 +1,20 @@
 import React from 'react';
-import TableOfContents from 'components/QuantitativeValidationPage/TableOfContents';
-import PerformanceSummaryTable from 'components/QuantitativeValidationPage/PerformanceSummaryTable';
-import InformationBar from 'components/QuantitativeValidationPage/QuantitativeValidationHeader';
-import HighLevelModelLevelTests from 'components/QuantitativeValidationPage/HighLevelModelLevelTests';
 import Grid from '@material-ui/core/Grid';
-
-const drawerWidth = '240px';
-const boxPadding = '50px';
+import ButtonLayout from 'components/QuantitativeValidationPage/ButtonComponent';
+import TableComponent from 'components/QuantitativeValidationPage/MainPage';
 
 /**
  * Renders the Quantiative Validation page
+ * It consist of Button layout for next and back
+ * And then the main Collapsable table
  */
 
 const QuantitativeValidation = (): JSX.Element => {
   return (
     <>
-      <TableOfContents />
-      <Grid container direction="column">
-        <div style={{ marginRight: drawerWidth, padding: boxPadding }}>
-          <InformationBar />
-          <PerformanceSummaryTable />
-          <HighLevelModelLevelTests />
-          <PerformanceSummaryTable />
-          <PerformanceSummaryTable />
-        </div>
+      <ButtonLayout />
+      <Grid item style={{ paddingTop: '5rem' }}>
+        <TableComponent />
       </Grid>
     </>
   );

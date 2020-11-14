@@ -8,7 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import DropDown from 'components/Helper/DropDown';
 import Input from '@material-ui/core/Input';
 import ListDropDown from './ListDropdown';
-import InfoIcon from 'components/QuantitativeValidationPage/QuantitativeValidationHeader/InfoIcon';
+import InfoIcon from 'components/ModelValudationPage/3.ModelSpecification/InfoIcon';
 import { AnalyticalTechnique } from 'Data/Model-Specification-page-3';
 import { grey } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
