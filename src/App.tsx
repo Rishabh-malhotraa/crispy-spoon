@@ -27,7 +27,7 @@ const App = (): JSX.Element => {
           <Route exact path="/quantitative-validation" component={QuantitativeValidation} />
         </Switch>
         {/* <Redirect to="/model-setup/KPI" /> */}
-        <Redirect to="/model-setup/KPI" />
+        <Redirect to="/quantitative-validation" />
       </Router>
     </>
   );

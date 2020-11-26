@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ButtonLayout from 'components/QuantitativeValidationPage/ButtonComponent';
 import TableComponent from 'components/QuantitativeValidationPage/MainPage';
+import InformationBar from 'components/QuantitativeValidationPage/InformationBar';
 
 /**
  * Renders the Quantiative Validation page
@@ -12,6 +13,7 @@ import TableComponent from 'components/QuantitativeValidationPage/MainPage';
 const QuantitativeValidation = (): JSX.Element => {
   return (
     <>
+      <InformationBar />
       <ButtonLayout />
       <Grid item style={{ paddingTop: '5rem' }}>
         <TableComponent />

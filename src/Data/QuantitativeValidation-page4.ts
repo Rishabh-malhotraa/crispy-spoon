@@ -87,7 +87,33 @@ export const table = [
         },
       },
       {
-        id: '2',
+        id: '3',
+        kpiName: 'Gini Coefficient',
+        description: 'measure of statistical dispersion intended to represent the income inequality',
+        trainData: {
+          value: 36,
+          color: '#8bc34a',
+        },
+        testData: {
+          value: 98,
+          color: '#e57373',
+        },
+      },
+      {
+        id: '3',
+        kpiName: 'Gini Coefficient',
+        description: 'measure of statistical dispersion intended to represent the income inequality',
+        trainData: {
+          value: 36,
+          color: '#8bc34a',
+        },
+        testData: {
+          value: 98,
+          color: '#e57373',
+        },
+      },
+      {
+        id: '4',
         kpiName: 'Gini Coefficient',
         description: 'measure of statistical dispersion intended to represent the income inequality',
         trainData: {

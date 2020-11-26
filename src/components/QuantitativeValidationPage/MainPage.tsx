@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import Collapse from '@material-ui/core/Collapse';
+// import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -17,6 +17,8 @@ import { Container, Grid } from '@material-ui/core';
 import IMGPlaceholder from 'assets/image-placeholder.png';
 
 import { heading, table as tableData, TableType } from 'Data/QuantitativeValidation-page4';
+
+const sectionNameSubData = [1, 2, 3, 4];
 
 const useRowStyles = makeStyles({
   root: {
@@ -50,7 +52,7 @@ function renderRowSpan(
 }
 
 // this is for rendering collapsable view in the table!
-function renderCollapseView() {
+function RenderCollapseView() {
   return (
     <>
       <Container maxWidth="md" style={{ padding: '1rem 0 1rem 0' }}>
@@ -62,19 +64,16 @@ function renderCollapseView() {
               </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body2" style={{ fontWeight: 'bold' }}>
+              <Typography gutterBottom variant="body2" style={{ fontWeight: 'bold' }}>
                 Description: $the description
               </Typography>
             </Grid>
           </Grid>
-          <Typography variant="h6" gutterBottom>
-            Details
-          </Typography>
           <Table size="small" aria-label="purchases">
             <TableHead>
               <TableRow>
                 <TableCell>Column 1</TableCell>
-                <TableCell>COlumn 2</TableCell>
+                <TableCell>Column 2</TableCell>
                 <TableCell align="right">Column 3</TableCell>
                 <TableCell align="right">Column 4</TableCell>
               </TableRow>
@@ -108,7 +107,7 @@ function renderCollapseView() {
 }
 
 function Row({ rowData }: { rowData: TableType }) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
   const { data, name } = rowData;
   const rowSpan = data.length;
@@ -132,15 +131,15 @@ function Row({ rowData }: { rowData: TableType }) {
           );
         })}
       </>
-      <>
+      {/* <>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
             <Collapse in={open} timeout="auto" unmountOnExit>
-              <Box margin={1}>{renderCollapseView()}</Box>
+              <Box margin={1}>{RenderCollapseView()}</Box>
             </Collapse>
           </TableCell>
         </TableRow>
-      </>
+      </> */}
     </>
   );
 }
@@ -166,6 +165,18 @@ export default function CollapsibleTable() {
           </TableBody>
         </Table>
       </TableContainer>
+
+      {sectionNameSubData.map((element) => {
+        return (
+          <Box key={element}>
+            <RenderCollapseView />
+          </Box>
+        );
+      })}
+
+      <Box>
+        <RenderCollapseView />
+      </Box>
     </Container>
   );
 }
