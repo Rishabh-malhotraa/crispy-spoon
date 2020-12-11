@@ -14,7 +14,7 @@ const QuantitativeValidation = (): JSX.Element => {
   return (
     <>
       <InformationBar />
-      <ButtonLayout />
+      {/* <ButtonLayout /> */}
       <Grid item style={{ paddingTop: '5rem' }}>
         <TableComponent />
       </Grid>

@@ -4,12 +4,17 @@ import DropDown from 'components/Helper/DropDown';
 import InfoIcon from 'components/Helper/InfoIcon';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
+import { Paper, Box } from '@material-ui/core';
+import { useSelector } from 'react-redux';
+import { selectModelName } from 'redux/slices/modelNameSlice';
+import { selectForm } from 'redux/slices/formSlice';
 
 const useStyles = makeStyles({
   root: {
     fontSize: '20px',
     color: 'rbga(0,0,0,0.7)',
+    margin: '1rem',
+    backgroundColor: 'transparent',
     // '& span.margin': {
     //   marginLeft: '1rem',
     //   marginRight: '1rem',
@@ -19,37 +24,49 @@ const useStyles = makeStyles({
     //   paddingBottom: '2px',
     // },
     '.& MuiAppBar-root': {
-      backgroundColor: 'white',
       zIndex: '100',
     },
   },
   toolbar: {
     position: 'sticky',
-    color: 'red',
+    '.& border': {
+      border: '1px solid grey',
+    },
   },
 });
 const options = ['One', 'Two', 'Three'];
 const InformationBar = (): JSX.Element => {
   const classes = useStyles();
+  const modelName = useSelector(selectModelName);
+  const { portfolio, productName, developmentObservationWindow } = useSelector(selectForm);
 
   return (
     <div className={classes.root}>
-      <Paper elevation={0} className={classes.toolbar}>
+      <Box className={classes.toolbar}>
         <Grid item container justify="space-around" alignItems="center" className={classes.root}>
-          <Grid item>
-            <span className="margin">Model Type: Stress Testing Model</span>
-          </Grid>
-          <Grid item>
-            <DropDown options={options} inputLabel="Segment" width="10vw" />
-          </Grid>
-          <Grid item>
-            <DropDown options={options} inputLabel="BIS" width="10vw" />
-          </Grid>
-          <Grid item>
-            <InfoIcon />
-          </Grid>
+          <span className="border">
+            Model Name:
+            {modelName}
+          </span>
+          <span className="border">
+            Product:
+            {productName}
+          </span>
+          <span className="border">
+            Portfolio:
+            {portfolio}
+          </span>
+          <span className="border">
+            Date of Development:
+            {developmentObservationWindow}
+          </span>
         </Grid>
-      </Paper>
+        <Grid item container justify="space-around" alignItems="center" className={classes.root}>
+          <span className="border">Model Type: Stress Testing Model</span>
+          <DropDown options={options} variant="filled" inputLabel="Segment" width="20vw" />
+          <DropDown options={options} variant="filled" inputLabel="BIS" width="20vw" />
+        </Grid>
+      </Box>
     </div>
   );
 };

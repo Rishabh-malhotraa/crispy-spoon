@@ -11,7 +11,7 @@ import { selectTabIndex } from 'redux/slices/tabIndexSlice';
 const useStyles = makeStyles({
   root: {
     // flexGrow: 1,
-    position: 'sticky',
+    position: 'static',
     color: 'white',
     // background: '#E6E6E6',
     background: '#254E70',

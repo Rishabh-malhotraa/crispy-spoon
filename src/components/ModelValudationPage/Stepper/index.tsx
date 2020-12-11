@@ -18,7 +18,8 @@ import { selectuuid } from 'redux/slices/uuidSlice';
 import labels from 'Data/Stepper-Labels';
 import StepperPages from './StepperPages';
 import axios from 'axios';
-import { NEXT_BUTTON_DATA_UPLOAD } from 'API/api';
+import { NEXT_BUTTON_DATA_UPLOAD, QUANTITATIVE_VALIDATION_DATA_URL } from 'API/api';
+import QuantitativeValidation from 'pages/QuantitativeValidation';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -58,7 +59,7 @@ export default function FormStepper(): JSX.Element {
   const KEY = useSelector(selectuuid);
 
   //  on handleNext you submit formdata! on step 3|| this all is a mess plus CORS giving me a headache
-  const handleNext = () => {
+  const handleNext = async () => {
     if (activeStep === 1) {
       const formData = new FormData();
       formData.append('character-table', JSON.stringify(characterTableData));
@@ -97,6 +98,11 @@ export default function FormStepper(): JSX.Element {
       //     console.log(err.response);
       //   }
       // }
+    } else if (activeStep === 2) {
+      const response = await fetch(QUANTITATIVE_VALIDATION_DATA_URL);
+      const data = await response.json();
+      console.log(data);
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }

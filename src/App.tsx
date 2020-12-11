@@ -14,6 +14,9 @@ import { onuuidType } from 'redux/slices/uuidSlice';
  */
 const App = (): JSX.Element => {
   // generating uuid for API request
+
+  // redux-toolkit
+
   const dispatch = useDispatch();
   dispatch(onuuidType(uuid()));
 
@@ -26,8 +29,8 @@ const App = (): JSX.Element => {
           <Route path="/model-setup" component={ModelSetup} />
           <Route exact path="/quantitative-validation" component={QuantitativeValidation} />
         </Switch>
-        {/* <Redirect to="/model-setup/KPI" /> */}
-        <Redirect to="/quantitative-validation" />
+        <Redirect to="/model-setup/KPI" />
+        {/* <Redirect to="/quantitative-validation" /> */}
       </Router>
     </>
   );
