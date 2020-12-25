@@ -31,7 +31,7 @@ const useStyles = makeStyles({
   },
 });
 
-const dataOption = ['123', '12121', '213312'];
+const dataOption = ['Data To be Fetched from API', 'Site not connected to the backend server', 'Placeholder'];
 
 const ModelInformation = (): JSX.Element => {
   // eslint-disable-next-line no-console
@@ -60,10 +60,19 @@ const ModelInformation = (): JSX.Element => {
   };
 
   const [modelTypeOptions, setModelTypeOptions] = useState(['Placeholder']);
-
+  /**
+   * This function is used to get ModelTypeOptions!
+   * refactor this state logic into a reducer later
+   * just simple filtering process
+   */
   useEffect(() => {
     let ModelTypeOptions: ModelTypeInterface[] = modelTypeData;
     if (formState.function) {
+      ModelTypeOptions = modelTypeData.filter((element: ModelTypeInterface) => {
+        if (element.function === formState.function) return element;
+      });
+    }
+    if (formState.function === '') {
       ModelTypeOptions = modelTypeData.filter((element: ModelTypeInterface) => {
         if (element.function === formState.function) return element;
       });

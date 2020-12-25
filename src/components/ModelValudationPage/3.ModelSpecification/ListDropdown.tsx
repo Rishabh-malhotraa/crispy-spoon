@@ -6,7 +6,6 @@ const Example: React.FC = () => {
     { label: 'The website is not conenected with the backend api', value: 'strawberry', disabled: true },
     { label: 'Placeholder', value: 'grapes' },
     { label: 'Needs to be fetched from API', value: 'mango' },
-    { label: 'Watermelon 🍉', value: 'watermelon' },
     { label: 'Placeholder', value: 'grapes' },
     { label: 'Placeholder', value: 'grapes' },
     { label: 'Placeholder', value: 'grapes' },

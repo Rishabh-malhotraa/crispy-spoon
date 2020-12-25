@@ -9,15 +9,15 @@ const modelDimension = {
   data: [
     {
       name: 'Function',
-      options: ['Risk', 'Financial Crime', 'Fraud', 'Marketing', 'OTHERS'],
+      options: ['Risk', 'Financial Crime', 'Fraud', 'Marketing', 'Others'],
     },
     {
       name: 'Outcome Type',
-      options: ['Binary', 'Continuous', 'OTHERS'],
+      options: ['Binary', 'Continuous', 'Others'],
     },
     {
       name: 'Data Structure',
-      options: ['Time Series', 'Panel', 'Stacked Panel', 'OTHERS'],
+      options: ['Time Series', 'Panel', 'Stacked Panel', 'Others'],
     },
 
     {
@@ -77,7 +77,7 @@ const modelInformation = {
 /**
  * Dropdown information for Model Use
  * Show different options for different kind of function
- * eg: if the function is Risk the options would be ['LOS','STR'...etc]
+ * eg: if the function is Risk the options would be ['Line of Sight','STR'...etc]
  * Make sure options for modelUse in Model-Information.ts and Model-Type are same(check spelling)
  */
 const modelUseData = {
@@ -85,23 +85,32 @@ const modelUseData = {
   collection: [
     {
       type: 'Risk',
-      options: ['LOS', 'STR', 'IFR', 'CEC', 'ALL', 'IRB'],
+      options: [
+        'Line of Sight',
+        'Sustained Transfer Rate',
+        'Instantaneous Wave Free Ratio',
+        'Internal Rating Based Approach',
+      ],
     },
     {
       type: 'Financial Crime',
-      options: ['FRA', 'AML', 'OTHERS'],
+      options: ['Financial Reporting Authority', 'Anti Money Laundering', 'Others'],
     },
     {
       type: 'Marketing',
-      options: ['PRO', 'CRO', 'SEG', 'REC', 'OTHERS'],
+      options: ['Coversion Rate Optimization', 'Segmentation', 'REC', 'PRO', 'Others'],
     },
     {
       type: 'Fraud',
-      options: ['SCO', 'OTHERS'],
+      options: ['Suing Customers Operations', 'Others'],
     },
     {
-      type: 'OTHERS',
-      options: ['PPN', 'BAL', 'PRE', 'OTHERS'],
+      type: 'Others',
+      options: ['Preferred Provider Network', 'Balence', 'PRE', 'Others'],
+    },
+    {
+      type: '',
+      options: ['Please Select the Function First'],
     },
   ],
 };

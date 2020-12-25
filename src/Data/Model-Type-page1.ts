@@ -7,34 +7,54 @@ export interface ModelTypeInterface {
 
 export const modelTypeData: ModelTypeInterface[] = [
   {
+    modelType: 'Please Select Function First',
+    function: '',
+    outcomeType: 'Binary',
+    modelUse: [''],
+  },
+  {
     modelType: 'PD',
     function: 'Risk',
     outcomeType: 'Binary',
-    modelUse: ['STR', 'IFR', 'CEC', 'ALL', 'IRB', 'SCO', 'OTH'],
+    modelUse: [
+      'Sustained Transfer Rate',
+      'Instantaneous Wave Free Ratio',
+      'CEC',
+      'Internal Rating Based Approach',
+      'Suing Customers Operations',
+      'OTH',
+    ],
   },
   {
     modelType: 'LGD',
     function: 'Risk',
     outcomeType: 'Continuous',
-    modelUse: ['STR', 'IFR', 'CEC', 'ALL', 'IRB', 'SCO', 'OTH'],
+    modelUse: [
+      'Sustained Transfer Rate',
+      'Instantaneous Wave Free Ratio',
+      'CEC',
+      'Internal Rating Based Approach',
+      'Suing Customers Operations',
+      'OTH',
+    ],
   },
   {
     modelType: 'Trans',
     function: 'Fraud',
     outcomeType: 'Binary',
-    modelUse: ['SCO'],
+    modelUse: ['Suing Customers Operations'],
   },
   {
     modelType: 'Trans-II',
     function: 'Fraud',
     outcomeType: 'Conituous',
-    modelUse: ['OTHER'],
+    modelUse: ['Others'],
   },
   {
     modelType: 'Marke',
     function: 'Marketing',
     outcomeType: 'Binary',
-    modelUse: ['SEG'],
+    modelUse: ['Segmentation'],
   },
   {
     modelType: 'Colla',
@@ -44,14 +64,14 @@ export const modelTypeData: ModelTypeInterface[] = [
   },
   {
     modelType: 'Reven',
-    function: 'OTHERS',
+    function: 'OthersS',
     outcomeType: 'Continuous',
-    modelUse: ['PPN'],
+    modelUse: ['Preferred Provider Network'],
   },
   {
     modelType: 'Expen',
-    function: 'OTHERS',
+    function: 'OthersS',
     outcomeType: 'Binary',
-    modelUse: ['SEG'],
+    modelUse: ['Segmentation'],
   },
 ];
