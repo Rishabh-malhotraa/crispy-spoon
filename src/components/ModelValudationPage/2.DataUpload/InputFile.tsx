@@ -204,7 +204,7 @@ const InputCSV = (): JSX.Element => {
             </Grid>
           </Grid>
           <Grid item>
-            <Button variant="outlined" type="submit">
+            <Button variant="outlined" type="submit" disabled>
               PROFILE THE DATA
             </Button>
           </Grid>

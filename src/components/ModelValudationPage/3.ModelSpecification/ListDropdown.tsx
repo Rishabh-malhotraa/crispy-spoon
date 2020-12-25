@@ -3,26 +3,14 @@ import MultiSelect from 'react-multi-select-component';
 
 const Example: React.FC = () => {
   const options = [
-    { label: 'Grapes 🍇', value: 'grapes' },
-    { label: 'Mango 🥭', value: 'mango' },
-    { label: 'Strawberry 🍓', value: 'strawberry', disabled: true },
+    { label: 'The website is not conenected with the backend api', value: 'strawberry', disabled: true },
+    { label: 'Placeholder', value: 'grapes' },
+    { label: 'Needs to be fetched from API', value: 'mango' },
     { label: 'Watermelon 🍉', value: 'watermelon' },
-    { label: 'Pear 🍐', value: 'pear' },
-    { label: 'Apple 🍎', value: 'apple' },
-    { label: 'Tangerine 🍊', value: 'tangerine' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Pineapple 🍍', value: 'pineapple' },
-    { label: 'Peach 🍑', value: 'peach' },
+    { label: 'Placeholder', value: 'grapes' },
+    { label: 'Placeholder', value: 'grapes' },
+    { label: 'Placeholder', value: 'grapes' },
+    { label: 'Placeholder', value: 'grapes' },
   ];
 
   const [selected, setSelected] = useState([]);

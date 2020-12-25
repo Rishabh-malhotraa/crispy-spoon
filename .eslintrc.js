@@ -19,6 +19,7 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': ['error', { singleQuote: true }],
+    'prettier/prettier': 'off',
     'import/extensions': 'off',
     'react/prop-types': 'off',
     'no-param-reassign': 'off',

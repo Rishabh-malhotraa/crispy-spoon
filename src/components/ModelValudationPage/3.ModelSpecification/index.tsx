@@ -59,7 +59,7 @@ const ModelSpecification = (): JSX.Element => {
                 <TableCell align="center">
                   <DropDown options={AnalyticalTechnique} />
                 </TableCell>
-                <TableCell align="center">Rishabh Malhotra</TableCell>
+                <TableCell align="center">PLACEHOLDER:Needs to Fetched from API</TableCell>
                 <TableCell align="center">
                   <Input type="file" name="pickle-file" id="" />
                 </TableCell>

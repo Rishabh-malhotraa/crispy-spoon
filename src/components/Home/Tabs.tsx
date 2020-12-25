@@ -33,8 +33,9 @@ export default function CenteredTabs(): JSX.Element {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
+    setValue(0);
   };
 
   return (
