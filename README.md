@@ -1,12 +1,12 @@
 # TODOS
 
-- [ ] Page 1 redux Integration
-- [ ] Page 2 redux Integration
-- [ ] Post Request for Page 1 and Page 2
-- [ ] Remove the bug in page one for selection
-- [ ] Quantitative Analysis Page
-- [ ] Documentation page
-- [ ] KPI integration on Click
+- [x] Page 1 redux Integration
+- [x] Page 2 redux Integration
+- [x] Post Request for Page 1 and Page 2
+- [x] Remove the bug in page one for selection
+- [x] Quantitative Analysis Page
+- [x] Documentation page
+- [x] KPI integration on Click
 
 ---
 
